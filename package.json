@@ -5,13 +5,63 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "check-types": "tsc --noEmit",
+    "lint": "eslint . --ext .js,.ts,.tsx",
+    "test": "jest --passWithNoTests",
+    "start": "next build && next start",
+    "validate": "yarn check-types && yarn lint && yarn test -- --coverage"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx,js,jsx,html,md,mdx,yml,json}": [
+      "prettier --write"
+    ],
+    "**/*.{ts,tsx,js,jsx}": [
+      "pnpm lint -- --fix"
+    ]
+  },
+  "eslintIgnore": [
+    "coverage",
+    ".next",
+    "build",
+    "public",
+    "test",
+    "storybook-static",
+    "/*.js"
+  ],
   "dependencies": {
+    "@dash-ui/compound": "^0.1.1",
+    "@dash-ui/jest": "^2.1.2",
+    "@dash-ui/layout": "^0.1.0",
+    "@dash-ui/mq": "^0.4.1",
+    "@dash-ui/react": "^0.9.1",
+    "@dash-ui/reset": "^0.3.1",
+    "@dash-ui/responsive": "^0.2.3",
+    "@dash-ui/styles": "^0.8.6",
+    "@dash-ui/transition": "^0.4.0",
+    "@hookform/resolvers": "^2.8.0",
+    "@radix-ui/react-id": "^0.0.6",
+    "@testing-library/jest-dom": "^5.5.0",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/react-hooks": "latest",
+    "@testing-library/user-event": "^12.1.1",
+    "clsx": "^1.1.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint-config-lunde": "^0.4.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "husky": "^4.3.8",
+    "jest": "^27.0.6",
+    "lint-staged": "^10.5.3",
     "next": "11.1.0",
+    "prettier": "^2.2.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-hook-form": "^7.13.0",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@types/react": "17.0.19",
