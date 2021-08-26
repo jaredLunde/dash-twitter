@@ -24,6 +24,11 @@
       "pnpm lint -- --fix"
     ]
   },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
   "eslintIgnore": [
     "coverage",
     ".next",
