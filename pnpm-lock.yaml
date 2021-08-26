@@ -24,7 +24,9 @@ specifiers:
   eslint-config-next: 11.1.0
   eslint-import-resolver-alias: ^1.1.2
   husky: ^4.3.8
+  immer: ^9.0.5
   jest: ^27.0.6
+  jotai: ^1.3.1
   lint-staged: ^10.5.3
   next: 11.1.0
   prettier: ^2.2.1
@@ -33,6 +35,7 @@ specifiers:
   react-hook-form: ^7.13.0
   typescript: 4.3.5
   yup: ^0.32.9
+  zustand: ^3.5.9
 
 dependencies:
   '@dash-ui/compound': 0.1.1_9a8b3d170593315753d3bb06ce0777cc
@@ -55,7 +58,9 @@ dependencies:
   eslint-config-lunde: 0.4.0_eslint@7.32.0+typescript@4.3.5
   eslint-import-resolver-alias: 1.1.2
   husky: 4.3.8
+  immer: 9.0.5
   jest: 27.0.6
+  jotai: 1.3.1_immer@9.0.5+react@17.0.2
   lint-staged: 10.5.4
   next: 11.1.0_f31b35bdaa3b7c2fce82404f09d2dac4
   prettier: 2.3.2
@@ -63,6 +68,7 @@ dependencies:
   react-dom: 17.0.2_react@17.0.2
   react-hook-form: 7.13.0_react@17.0.2
   yup: 0.32.9
+  zustand: 3.5.9_react@17.0.2
 
 devDependencies:
   '@types/react': 17.0.19
@@ -3361,6 +3367,10 @@ packages:
       queue: 6.0.2
     dev: false
 
+  /immer/9.0.5:
+    resolution: {integrity: sha512-2WuIehr2y4lmYz9gaQzetPR2ECniCifk4ORaQbU3g5EalLt+0IVTosEPJ5BoYl/75ky2mivzdRzV8wWgQGOSYQ==}
+    dev: false
+
   /import-fresh/3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
     engines: {node: '>=6'}
@@ -4135,6 +4145,38 @@ packages:
       - supports-color
       - ts-node
       - utf-8-validate
+    dev: false
+
+  /jotai/1.3.1_immer@9.0.5+react@17.0.2:
+    resolution: {integrity: sha512-kxBCafmsO8v3Tc02LwElkCa2cVfuKfGsKG8A1TrTiWV2ygfNqdleh6lf0GrWE7BxRYCE1WoTJQMoa3IHkyabKg==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      '@urql/core': '*'
+      immer: '*'
+      optics-ts: '*'
+      react: '>=16.8'
+      react-query: '*'
+      valtio: '*'
+      wonka: '*'
+      xstate: '*'
+    peerDependenciesMeta:
+      '@urql/core':
+        optional: true
+      immer:
+        optional: true
+      optics-ts:
+        optional: true
+      react-query:
+        optional: true
+      valtio:
+        optional: true
+      wonka:
+        optional: true
+      xstate:
+        optional: true
+    dependencies:
+      immer: 9.0.5
+      react: 17.0.2
     dev: false
 
   /js-tokens/4.0.0:
@@ -6351,4 +6393,15 @@ packages:
       nanoclone: 0.2.1
       property-expr: 2.0.4
       toposort: 2.0.2
+    dev: false
+
+  /zustand/3.5.9_react@17.0.2:
+    resolution: {integrity: sha512-ELj8XLrf5TZoiffbsZKaJ0uGnT1t4PGU9IgFLfiLsjMhOXFfKEl3fEUa5mNAWTzrietJuA1R2YY6GBE1siyE5Q==}
+    peerDependencies:
+      react: '>=16.8'
+    peerDependenciesMeta:
+      react:
+        optional: true
+    dependencies:
+      react: 17.0.2
     dev: false

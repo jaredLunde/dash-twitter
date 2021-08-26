@@ -20,6 +20,7 @@
       "@/public/*": ["public/*"],
       "@/styles/*": ["styles/*"],
       "@/styles": ["styles/index.tsx"],
+      "@/stores": ["stores/index.ts"],
       "@/test/*": ["test/*"],
       "@/utils/*": ["utils/*"]
     }

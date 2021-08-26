@@ -1,10 +1,10 @@
 import compound from "@dash-ui/compound";
 import dashMq from "@dash-ui/mq";
-import { DashProvider } from "@dash-ui/react";
 import responsive from "@dash-ui/responsive";
 import type { Responsive } from "@dash-ui/responsive";
 import { createStyles } from "@dash-ui/styles";
-import type { DashTokens } from "@dash-ui/styles";
+import type { DashThemeNames, DashTokens } from "@dash-ui/styles";
+import { persistAtom } from "@/stores";
 
 /**
  * These are the media queries you're using throughout your app.
@@ -293,7 +293,7 @@ const colorSystem = {
   blueGray900: "#0f172a",
 };
 
-export const tokens = {
+export const lightTokens = {
   font: {
     family: {
       brand: [`Caveat`, `Inter`].map((s) => `"${s}"`).join(","),
@@ -486,11 +486,46 @@ export const tokens = {
   },
 };
 
+export const darkTokens = {
+  ...lightTokens,
+
+  color: {
+    ...colorSystem,
+    translucentLight: "rgba(245, 245, 252, 0.8)",
+    translucentDark: "rgba(40, 40, 48, 0.15)",
+    translucentContrast: "rgba(40, 40, 48, 0.15)",
+    bodyBg: colorSystem.black,
+
+    text: colorSystem.blueGray200,
+    textAccent: colorSystem.blueGray400,
+    textAccentLight: colorSystem.blueGray600,
+
+    primary: colorSystem.indigo700,
+    primaryHover: colorSystem.indigo800,
+    primaryActive: colorSystem.indigo900,
+
+    secondary:
+      "hsl(224.7457627118644, 54.128440366972484%, 18.372549019607842%)",
+    secondaryHover:
+      "hsl(224.7457627118644, 54.128440366972484%, 28.372549019607842%)",
+    secondaryActive:
+      "hsl(224.7457627118644, 54.128440366972484%, 21.372549019607842%)",
+
+    accent: "hsl(252, 24%, 85%)",
+    accentHover: "hsl(212, 24%, 82%)",
+    accentActive: "hsl(212, 24%, 84%)",
+  },
+};
+
 export const themes = {
   // paper
-  default: {
+  light: {
     vh: "100vh" as string,
-    ...tokens,
+    ...lightTokens,
+  },
+  dark: {
+    vh: "100vh" as string,
+    ...darkTokens,
   },
 };
 
@@ -500,15 +535,9 @@ export const themes = {
  */
 export const styles = createStyles({
   themes,
-  tokens: tokens as DashTokens,
 });
 
-/**
- * Set up the context providers used by Dash
- */
-export function StylesProvider({ children }: { children: React.ReactNode }) {
-  return <DashProvider styles={styles}>{children}</DashProvider>;
-}
+export const themeAtom = persistAtom<DashThemeNames>("theme", "light");
 
 /**
  * A function for adding responsive props/styles to components
@@ -523,7 +552,7 @@ export type ResponsiveProp<Variant> =
  */
 export const compoundStyles = compound(styles);
 
-type AppTokens = typeof tokens & { vh: string };
+type AppTokens = typeof lightTokens & { vh: string };
 type AppThemes = typeof themes;
 
 declare module "@dash-ui/styles" {

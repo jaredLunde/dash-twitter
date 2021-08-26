@@ -1,17 +1,29 @@
-import { useGlobal } from "@dash-ui/react";
+import { DashProvider, useGlobal } from "@dash-ui/react";
 import resetGlobalStyles from "@dash-ui/reset";
 import { IdProvider } from "@radix-ui/react-id";
+import { useAtom } from "jotai";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import * as React from "react";
-import { StylesProvider } from "@/styles";
+import { styles, themeAtom } from "@/styles";
 import { typography } from "@/styles/text";
 
 export default App;
 
 function App({ Component, pageProps }: AppProps) {
+  const [theme] = useAtom(themeAtom);
+
+  React.useEffect(() => {
+    const cls = styles.theme(theme);
+    document.body.classList.add(cls);
+
+    return () => {
+      document.body.classList.remove(cls);
+    };
+  }, [theme]);
+
   return (
-    <StylesProvider>
+    <DashProvider styles={styles}>
       <GlobalStyles />
       <Head>
         <meta
@@ -27,12 +39,13 @@ function App({ Component, pageProps }: AppProps) {
           href="https://fonts.googleapis.com/css2?family=Caveat"
           rel="stylesheet"
         />
+        <body className={styles.theme(theme)} />
       </Head>
 
       <IdProvider>
         <Component {...pageProps} />
       </IdProvider>
-    </StylesProvider>
+    </DashProvider>
   );
 }
 
@@ -86,7 +99,7 @@ function GlobalStyles() {
     []
   );
 
-  useGlobal(`body {${typography.css("sm")}}`);
+  useGlobal(`body {${typography.css("sm")}}`, []);
 
   return null;
 }

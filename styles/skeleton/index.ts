@@ -31,7 +31,7 @@ export const skeleton = compoundStyles({
   variant: styles.lazy((variant: "text" | "rect" | "circle") => (t) => ({
     backgroundColor: t.color.blue100,
     height: variant === "text" ? "1em" : "auto",
-    borderRadius: variant === "circle" ? "full" : "primary",
+    borderRadius: variant === "circle" ? t.radius.full : t.radius.primary,
   })),
   ...box.styles,
 });

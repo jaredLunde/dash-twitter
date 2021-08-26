@@ -9,11 +9,7 @@ export default class MyDocument extends Document {
     const initialProps = await Document.getInitialProps(ctx);
 
     return Object.assign(initialProps, {
-      styles: (
-        <React.Fragment>
-          <Style html={initialProps.html} styles={styles} />
-        </React.Fragment>
-      ),
+      styles: <Style html={initialProps.html} styles={styles} />,
     });
   }
 }

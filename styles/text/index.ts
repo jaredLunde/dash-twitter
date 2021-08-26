@@ -1,5 +1,5 @@
 import type { DashTokens, StyleMap } from "@dash-ui/styles";
-import { compoundStyles, mq, responsiveStyles, styles, tokens } from "@/styles";
+import { compoundStyles, mq, responsiveStyles, styles } from "@/styles";
 
 export const text = compoundStyles({
   variant: responsiveStyles({
@@ -80,7 +80,7 @@ export const text = compoundStyles({
   leading: responsiveStyles(
     (
       Object.keys(
-        tokens.font.leading
+        styles.tokens.font.leading
       ) as (keyof DashTokens["font"]["leading"])[]
     ).reduce<Partial<StyleMap<keyof DashTokens["font"]["leading"]>>>(
       (obj, key) => {
@@ -101,7 +101,7 @@ export const text = compoundStyles({
   tracking: responsiveStyles(
     (
       Object.keys(
-        tokens.font.tracking
+        styles.tokens.font.tracking
       ) as (keyof DashTokens["font"]["tracking"])[]
     ).reduce<Partial<StyleMap<keyof DashTokens["font"]["tracking"]>>>(
       (obj, key) => {
@@ -120,7 +120,7 @@ export const text = compoundStyles({
    * design tokens.
    */
   color: responsiveStyles(
-    (Object.keys(tokens.color) as (keyof DashTokens["color"])[]).reduce<
+    (Object.keys(styles.tokens.color) as (keyof DashTokens["color"])[]).reduce<
       Partial<StyleMap<keyof DashTokens["color"]>>
     >((obj, key) => {
       obj[key] = ({ color }) =>
@@ -138,7 +138,9 @@ export const text = compoundStyles({
    */
   font: responsiveStyles(
     (
-      Object.keys(tokens.font.family) as (keyof DashTokens["font"]["family"])[]
+      Object.keys(
+        styles.tokens.font.family
+      ) as (keyof DashTokens["font"]["family"])[]
     ).reduce<Partial<StyleMap<keyof DashTokens["font"]["family"]>>>(
       (obj, key) => {
         obj[key] = ({ font }) =>
@@ -158,7 +160,9 @@ export const text = compoundStyles({
    */
   size: responsiveStyles(
     (
-      Object.keys(tokens.font.size) as (keyof DashTokens["font"]["size"])[]
+      Object.keys(
+        styles.tokens.font.size
+      ) as (keyof DashTokens["font"]["size"])[]
     ).reduce<Partial<StyleMap<keyof DashTokens["font"]["size"]>>>(
       (obj, key) => {
         obj[key] = ({ font }) => ({
