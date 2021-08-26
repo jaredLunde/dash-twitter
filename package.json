@@ -5,10 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build-storybook": "build-storybook",
     "check-types": "tsc --noEmit",
     "lint": "eslint . --ext .js,.ts,.tsx",
     "test": "jest --passWithNoTests",
     "start": "next build && next start",
+    "storybook": "start-storybook -p 6006",
     "validate": "yarn check-types && yarn lint && yarn test -- --coverage"
   },
   "husky": {
@@ -31,6 +33,7 @@
   },
   "eslintIgnore": [
     "coverage",
+    ".storybook",
     ".next",
     "build",
     "public",
@@ -50,12 +53,18 @@
     "@dash-ui/transition": "^0.4.0",
     "@hookform/resolvers": "^2.8.0",
     "@radix-ui/react-id": "^0.0.6",
+    "@storybook/addon-a11y": "^6.3.7",
+    "@storybook/addon-essentials": "^6.3.7",
+    "@storybook/addon-links": "^6.3.7",
+    "@storybook/react": "^6.3.7",
     "@testing-library/jest-dom": "^5.5.0",
     "@testing-library/react": "^11.2.2",
     "@testing-library/react-hooks": "latest",
     "@testing-library/user-event": "^12.1.1",
+    "@types/react": "17.0.19",
     "clsx": "^1.1.1",
     "cz-conventional-changelog": "^3.3.0",
+    "eslint": "7.32.0",
     "eslint-config-lunde": "^0.4.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "husky": "^4.3.8",
@@ -68,13 +77,11 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-hook-form": "^7.13.0",
+    "storybook-addon-next-router": "^3.0.7",
+    "storybook-addon-themes": "^6.1.0",
+    "tsconfig-paths-webpack-plugin": "^3.5.1",
+    "typescript": "4.3.5",
     "yup": "^0.32.9",
     "zustand": "^3.5.9"
-  },
-  "devDependencies": {
-    "@types/react": "17.0.19",
-    "eslint": "7.32.0",
-    "eslint-config-next": "11.1.0",
-    "typescript": "4.3.5"
   }
 }

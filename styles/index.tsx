@@ -520,11 +520,11 @@ export const darkTokens = {
 export const themes = {
   // paper
   light: {
-    vh: "100vh" as string,
+    vh: "100vh",
     ...lightTokens,
   },
   dark: {
-    vh: "100vh" as string,
+    vh: "100vh",
     ...darkTokens,
   },
 };
