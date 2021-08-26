@@ -1,5 +1,6 @@
 import { render } from "@testing-library/react";
-import { StylesProvider } from "@/styles";
+import { DashProvider } from "@dash-ui/react";
+import { styles } from "@/styles";
 
 export function renderStyled(
   ui: Parameters<typeof render>[0],
@@ -7,6 +8,8 @@ export function renderStyled(
 ) {
   return render(ui, {
     ...options,
-    wrapper: ({ children }) => <StylesProvider>{children}</StylesProvider>,
+    wrapper: ({ children }) => (
+      <DashProvider styles={styles}>{children}</DashProvider>
+    ),
   });
 }
