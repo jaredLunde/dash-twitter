@@ -375,7 +375,8 @@ export const lightTokens = {
 
   radius: {
     none: "0",
-    primary: "0.5rem",
+    primary: 10000 / 16 + "rem",
+    secondary: "0.5rem",
     sm: "0.125rem",
     base: "0.25rem",
     md: "0.375rem",
@@ -469,9 +470,9 @@ export const lightTokens = {
     textAccent: colorSystem.blueGray600,
     textAccentLight: colorSystem.blueGray400,
 
-    primary: colorSystem.indigo700,
-    primaryHover: colorSystem.indigo800,
-    primaryActive: colorSystem.indigo900,
+    primary: colorSystem.lightBlue600,
+    primaryHover: colorSystem.lightBlue700,
+    primaryActive: colorSystem.lightBlue800,
 
     secondary:
       "hsl(224.7457627118644, 54.128440366972484%, 18.372549019607842%)",
@@ -500,16 +501,13 @@ export const darkTokens = {
     textAccent: colorSystem.blueGray400,
     textAccentLight: colorSystem.blueGray600,
 
-    primary: colorSystem.indigo700,
-    primaryHover: colorSystem.indigo800,
-    primaryActive: colorSystem.indigo900,
+    primary: colorSystem.lightBlue500,
+    primaryHover: colorSystem.lightBlue600,
+    primaryActive: colorSystem.lightBlue700,
 
-    secondary:
-      "hsl(224.7457627118644, 54.128440366972484%, 18.372549019607842%)",
-    secondaryHover:
-      "hsl(224.7457627118644, 54.128440366972484%, 28.372549019607842%)",
-    secondaryActive:
-      "hsl(224.7457627118644, 54.128440366972484%, 21.372549019607842%)",
+    secondary: colorSystem.coolGray100,
+    secondaryHover: colorSystem.coolGray200,
+    secondaryActive: colorSystem.coolGray300,
 
     accent: "hsl(252, 24%, 85%)",
     accentHover: "hsl(212, 24%, 82%)",

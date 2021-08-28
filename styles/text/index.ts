@@ -1,7 +1,11 @@
 import type { DashTokens, StyleMap } from "@dash-ui/styles";
+import { persistAtom } from "@/stores";
 import { compoundStyles, mq, responsiveStyles, styles } from "@/styles";
 
 export const text = compoundStyles({
+  /**
+   * Select a text variant
+   */
   variant: responsiveStyles({
     heading: ({ font, color }) => ({
       fontSize: font.size["4xl"],
@@ -33,6 +37,9 @@ export const text = compoundStyles({
       fontWeight: 600,
     }),
   }),
+  /**
+   * Select a font weight
+   */
   weight: responsiveStyles({
     100: {
       fontWeight: 100,
@@ -93,7 +100,6 @@ export const text = compoundStyles({
       {}
     )
   ),
-
   /**
    * Creates `letter-spacing` styles for all of your `font.tracking`
    * design tokens.
@@ -114,7 +120,6 @@ export const text = compoundStyles({
       {}
     )
   ),
-
   /**
    * Creates font `color` styles for all of your `color`
    * design tokens.
@@ -131,7 +136,6 @@ export const text = compoundStyles({
       return obj;
     }, {})
   ),
-
   /**
    * Creates `font-family` styles for all of your `font.family`
    * design tokens.
@@ -153,7 +157,6 @@ export const text = compoundStyles({
       {}
     )
   ),
-
   /**
    * Creates `font-size` styles for all of your `font.size`
    * design tokens.
@@ -175,6 +178,23 @@ export const text = compoundStyles({
     )
   ),
 });
+
+export const fontSizes = {
+  xs: "75%",
+  sm: "85%",
+  md: "100%",
+  lg: "125%",
+  xl: "150%",
+} as const;
+
+export const fontSizeAtom = persistAtom<keyof typeof fontSizes>(
+  "fontSize",
+  "md"
+);
+export const fontAtom = persistAtom<keyof DashTokens["font"]["family"]>(
+  "font",
+  "sans"
+);
 
 /**
  * This creates the default typography styles for your application.
@@ -200,17 +220,12 @@ export const typography = responsiveStyles({
         "strong,b": {
           fontWeight: 700,
         },
-
-        ":hover": {
-          cursor: "pointer",
-          color: color.primaryHover,
-        },
       },
       b: {
-        fontWeight: "700",
+        fontWeight: 700,
       },
       strong: {
-        fontWeight: "600",
+        fontWeight: 600,
       },
     }),
     retina: {
@@ -224,6 +239,13 @@ export const typography = responsiveStyles({
     fontSize: rem(14),
     lineHeight: round(24 / 14),
   },
+  hover: (t) => ({
+    "a:hover": {
+      cursor: "pointer",
+      color: t.color.primaryHover,
+      textDecoration: "underline",
+    },
+  }),
 });
 
 /**

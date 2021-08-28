@@ -1,12 +1,11 @@
-import { DashProvider, useGlobal } from "@dash-ui/react";
-import resetGlobalStyles from "@dash-ui/reset";
+import { DashProvider } from "@dash-ui/react";
 import { IdProvider } from "@radix-ui/react-id";
 import { useAtom } from "jotai";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import * as React from "react";
 import { styles, themeAtom } from "@/styles";
-import { typography } from "@/styles/text";
+import { GlobalStyles } from "@/styles/global";
 
 export default App;
 
@@ -47,59 +46,4 @@ function App({ Component, pageProps }: AppProps) {
       </IdProvider>
     </DashProvider>
   );
-}
-
-/**
- * Injects global styles for the app
- */
-function GlobalStyles() {
-  useGlobal(resetGlobalStyles, []);
-
-  useGlobal(
-    ({ color, font, transition }) => ({
-      "*, ::before, ::after, body": {
-        position: "relative",
-        margin: 0,
-        overflowWrap: "break-word",
-      },
-      "*:focus": {
-        outline: "none",
-      },
-      "::selection, ::-moz-selection": {
-        backgroundColor: color.indigo200,
-      },
-      html: {
-        fontSize: "100%",
-        overflowX: "hidden",
-
-        ":focus-within": {
-          scrollBehavior: "smooth",
-        },
-      },
-      body: {
-        minWidth: "100%",
-        minHeight: "100%",
-        backgroundColor: color.bodyBg,
-        fontFamily: font.family.sans,
-      },
-      ".loud": {
-        transitionProperty: "opacity,visibility",
-        transitionDuration: transition.duration.slower,
-        transitionTimingFunction: transition.timing.inOut,
-      },
-      ".writing-mode-enabled .loud": {
-        opacity: "0!important",
-        visibility: "hidden",
-      },
-      ".writing-mode-disabled .loud": {
-        opacity: 1,
-        visibility: "visible",
-      },
-    }),
-    []
-  );
-
-  useGlobal(`body {${typography.css("sm")}}`, []);
-
-  return null;
 }
