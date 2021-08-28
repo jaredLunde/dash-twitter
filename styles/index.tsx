@@ -296,9 +296,8 @@ const colorSystem = {
 export const lightTokens = {
   font: {
     family: {
-      brand: [`Caveat`, `Inter`].map((s) => `"${s}"`).join(","),
       sans: [
-        `Inter`,
+        `Work Sans`,
         `system-ui`,
         `-apple-system`,
         `BlinkMacSystemFont`,
@@ -461,9 +460,12 @@ export const lightTokens = {
 
   color: {
     ...colorSystem,
-    translucentLight: "rgba(245, 245, 252, 0.8)",
+    translucentLight: "rgba(15, 20, 25, 0.1)",
+    translucentLightActive: "rgba(15, 20, 25, 0.2)",
     translucentDark: "rgba(40, 40, 48, 0.15)",
     translucentContrast: "rgba(40, 40, 48, 0.15)",
+    translucentPrimary: "rgba(29, 155, 240, 0.1)",
+    translucentPrimaryActive: "rgba(29, 155, 240, 0.2)",
     bodyBg: colorSystem.white,
 
     text: colorSystem.blueGray900,
@@ -481,7 +483,7 @@ export const lightTokens = {
     secondaryActive:
       "hsl(224.7457627118644, 54.128440366972484%, 21.372549019607842%)",
 
-    accent: "hsl(252, 24%, 85%)",
+    accent: colorSystem.blueGray100,
     accentHover: "hsl(212, 24%, 82%)",
     accentActive: "hsl(212, 24%, 84%)",
   },
@@ -492,14 +494,17 @@ export const darkTokens = {
 
   color: {
     ...colorSystem,
-    translucentLight: "rgba(245, 245, 252, 0.8)",
-    translucentDark: "rgba(40, 40, 48, 0.15)",
+    translucentLight: "rgba(239, 243, 244, 0.1)",
+    translucentLightActive: "rgba(239, 243, 244, 0.2)",
+    translucentDark: "rgba(239, 243, 244, 0.1)",
     translucentContrast: "rgba(40, 40, 48, 0.15)",
+    translucentPrimary: "rgba(29, 155, 240, 0.1)",
+    translucentPrimaryActive: "rgba(29, 155, 240, 0.2)",
     bodyBg: colorSystem.black,
 
-    text: colorSystem.blueGray200,
+    text: colorSystem.blueGray300,
     textAccent: colorSystem.blueGray400,
-    textAccentLight: colorSystem.blueGray600,
+    textAccentLight: colorSystem.blueGray500,
 
     primary: colorSystem.lightBlue500,
     primaryHover: colorSystem.lightBlue600,
@@ -509,7 +514,7 @@ export const darkTokens = {
     secondaryHover: colorSystem.coolGray200,
     secondaryActive: colorSystem.coolGray300,
 
-    accent: "hsl(252, 24%, 85%)",
+    accent: colorSystem.blueGray800,
     accentHover: "hsl(212, 24%, 82%)",
     accentActive: "hsl(212, 24%, 84%)",
   },

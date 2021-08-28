@@ -1,5 +1,6 @@
-import { useGlobal } from "@dash-ui/react";
+import { useGlobal, useThemes } from "@dash-ui/react";
 import resetGlobalStyles from "@dash-ui/reset";
+import { useWindowHeight } from "@react-hook/window-size";
 import { useAtom } from "jotai";
 import { fontAtom, fontSizeAtom, fontSizes, typography } from "@/styles/text";
 
@@ -9,6 +10,12 @@ import { fontAtom, fontSizeAtom, fontSizes, typography } from "@/styles/text";
 export function GlobalStyles() {
   const [fontSize] = useAtom(fontSizeAtom);
   const [font] = useAtom(fontAtom);
+  const windowHeight = useWindowHeight();
+
+  useThemes(
+    { light: { vh: `${windowHeight}px` }, dark: { vh: `${windowHeight}px` } },
+    [windowHeight]
+  );
 
   useGlobal(resetGlobalStyles, []);
 
@@ -38,6 +45,7 @@ export function GlobalStyles() {
         minHeight: "100%",
         backgroundColor: t.color.bodyBg,
         fontFamily: t.font.family[font],
+        textAlign: "center",
       },
       ".loud": {
         transitionProperty: "opacity,visibility",
@@ -53,7 +61,7 @@ export function GlobalStyles() {
         visibility: "visible",
       },
     }),
-    []
+    [fontSize, font]
   );
 
   useGlobal(`body {${typography.css("sm")}}`, []);

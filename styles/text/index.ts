@@ -7,31 +7,28 @@ export const text = compoundStyles({
    * Select a text variant
    */
   variant: responsiveStyles({
-    heading: ({ font, color }) => ({
-      fontSize: font.size["4xl"],
-      lineHeight: font.leading.tight,
-      letterSpacing: font.tracking.tight,
-      fontWeight: 600,
-      color: color.gray800,
+    heading: (t) => ({
+      fontSize: t.font.size.xl,
+      lineHeight: t.font.leading.tight,
+      letterSpacing: t.font.tracking.normal,
+      fontWeight: 700,
     }),
-    subheading: ({ font, color }) => ({
-      fontSize: font.size["2xl"],
-      lineHeight: font.leading.tight,
-      letterSpacing: font.tracking.tight,
+    subheading: (t) => ({
+      fontSize: t.font.size.lg,
+      lineHeight: t.font.leading.tight,
+      letterSpacing: t.font.tracking.tight,
       fontWeight: 500,
-      color: color.gray800,
     }),
-    caption: ({ font, color }) => ({
-      fontSize: font.size.xs,
-      lineHeight: font.leading.snug,
-      letterSpacing: font.tracking.normal,
+    caption: (t) => ({
+      fontSize: t.font.size.xs,
+      lineHeight: t.font.leading.snug,
+      letterSpacing: t.font.tracking.normal,
       fontWeight: 300,
-      color: color.gray600,
     }),
-    action: ({ font }) => ({
-      fontSize: font.size.xs,
-      lineHeight: font.leading.snug,
-      letterSpacing: font.tracking.tight,
+    action: (t) => ({
+      fontSize: t.font.size.xs,
+      lineHeight: t.font.leading.snug,
+      letterSpacing: t.font.tracking.tight,
       textTransform: "uppercase",
       textRendering: "optimizeLegibility",
       fontWeight: 600,
@@ -181,10 +178,10 @@ export const text = compoundStyles({
 
 export const fontSizes = {
   xs: "75%",
-  sm: "85%",
+  sm: "87%",
   md: "100%",
-  lg: "125%",
-  xl: "150%",
+  lg: "112%",
+  xl: "125%",
 } as const;
 
 export const fontSizeAtom = persistAtom<keyof typeof fontSizes>(
