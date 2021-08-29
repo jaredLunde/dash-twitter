@@ -116,17 +116,17 @@ export const resetVendorButtonStyles = {
 const size = responsiveStyles({
   sm: (t) => ({
     fontSize: t.font.size.base,
-    padding: `${10 / 16}rem ${14 / 16}rem`,
+    padding: `${8 / 16}rem ${14 / 16}rem`,
   }),
 
   md: (t) => ({
-    fontSize: t.font.size.base,
+    fontSize: t.font.size.lg,
     padding: `${14 / 16}rem ${20 / 16}rem`,
   }),
 
   lg: (t) => ({
-    fontSize: t.font.size.lg,
-    padding: `${22 / 16}rem ${30 / 16}rem`,
+    fontSize: t.font.size.xl,
+    padding: `${20 / 16}rem ${26 / 16}rem`,
   }),
 });
 
@@ -249,7 +249,7 @@ export const button = {
             color: t.color.black,
             textDecoration: "none",
             borderColor: t.color.primaryHover,
-            backgroundColor: t.color.translucentContrast,
+            backgroundColor: t.color.translucentDark,
 
             [`.${styles.theme("dark")} &`]: {
               color: t.color.white,
@@ -258,7 +258,6 @@ export const button = {
           "&:active:not([disabled]):not(.fetching)": {
             color: t.color.black,
             textDecoration: "none",
-            borderColor: t.color.primaryActive,
 
             [`.${styles.theme("dark")} &`]: {
               color: t.color.white,
@@ -269,24 +268,18 @@ export const button = {
 
       secondary: mq({
         default: (t) => ({
-          borderColor: t.color.secondary,
+          borderColor: t.color.textAccent,
           color: t.color.secondary,
         }),
         hover: (t) => ({
           "&:hover:not([disabled]):not(.fetching)": {
             color: t.color.secondaryHover,
             textDecoration: "none",
-            borderColor: t.color.secondaryHover,
-            backgroundColor: t.color.translucentContrast,
-
-            [`.${styles.theme("dark")} &`]: {
-              color: t.color.secondaryHover,
-            },
+            backgroundColor: t.color.translucentDark,
           },
           "&:active:not([disabled]):not(.fetching)": {
             color: t.color.secondaryActive,
             textDecoration: "none",
-            borderColor: t.color.secondaryActive,
 
             [`.${styles.theme("dark")} &`]: {
               color: t.color.secondaryActive,

@@ -40,7 +40,9 @@ export interface IconProps
    * Set a size on the icon. Sizing this way requires that your SVG has no `width`
    * or `height` properties or styles set on it.
    */
-  size?: React.ReactText;
+  size?:
+    | React.ReactText
+    | [React.ReactText | undefined, React.ReactText | undefined];
   /**
    * Set a color for the icon. Coloring requires that your SVG having `currentColor`
    * as its `fill` or `strokeColor`.
@@ -55,7 +57,7 @@ export interface IconProps
 export const icon = compoundStyles({
   default: styles.one({
     display: "inline-block",
-    verticalAlign: "middle",
+    verticalAlign: "text-bottom",
     maskPosition: "center",
     maskRepeat: "no-repeat",
     maskSize: "cover",

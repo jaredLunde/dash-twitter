@@ -9,6 +9,11 @@ export const tabs = {
       scrollSnapType: "x mandatory",
       overflowY: "hidden",
       overflowX: "auto",
+      msOverflowStyle: "none",
+      scrollbarWidth: "none",
+      "::-webkit-scrollbar": {
+        display: "none",
+      },
       transform: "translate3d(0px, 0px, 0px)",
       alignItems: "stretch",
       flexGrow: 1,

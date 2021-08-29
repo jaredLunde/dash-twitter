@@ -1,4 +1,6 @@
+const path = require("path");
 const { TsconfigPathsPlugin } = require("tsconfig-paths-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = {
   stories: [
@@ -16,7 +18,15 @@ module.exports = {
     "storybook-addon-themes",
   ],
 
-  webpackFinal(config) {
+  // core: {
+  //   builder: "webpack5",
+  // },
+
+  reactOptions: {
+    fastRefresh: true,
+  },
+
+  async webpackFinal(config) {
     config.resolve.plugins = [
       new TsconfigPathsPlugin({ extensions: config.resolve.extensions }),
     ];

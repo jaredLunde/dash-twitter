@@ -3,6 +3,7 @@ import { RouterContext } from "next/dist/shared/lib/router-context";
 import { DashProvider, useGlobal } from "@dash-ui/react";
 import { addDecorator } from "@storybook/react";
 import { configureActions } from "@storybook/addon-actions";
+import * as NextImage from "next/image";
 import { styles } from "../styles";
 import { GlobalStyles } from "../styles/global";
 
@@ -46,4 +47,10 @@ addDecorator((storyFn) => (
 configureActions({
   depth: 3,
   limit: 20,
+});
+
+const OriginalNextImage = NextImage.default;
+Object.defineProperty(NextImage, "default", {
+  configurable: true,
+  value: (props) => <OriginalNextImage {...props} unoptimized />,
 });

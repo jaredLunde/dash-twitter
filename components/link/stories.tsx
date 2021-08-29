@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-import { Link } from "./index";
+import { Link, NavLink } from "./index";
 
 export default {
   title: "components/Link",
@@ -23,3 +23,7 @@ const Template: ComponentStory<typeof Link> = (args) => <Link {...args} />;
 
 export const Preview = Template.bind({});
 Preview.args = {};
+
+export const Nav: ComponentStory<typeof NavLink> = (args) => (
+  <NavLink {...args} />
+);

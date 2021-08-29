@@ -1,9 +1,10 @@
+import clsx from "clsx";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { Button } from "@/components/button";
 import { Icon } from "@/components/icon";
-import { IconButton } from "@/components/icon-button";
-import ico from "@/public/icons/sparkle.svg";
+import { iconButton, IconButton } from "@/components/icon-button";
+import { PrimaryNav } from "@/components/primary-nav";
 import { column, grid, row } from "@/styles/layout";
 import { text } from "@/styles/text";
 
@@ -14,10 +15,11 @@ const Home: NextPage = () => {
         inline: true,
         alignY: "start",
         cols: {
-          min: [60, "minmax(240px, 600px)", 0],
-          md: [60, "minmax(240px, 600px)", 1],
-          lg: [60, "minmax(240px, 600px)", 272],
-          xl: [248, "minmax(240px, 600px)", 360],
+          min: [72, "minmax(240px, 600px)", 0],
+          sm: [88, "minmax(240px, 600px)", 1],
+          md: [88, "minmax(240px, 600px)", 1],
+          lg: [88, "minmax(240px, 600px)", 272],
+          xl: [264, "minmax(240px, 600px)", 376],
         },
       })}
       style={{ margin: "0 auto" }}
@@ -32,8 +34,17 @@ const Home: NextPage = () => {
           border: [["none", "hairline", "none", "none"], "accent"],
           position: "sticky",
           inset: [0, "auto", "auto"],
+          gap: "md",
+          align: { min: "center", xl: "start" },
         })}
-      />
+      >
+        <div>
+          <a className={clsx(column({ pad: "md" }), text({ color: "text" }))}>
+            <Icon src="/icons/logo.svg" size={[30, 24]} />
+          </a>
+        </div>
+        <PrimaryNav />
+      </div>
       <div className={column({ width: "100%" })}>
         <div
           className={row({
@@ -50,9 +61,10 @@ const Home: NextPage = () => {
             <span className={text({ variant: "heading" })}>Home</span>
           </div>
           <div className={row({ pad: ["none", "sm"] })}>
-            <IconButton src={ico.src} size="lg" color="secondary" />
+            <IconButton src="/icons/sparkle.svg" size="lg" color="secondary" />
           </div>
         </div>
+        <div style={{ height: 4000 }} />
       </div>
       <div
         className={column({

@@ -28,6 +28,9 @@ export const mediaQueries = {
   ].join(", "),
   // Hover-enabled devices
   hover: "(hover: hover)",
+
+  vMin: "only screen and (min-height: 0)",
+  vSm: "only screen and (min-height: 45em)",
 } as const;
 
 type AppMediaQueries = typeof mediaQueries;
