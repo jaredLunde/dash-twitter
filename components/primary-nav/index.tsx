@@ -4,12 +4,14 @@ import type { LinkProps } from "next/link";
 import * as React from "react";
 import { button } from "@/components/button";
 import { Icon } from "@/components/icon";
-import { useNavLink } from "@/components/link";
+import { useModalLink, useNavLink } from "@/components/link";
 import { mq, styles } from "@/styles";
 import { box, column, grid } from "@/styles/layout";
 import { text } from "@/styles/text";
 
 export function PrimaryNav(props: PrimaryNavProps) {
+  const composeLink = useModalLink({ href: "/compose/tweet" });
+
   return (
     <div
       className={column({
@@ -88,7 +90,7 @@ export function PrimaryNav(props: PrimaryNavProps) {
           },
         })}
       >
-        <Link href="/compose/tweet">
+        <Link {...composeLink.props}>
           <a
             className={button.solid({
               color: "primary",
@@ -121,7 +123,7 @@ function PrimaryNavLink({
   overflow,
   ...props
 }: PrimaryNavLinkProps) {
-  const navLink = useNavLink(href);
+  const navLink = useNavLink({ href });
 
   return (
     <Link

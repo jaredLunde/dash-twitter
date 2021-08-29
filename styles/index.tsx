@@ -476,7 +476,7 @@ export const lightTokens = {
     textAccent: colorSystem.blueGray600,
     textAccentLight: colorSystem.blueGray400,
 
-    primary: colorSystem.lightBlue600,
+    primary: "rgb(29, 155, 240)",
     primaryHover: colorSystem.lightBlue700,
     primaryActive: colorSystem.lightBlue800,
 
@@ -510,7 +510,7 @@ export const darkTokens = {
     textAccent: colorSystem.blueGray400,
     textAccentLight: colorSystem.blueGray500,
 
-    primary: colorSystem.lightBlue500,
+    primary: "rgb(29, 155, 240)",
     primaryHover: colorSystem.lightBlue600,
     primaryActive: colorSystem.lightBlue700,
 
