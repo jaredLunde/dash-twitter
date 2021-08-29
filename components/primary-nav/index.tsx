@@ -15,7 +15,7 @@ export function PrimaryNav(props: PrimaryNavProps) {
       className={column({
         width: { min: 72, xl: "100%" },
         align: { min: "center", xl: "start" },
-        gap: { vMin: "md", vSm: "lg" },
+        gap: { vMin: "md", vMd: "lg" },
       })}
     >
       <nav
@@ -51,10 +51,16 @@ export function PrimaryNav(props: PrimaryNavProps) {
           href="/bookmarks"
           icon="/icons/bookmark.svg"
           aria-label="Explore"
+          overflow
         >
           Bookmarks
         </PrimaryNavLink>
-        <PrimaryNavLink href="/lists" icon="/icons/list.svg" aria-label="Lists">
+        <PrimaryNavLink
+          href="/lists"
+          icon="/icons/list.svg"
+          aria-label="Lists"
+          overflow
+        >
           Lists
         </PrimaryNavLink>
         <PrimaryNavLink
@@ -64,13 +70,13 @@ export function PrimaryNav(props: PrimaryNavProps) {
         >
           Profile
         </PrimaryNavLink>
-        <PrimaryNavLink
-          href="/#"
-          icon="/icons/more-horizontal.svg"
-          aria-label="Profile"
-        >
-          More
-        </PrimaryNavLink>
+
+        <button className={clsx(button.reset(), primaryNavItem())}>
+          <span className={primaryNavItemText()}>
+            <Icon src="/icons/more-horizontal.svg" size={26} />
+            <span>More</span>
+          </span>
+        </button>
       </nav>
 
       <div
@@ -112,6 +118,7 @@ function PrimaryNavLink({
   shallow,
   className,
   children,
+  overflow,
   ...props
 }: PrimaryNavLinkProps) {
   const navLink = useNavLink(href);
@@ -127,33 +134,18 @@ function PrimaryNavLink({
     >
       <a
         role="link"
-        className={clsx(className, primaryNavItem())}
+        className={clsx(className, primaryNavItem({ overflow }))}
         {...navLink.props}
         {...props}
       >
-        <span
-          className={clsx(
-            text({ variant: "heading" }),
-            grid({
-              pad: { vMin: ["sm", "md"], vSm: "md" },
-              cols: {
-                min: [26],
-                xl: [26, "auto"],
-              },
-              gap: "lg",
-              alignY: "center",
-            })
-          )}
-        >
+        <span className={primaryNavItemText()}>
           <Icon
             src={
               navLink.active ? icon.replace("/icons/", "/icons/bold/") : icon
             }
             size={26}
           />
-          <span className={box({ display: { min: "none", xl: "block" } })}>
-            {children}
-          </span>
+          <span>{children}</span>
         </span>
       </a>
     </Link>
@@ -167,10 +159,10 @@ export interface PrimaryNavLinkProps
     Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "href" | "aria-label"> {
   icon: string;
   "aria-label": string;
+  overflow?: boolean;
 }
 
-export const primaryNav = styles.one((t) => ({}));
-export const primaryNavItem = styles.one(
+const primaryNavItemBase = styles.one(
   mq({
     default: (t) => ({
       display: "flex",
@@ -194,3 +186,31 @@ export const primaryNavItem = styles.one(
     }),
   })
 );
+
+export const primaryNavItem = (styles?: { overflow?: boolean }) =>
+  clsx(
+    box({ display: { vMin: styles?.overflow ? "none" : "flex", vSm: "flex" } }),
+    primaryNavItemBase()
+  );
+
+const primaryNavItemTextBase = styles.one(
+  mq({
+    default: { "span:last-child": { display: "none" } },
+    xl: { "span:last-child": { display: "block" } },
+  })
+);
+
+export const primaryNavItemText = () =>
+  clsx(
+    text({ variant: "heading" }),
+    grid({
+      pad: { vMin: ["sm", "md"], vMd: "md" },
+      cols: {
+        min: [26],
+        xl: [26, "auto"],
+      },
+      gap: "lg",
+      alignY: "center",
+    }),
+    primaryNavItemTextBase()
+  );

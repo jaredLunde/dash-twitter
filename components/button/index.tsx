@@ -157,6 +157,7 @@ const defaultStyles = (t: DashTokens) => ({
 });
 
 export const button = {
+  reset: styles.one(resetVendorButtonStyles),
   solid: compoundStyles({
     default: styles.one((t) => ({
       ...defaultStyles(t),

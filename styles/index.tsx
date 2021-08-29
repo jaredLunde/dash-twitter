@@ -30,7 +30,8 @@ export const mediaQueries = {
   hover: "(hover: hover)",
 
   vMin: "only screen and (min-height: 0)",
-  vSm: "only screen and (min-height: 45em)",
+  vSm: "only screen and (min-height: 36em)",
+  vMd: "only screen and (min-height: 45em)",
 } as const;
 
 type AppMediaQueries = typeof mediaQueries;

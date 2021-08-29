@@ -37,6 +37,7 @@ const Home: NextPage = () => {
           gap: "md",
           align: { min: "center", xl: "start" },
         })}
+        style={{ overflow: "auto" }}
       >
         <div>
           <a className={clsx(column({ pad: "md" }), text({ color: "text" }))}>
@@ -45,6 +46,7 @@ const Home: NextPage = () => {
         </div>
         <PrimaryNav />
       </div>
+
       <div className={column({ width: "100%" })}>
         <div
           className={row({
@@ -66,6 +68,7 @@ const Home: NextPage = () => {
         </div>
         <div style={{ height: 4000 }} />
       </div>
+
       <div
         className={column({
           width: "100%",
