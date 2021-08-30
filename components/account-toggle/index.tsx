@@ -1,3 +1,4 @@
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import clsx from "clsx";
 import * as React from "react";
 import { Avatar } from "@/components/avatar";
@@ -9,27 +10,92 @@ import { text } from "@/styles/text";
 
 export function AccountToggle() {
   return (
-    <button className={accountToggleButton()}>
-      <Avatar src="https://pbs.twimg.com/profile_images/1318335215627083781/aJz0jr-d_400x400.jpg" />
-      <div
-        className={clsx(
-          column({
-            display: { min: "none", xl: "flex" },
-          }),
-          text({ align: "left", leading: "snug" })
-        )}
+    <DropdownMenu.Root>
+      <DropdownMenu.Content
+        className={accountToggleContent()}
+        side="top"
+        sideOffset={16}
       >
-        <b>Jared Lunde</b>
-        <span className={text({ color: "textAccentLight" })}>@jaredLunde</span>
-      </div>
-      <div
-        className={box({
-          display: { min: "none", xl: "block" },
-        })}
-      >
-        <Icon src="/icons/more-horizontal.svg" size={20} />
-      </div>
-    </button>
+        <DropdownMenu.Arrow
+          className={accountToggleArrow()}
+          width={16}
+          height={8}
+          offset={24}
+        />
+        <div
+          className={grid({
+            cols: ["max-content", "auto", "max-content"],
+            gap: "md",
+            pad: "md",
+            alignY: "center",
+          })}
+        >
+          <Avatar
+            src="https://pbs.twimg.com/profile_images/1318335215627083781/aJz0jr-d_400x400.jpg"
+            size="md"
+          />
+          <div
+            className={clsx(
+              column({
+                display: { min: "none", xl: "flex" },
+              }),
+              text({ align: "left", leading: "snug" })
+            )}
+          >
+            <b>Jared Lunde</b>
+            <span className={text({ color: "textAccentLight" })}>
+              @jaredLunde
+            </span>
+          </div>
+          <div>
+            <Icon src="/icons/check.svg" color="primary" size={18} />
+          </div>
+        </div>
+        <DropdownMenu.Separator
+          className={box({ bg: "accent", height: 1, width: "100%" })}
+        />
+
+        <DropdownMenu.Group>
+          <DropdownMenu.Item
+            className={accountToggleMenuItem()}
+            textValue="Add an existing account"
+          >
+            Add an existing account
+          </DropdownMenu.Item>
+          <DropdownMenu.Item
+            className={accountToggleMenuItem()}
+            textValue="Log out"
+          >
+            Log out @jaredLunde
+          </DropdownMenu.Item>
+        </DropdownMenu.Group>
+      </DropdownMenu.Content>
+      <DropdownMenu.Trigger className={accountToggleButton()}>
+        <Avatar src="https://pbs.twimg.com/profile_images/1318335215627083781/aJz0jr-d_400x400.jpg" />
+
+        <div
+          className={clsx(
+            column({
+              display: { min: "none", xl: "flex" },
+            }),
+            text({ align: "left", leading: "snug" })
+          )}
+        >
+          <b>Jared Lunde</b>
+          <span className={text({ color: "textAccentLight" })}>
+            @jaredLunde
+          </span>
+        </div>
+
+        <div
+          className={box({
+            display: { min: "none", xl: "block" },
+          })}
+        >
+          <Icon src="/icons/more-horizontal.svg" size={20} />
+        </div>
+      </DropdownMenu.Trigger>
+    </DropdownMenu.Root>
   );
 }
 
@@ -48,6 +114,37 @@ const accountToggleButton = styles.one(
     hover: (t) => ({
       ":hover": {
         backgroundColor: t.color.translucentDark,
+      },
+    }),
+  })
+);
+
+const accountToggleContent = styles.one((t) => ({
+  padding: `${t.pad.sm} 0 ${t.pad.md}`,
+  borderRadius: t.radius.secondary,
+  boxShadow: t.shadow.lg,
+  width: 300,
+  backgroundColor: t.color.bodyBg,
+  border: `${t.borderWidth.hairline} solid ${t.color.accent}`,
+}));
+
+const accountToggleArrow = styles.one((t) => ({
+  polygon: {
+    boxShadow: t.shadow.lg,
+    fill: t.color.bodyBg,
+  },
+}));
+
+const accountToggleMenuItem = styles.one(
+  mq({
+    default: (t) => ({
+      textAlign: "left",
+      padding: t.pad.md,
+    }),
+    hover: (t) => ({
+      ":hover": {
+        backgroundColor: t.color.translucentDark,
+        cursor: "pointer",
       },
     }),
   })

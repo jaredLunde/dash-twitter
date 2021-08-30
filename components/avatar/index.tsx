@@ -1,3 +1,4 @@
+import useMergeRefs from "@react-hook/merged-ref";
 import clsx from "clsx";
 import * as React from "react";
 import { compoundStyles, responsiveStyles, styles } from "@/styles";
@@ -6,19 +7,38 @@ import type { ResponsiveProp } from "@/styles";
 export const Avatar = React.forwardRef<HTMLImageElement, AvatarProps>(
   function Avatar(
     {
-      src,
+      src: preferredSrc,
       defaultSrc = "/default-avatar.png",
       size = "sm",
       className,
       alt,
       ...props
     },
-    ref
+    outerRef
   ) {
+    const [src, setSrc] = React.useState(preferredSrc ?? defaultSrc);
+    const innerRef = React.useRef<HTMLImageElement>(null);
+    const ref = useMergeRefs(innerRef, outerRef);
+
+    React.useEffect(() => {
+      const img = innerRef.current;
+      if (!img) return;
+      let didUnsubscribe = false;
+      img.onerror = function (this: HTMLImageElement) {
+        if (!didUnsubscribe) {
+          setSrc(defaultSrc);
+          img.onerror = null;
+        }
+      };
+      return () => {
+        didUnsubscribe = true;
+      };
+    }, [defaultSrc]);
+
     return (
       <img
         ref={ref}
-        src={src || defaultSrc}
+        src={src}
         className={clsx(className, avatar({ size }))}
         aria-hidden={!props["aria-label"]}
         alt={alt}

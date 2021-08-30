@@ -380,21 +380,23 @@ export const lightTokens = {
   radius: {
     none: "0",
     primary: 10000 / 16 + "rem",
-    secondary: "0.5rem",
+    secondary: "1rem",
     sm: "0.125rem",
     base: "0.25rem",
     md: "0.375rem",
     lg: "0.5rem",
+    xl: "1rem",
     full: 10000 / 16 + "rem",
   },
 
   shadow: {
     none: "none",
+    primary:
+      "0 0 15px -3px rgba(0, 0, 0, 0.2), 0 0 6px -2px rgba(0, 0, 0, 0.2)",
     xs: "0 0 0 1px rgba(0, 0, 0, 0.05)",
     sm: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
-    primary: "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
     md: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
-    lg: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+    lg: "0 0 15px -3px rgba(0, 0, 0, 0.2), 0 0 6px -2px rgba(0, 0, 0, 0.2)",
     xl: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
     "2xl": "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
     inner: "inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)",
@@ -496,6 +498,20 @@ export const lightTokens = {
 
 export const darkTokens = {
   ...lightTokens,
+
+  shadow: {
+    none: "none",
+    primary:
+      "0 4px 15px -3px rgba(255, 255, 255, 0.2), 0 0 6px -2px rgba(255, 255, 255, 0.2)",
+    xs: "0 0 0 1px rgba(255, 255, 255, 0.05)",
+    sm: "0 1px 2px 0 rgba(255, 255, 255, 0.05)",
+    md: "0 4px 6px -1px rgba(255, 255, 255, 0.1), 0 2px 4px -1px rgba(255, 255, 255, 0.06)",
+    lg: "0 4px 15px -3px rgba(255, 255, 255, 0.2), 0 0 6px -2px rgba(255, 255, 255, 0.2)",
+    xl: "0 20px 25px -5px rgba(255, 255, 255, 0.1), 0 10px 10px -5px rgba(255, 255, 255, 0.04)",
+    "2xl": "0 25px 50px -12px rgba(255, 255, 255, 0.25)",
+    inner: "inset 0 2px 4px 0 rgba(255, 255, 255, 0.06)",
+    outline: "0 0 3px 3px rgba(66, 153, 225, 0.5)",
+  },
 
   color: {
     ...colorSystem,
