@@ -301,7 +301,8 @@ export const lightTokens = {
   font: {
     family: {
       sans: [
-        `Work Sans`,
+        // `Work Sans`,
+        `Public Sans`,
         `system-ui`,
         `-apple-system`,
         `BlinkMacSystemFont`,
@@ -341,7 +342,7 @@ export const lightTokens = {
       sm: `0.875rem`,
       base: `1rem`,
       lg: `1.125rem`,
-      xl: `1.25rem`,
+      xl: `1.225rem`,
       "2xl": `1.5rem`,
       "3xl": `1.875rem`,
       "4xl": `2.25rem`,

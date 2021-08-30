@@ -9,7 +9,7 @@ import { mq, styles } from "@/styles";
 import { box, column, grid } from "@/styles/layout";
 import { text } from "@/styles/text";
 
-export function PrimaryNav(props: PrimaryNavProps) {
+export function PrimaryNav() {
   const composeLink = useModalLink({ href: "/compose/tweet" });
 
   return (
@@ -23,7 +23,11 @@ export function PrimaryNav(props: PrimaryNavProps) {
       <nav
         aria-label="Primary navigation"
         role="navigation"
-        className={clsx(column({ gap: "sm" }))}
+        className={column({
+          align: { min: "center", xl: "stretch" },
+          width: "100%",
+          gap: "sm",
+        })}
       >
         <PrimaryNavLink href="/" icon="/icons/home.svg" aria-label="Home">
           Home
@@ -86,7 +90,7 @@ export function PrimaryNav(props: PrimaryNavProps) {
           width: "100%",
           pad: {
             min: ["none", "sm"],
-            xl: ["none", "lg", "none", "md"],
+            xl: ["none", "lg", "none", "none"],
           },
         })}
       >
@@ -153,8 +157,6 @@ function PrimaryNavLink({
     </Link>
   );
 }
-
-export interface PrimaryNavProps {}
 
 export interface PrimaryNavLinkProps
   extends LinkProps,

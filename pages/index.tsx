@@ -1,10 +1,7 @@
-import clsx from "clsx";
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Button } from "@/components/button";
-import { Icon } from "@/components/icon";
-import { iconButton, IconButton } from "@/components/icon-button";
-import { PrimaryNav } from "@/components/primary-nav";
+import { IconButton } from "@/components/icon-button";
+import { PrimarySidebar } from "@/components/primary-sidebar";
 import { column, grid, row } from "@/styles/layout";
 import { text } from "@/styles/text";
 
@@ -18,8 +15,8 @@ const Home: NextPage = () => {
           min: [72, "minmax(240px, 600px)", 0],
           sm: [88, "minmax(240px, 600px)", 1],
           md: [88, "minmax(240px, 600px)", 1],
-          lg: [88, "minmax(240px, 600px)", 272],
-          xl: [264, "minmax(240px, 600px)", 376],
+          lg: [88, "minmax(240px, 600px)", 320],
+          xl: [258, "minmax(240px, 600px)", 372],
         },
       })}
       style={{ margin: "0 auto" }}
@@ -27,27 +24,10 @@ const Home: NextPage = () => {
       <Head>
         <title>Home / Twitter</title>
       </Head>
-      <div
-        className={column({
-          width: "100%",
-          height: "var(--vh)",
-          border: [["none", "hairline", "none", "none"], "accent"],
-          position: "sticky",
-          inset: [0, "auto", "auto"],
-          gap: "md",
-          align: { min: "center", xl: "start" },
-        })}
-        style={{ overflow: "auto" }}
-      >
-        <div>
-          <a className={clsx(column({ pad: "md" }), text({ color: "text" }))}>
-            <Icon src="/icons/logo.svg" size={[30, 24]} />
-          </a>
-        </div>
-        <PrimaryNav />
-      </div>
 
-      <div className={column({ width: "100%" })}>
+      <PrimarySidebar />
+
+      <main role="main" className={column({ width: "100%" })}>
         <div
           className={row({
             position: "sticky",
@@ -60,30 +40,29 @@ const Home: NextPage = () => {
           })}
         >
           <div className={row({ pad: ["none", "md"] })}>
-            <span className={text({ variant: "heading" })}>Home</span>
+            <h2 className={text({ variant: "heading" })}>Home</h2>
           </div>
           <div className={row({ pad: ["none", "sm"] })}>
             <IconButton src="/icons/sparkle.svg" size="lg" color="secondary" />
           </div>
         </div>
         <div style={{ height: 4000 }} />
-      </div>
+      </main>
 
-      <div
+      <aside
         className={column({
           width: "100%",
-          height: "var(--vh)",
+          height: "100%",
           border: [["none", "none", "none", "hairline"], "accent"],
-          position: "sticky",
-          inset: [0, "auto", "auto"],
         })}
+        style={{ minHeight: "var(--vh)" }}
       >
         <div
           className={column({
             display: { min: "none", md: "flex" },
           })}
         ></div>
-      </div>
+      </aside>
     </div>
   );
 };
