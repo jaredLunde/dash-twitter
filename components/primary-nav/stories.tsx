@@ -19,9 +19,7 @@ export default {
   },
 } as ComponentMeta<typeof PrimaryNav>;
 
-const Template: ComponentStory<typeof PrimaryNav> = (args) => (
-  <PrimaryNav {...args} />
-);
+const Template: ComponentStory<typeof PrimaryNav> = () => <PrimaryNav />;
 
 export const Preview = Template.bind({});
 Preview.args = {};
