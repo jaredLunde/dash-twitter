@@ -6,6 +6,7 @@ import { button } from "@/components/button";
 import { Icon } from "@/components/icon";
 import { useModalLink, useNavLink } from "@/components/link";
 import { mq, styles } from "@/styles";
+import type { ResponsiveProp } from "@/styles";
 import { box, column, grid } from "@/styles/layout";
 import { text } from "@/styles/text";
 
@@ -34,7 +35,10 @@ export function PrimaryNav() {
         </PrimaryNavLink>
         <PrimaryNavLink
           href="/explore"
-          icon="/icons/hash.svg"
+          icon={{
+            min: "/icons/search.svg",
+            xl: "/icons/hash.svg",
+          }}
           aria-label="Explore"
         >
           Explore
@@ -128,6 +132,16 @@ function PrimaryNavLink({
   ...props
 }: PrimaryNavLinkProps) {
   const navLink = useNavLink({ href });
+  let src = icon;
+
+  if (navLink.active && typeof icon === "string") {
+    src = icon.replace("/icons/", "/icons/bold/");
+  } else if (navLink.active) {
+    src = Object.keys(icon).reduce<any>((acc, key) => {
+      acc[key] = (icon as any)[key].replace("/icons/", "/icons/bold/");
+      return acc;
+    }, {});
+  }
 
   return (
     <Link
@@ -145,12 +159,7 @@ function PrimaryNavLink({
         {...props}
       >
         <span className={primaryNavItemText()}>
-          <Icon
-            src={
-              navLink.active ? icon.replace("/icons/", "/icons/bold/") : icon
-            }
-            size={26}
-          />
+          <Icon src={src} size={26} />
           <span>{children}</span>
         </span>
       </a>
@@ -161,7 +170,7 @@ function PrimaryNavLink({
 export interface PrimaryNavLinkProps
   extends LinkProps,
     Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "href" | "aria-label"> {
-  icon: string;
+  icon: ResponsiveProp<string>;
   "aria-label": string;
   overflow?: boolean;
 }
