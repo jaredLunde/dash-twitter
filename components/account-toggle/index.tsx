@@ -10,6 +10,10 @@ import { separator } from "@/styles/separator";
 import { text } from "@/styles/text";
 
 export function AccountToggle() {
+  /**
+   * DropdownMenu is sort of busted until this is resolved
+   * @see https://github.com/radix-ui/primitives/issues/781
+   */
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Content

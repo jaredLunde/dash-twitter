@@ -6,17 +6,17 @@ import { IconButton } from "@/components/icon-button";
 import { SearchInput } from "@/components/search-input";
 import { box, row } from "@/styles/layout";
 
-const Lists: NextPage = () => {
+const Profile: NextPage = () => {
   return (
     <Dashboard.Root>
       <Head>
-        <title>Lists / Twitter</title>
+        <title>Profile / Twitter</title>
       </Head>
 
       <Dashboard.Feed
         header={
           <Dashboard.FeedHeader>
-            <Dashboard.Heading>Lists</Dashboard.Heading>
+            <Dashboard.Heading>Profile</Dashboard.Heading>
 
             <div className={box({ pad: ["none", "sm"] })}>
               <IconButton
@@ -52,4 +52,4 @@ const Lists: NextPage = () => {
   );
 };
 
-export default Lists;
+export default Profile;
