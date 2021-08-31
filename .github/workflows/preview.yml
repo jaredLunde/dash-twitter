@@ -1,0 +1,35 @@
+name: preview
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  preview:
+    name: Preview
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install pnpm
+        run: npm install pnpm -g --slient
+      - name: Install
+        run: |
+          pnpm install --silent
+      - name: Validate
+        run: |
+          pnpm validate
+      - name: Deploy
+        uses: amondnet/vercel-action@v20
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-args: "--prod"
+          vercel-org-id: ${{ secrets.ORG_ID}}
+          vercel-project-id: ${{ secrets.PROJECT_ID}}

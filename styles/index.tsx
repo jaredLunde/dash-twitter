@@ -559,7 +559,7 @@ export const themes = {
  */
 export const styles = createStyles({
   themes,
-  mangleTokens: process.env.NODE_ENV === "production",
+  mangleTokens: process.env.NODE_ENV === "production" ? { vh: true } : false,
 });
 
 export const themeAtom = persistAtom<DashThemeNames>("theme", "light");
