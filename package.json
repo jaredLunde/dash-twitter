@@ -11,6 +11,7 @@
     "test": "jest --passWithNoTests",
     "start": "next build && next start",
     "storybook": "start-storybook -s ./public -p 6006",
+    "up": "pnpx vercel@latest",
     "validate": "yarn check-types && yarn lint && yarn test -- --coverage"
   },
   "husky": {
