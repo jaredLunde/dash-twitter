@@ -51,7 +51,7 @@ export interface IconProps
   /**
    * This is the SVG component you want to render as an icon
    */
-  src: string;
+  src: ResponsiveProp<string>;
 }
 
 export const icon = compoundStyles({
