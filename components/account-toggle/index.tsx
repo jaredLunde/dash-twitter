@@ -6,6 +6,7 @@ import { resetVendorButtonStyles } from "@/components/button";
 import { Icon } from "@/components/icon";
 import { mq, styles } from "@/styles";
 import { box, column, grid } from "@/styles/layout";
+import { separator } from "@/styles/separator";
 import { text } from "@/styles/text";
 
 export function AccountToggle() {
@@ -22,38 +23,42 @@ export function AccountToggle() {
           height={8}
           offset={24}
         />
-        <div
-          className={grid({
-            cols: ["max-content", "auto", "max-content"],
-            gap: "md",
-            pad: "md",
-            alignY: "center",
-          })}
+        <DropdownMenu.RadioGroup
+          value="jaredLunde"
+          className={column({ width: "100%" })}
         >
-          <Avatar
-            src="https://pbs.twimg.com/profile_images/1318335215627083781/aJz0jr-d_400x400.jpg"
-            size="md"
-          />
-          <div
-            className={clsx(
-              column({
-                display: { min: "none", xl: "flex" },
-              }),
-              text({ align: "left", leading: "snug" })
-            )}
+          <DropdownMenu.RadioItem
+            value="jaredLunde"
+            className={grid({
+              cols: ["max-content", "auto", "max-content"],
+              gap: "md",
+              pad: "md",
+              alignY: "center",
+            })}
           >
-            <b>Jared Lunde</b>
-            <span className={text({ color: "textAccentLight" })}>
-              @jaredLunde
-            </span>
-          </div>
-          <div>
-            <Icon src="/icons/check.svg" color="primary" size={18} />
-          </div>
-        </div>
-        <DropdownMenu.Separator
-          className={box({ bg: "accent", height: 1, width: "100%" })}
-        />
+            <Avatar
+              src="https://pbs.twimg.com/profile_images/1318335215627083781/aJz0jr-d_400x400.jpg"
+              size="md"
+            />
+            <div
+              className={clsx(
+                column({}),
+                text({ align: "left", leading: "snug" })
+              )}
+            >
+              <b>Jared Lunde</b>
+              <span className={text({ color: "textAccentLight" })}>
+                @jaredLunde
+              </span>
+            </div>
+
+            <DropdownMenu.ItemIndicator>
+              <Icon src="/icons/check.svg" color="primary" size={18} />
+            </DropdownMenu.ItemIndicator>
+          </DropdownMenu.RadioItem>
+        </DropdownMenu.RadioGroup>
+
+        <DropdownMenu.Separator className={separator()} />
 
         <DropdownMenu.Group>
           <DropdownMenu.Item
@@ -70,6 +75,7 @@ export function AccountToggle() {
           </DropdownMenu.Item>
         </DropdownMenu.Group>
       </DropdownMenu.Content>
+
       <DropdownMenu.Trigger className={accountToggleButton()}>
         <Avatar src="https://pbs.twimg.com/profile_images/1318335215627083781/aJz0jr-d_400x400.jpg" />
 
@@ -110,6 +116,11 @@ const accountToggleButton = styles.one(
       padding: t.pad.sm,
       gap: t.gap.md,
       borderRadius: t.radius.primary,
+
+      ":focus-visible": {
+        backgroundColor: t.color.translucentDark,
+        boxShadow: t.shadow.outline,
+      },
     }),
     hover: (t) => ({
       ":hover": {
@@ -140,6 +151,10 @@ const accountToggleMenuItem = styles.one(
     default: (t) => ({
       textAlign: "left",
       padding: t.pad.md,
+
+      ":focus-visible": {
+        backgroundColor: t.color.translucentDark,
+      },
     }),
     hover: (t) => ({
       ":hover": {

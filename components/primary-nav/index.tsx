@@ -182,6 +182,10 @@ const primaryNavItemBase = styles.one(
       "&:not([aria-current=page]) > span": {
         fontWeight: 400,
       },
+
+      ":focus-visible > span": {
+        backgroundColor: t.color.translucentDark,
+      },
     }),
     hover: (t) => ({
       ":hover > span": {
