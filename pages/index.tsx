@@ -8,7 +8,6 @@ import { Dashboard } from "@/components/dashboard";
 import { IconButton } from "@/components/icon-button";
 import { SearchInput } from "@/components/search-input";
 import { box, grid, row } from "@/styles/layout";
-import { separator } from "@/styles/separator";
 import { text } from "@/styles/text";
 
 const Home: NextPage = () => {

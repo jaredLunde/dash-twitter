@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { LinkProps } from "next/link";
 import * as React from "react";
 import { button } from "@/components/button";
+import { DropdownMenu } from "@/components/dropdown-menu";
 import { Icon } from "@/components/icon";
 import { useModalLink, useNavLink } from "@/components/link";
 import { mq, styles } from "@/styles";
@@ -81,12 +82,92 @@ export function PrimaryNav() {
           Profile
         </PrimaryNavLink>
 
-        <button className={clsx(button.reset(), primaryNavItem())}>
-          <span className={primaryNavItemText()}>
-            <Icon src="/icons/more-horizontal.svg" size={26} />
-            <span>More</span>
-          </span>
-        </button>
+        <DropdownMenu.Root>
+          <DropdownMenu.Content side="top" align="start">
+            <DropdownMenu.IconItemLink
+              href="/jaredLunde/topics"
+              src="/icons/message-circle.svg"
+              textValue="Topics"
+            >
+              Topics
+            </DropdownMenu.IconItemLink>
+            <DropdownMenu.IconItemLink
+              href="/i/moment_maker"
+              src="/icons/zap.svg"
+              textValue="Moments"
+            >
+              Moments
+            </DropdownMenu.IconItemLink>
+            <DropdownMenu.IconItemLink
+              href="/i/newsletters"
+              src="/icons/align-justify.svg"
+              textValue="Newsletters"
+            >
+              Newsletters
+            </DropdownMenu.IconItemLink>
+            <DropdownMenu.IconItem
+              as={"a" as any}
+              // @ts-expect-error
+              href="https://ads.twitter.com"
+              src="/icons/external-link.svg"
+              textValue="Twitter Ads"
+              onSelect={(e) => e.preventDefault()}
+            >
+              Twitter Ads
+            </DropdownMenu.IconItem>
+            <DropdownMenu.IconItem
+              as={"a" as any}
+              // @ts-expect-error
+              href="https://analytics.twitter.com"
+              src="/icons/bar-chart-2.svg"
+              textValue="Analytics"
+              onSelect={(e) => e.preventDefault()}
+            >
+              Analytics
+            </DropdownMenu.IconItem>
+            <DropdownMenu.Separator />
+            <DropdownMenu.IconItemLink
+              href="/settings/account"
+              src="/icons/settings.svg"
+              textValue="Settings and privacy"
+            >
+              Settings &amp; privacy
+            </DropdownMenu.IconItemLink>
+            <DropdownMenu.IconItem
+              as={"a" as any}
+              // @ts-expect-error
+              href="https://help.twitter.com"
+              textValue="Help Center"
+              src="/icons/help-circle.svg"
+              onSelect={(e) => e.preventDefault()}
+            >
+              Help Center
+            </DropdownMenu.IconItem>
+            <DropdownMenu.IconItemLink
+              href="/i/display"
+              src="/icons/edit.svg"
+              textValue="Display"
+            >
+              Display
+            </DropdownMenu.IconItemLink>
+            <DropdownMenu.IconItemLink
+              href="/i/keyboard_shorcuts"
+              src="/icons/command.svg"
+              textValue="Keyboard shortcuts"
+            >
+              Keyboard shortcuts
+            </DropdownMenu.IconItemLink>
+          </DropdownMenu.Content>
+
+          <DropdownMenu.Trigger
+            className={clsx(button.reset(), primaryNavItem())}
+          >
+            <span className={primaryNavItemText()}>
+              <Icon src="/icons/more-horizontal.svg" size={26} />
+              <span>More</span>
+            </span>
+          </DropdownMenu.Trigger>
+        </DropdownMenu.Root>
       </nav>
 
       <div
