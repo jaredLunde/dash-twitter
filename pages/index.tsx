@@ -6,11 +6,8 @@ import { Avatar } from "@/components/avatar";
 import { Button } from "@/components/button";
 import { Dashboard } from "@/components/dashboard";
 import { IconButton } from "@/components/icon-button";
-import {
-  RelatedContent,
-  relatedContentItem,
-} from "@/components/related-content";
 import { SearchInput } from "@/components/search-input";
+import { WhatsHappening } from "@/components/whats-happening";
 import { box, column, grid, row } from "@/styles/layout";
 import { text } from "@/styles/text";
 
@@ -113,6 +110,8 @@ const Home: NextPage = () => {
                 height: 53,
                 position: "sticky",
                 inset: [0, "auto", "auto"],
+                bg: "bodyBg",
+                z: "max",
               })}
             >
               <SearchInput />
@@ -127,27 +126,7 @@ const Home: NextPage = () => {
                 },
               })}
             >
-              <RelatedContent
-                heading="What's happening?"
-                showMoreHref="/explore"
-              >
-                <b className={relatedContentItem()}>
-                  Cultural thing that will trigger you
-                </b>
-                <b className={relatedContentItem()}>
-                  Local thing that will trigger you
-                </b>
-                <b className={relatedContentItem()}>
-                  Political thing that will trigger you
-                </b>
-                <b className={relatedContentItem()}>
-                  Mysterious thing that will eventually trigger you
-                </b>
-                <b className={relatedContentItem()}>
-                  Promoted thing that you&lsquo;re afraid means something
-                  negative about you
-                </b>
-              </RelatedContent>
+              <WhatsHappening />
             </div>
           </React.Fragment>
         }
