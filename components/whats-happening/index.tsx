@@ -7,31 +7,33 @@ import {
 } from "@/components/related-content";
 import { styles } from "@/styles";
 
-export function WhatsHappening({ items }: WhatsHappeningProps) {
+export function WhatsHappening({
+  items = [
+    {
+      label:
+        "Another tropical storm is named, as Ida brings rain to the northeast",
+      image:
+        "https://pbs.twimg.com/semantic_core_img/1398063655523020800/iVJz8jHo?format=png&name=240x240",
+      topic: "Weather",
+      promoted: false,
+      live: true,
+      createdAt: new Date(),
+    },
+    {
+      label: "Zoloft",
+      topic: "Trending in United States",
+      promoted: false,
+      live: false,
+      tweetCount: 1734,
+      createdAt: new Date(),
+    },
+  ],
+}: WhatsHappeningProps) {
   return (
     <RelatedContent heading="What's happening?" showMoreHref="/explore">
-      <WhatsHappeningItem
-        item={{
-          label:
-            "Another tropical storm is named, as Ida brings rain to the northeast",
-          image:
-            "https://pbs.twimg.com/semantic_core_img/1398063655523020800/iVJz8jHo?format=png&name=240x240",
-          topic: "Weather",
-          promoted: false,
-          live: true,
-          createdAt: new Date(),
-        }}
-      />
-      <WhatsHappeningItem
-        item={{
-          label: "Zoloft",
-          topic: "Trending in United States",
-          promoted: false,
-          live: false,
-          tweetCount: 1734,
-          createdAt: new Date(),
-        }}
-      />
+      {items.map((item) => (
+        <WhatsHappeningItem key={item.label} item={item} />
+      ))}
     </RelatedContent>
   );
 }
@@ -96,7 +98,7 @@ const whatsHappeningItem = () =>
   clsx(relatedContentItem(), whatsHappeningItemBase());
 
 export interface WhatsHappeningProps {
-  items: WhatsHappeningItem[];
+  items?: WhatsHappeningItem[];
 }
 
 export interface WhatsHappeningItemProps {
