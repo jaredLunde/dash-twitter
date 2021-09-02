@@ -132,7 +132,7 @@ const Home: NextPage = () => {
                 showMoreHref="/explore"
               >
                 <b className={relatedContentItem()}>
-                  Annoying thing that will trigger you
+                  Cultural thing that will trigger you
                 </b>
                 <b className={relatedContentItem()}>
                   Local thing that will trigger you

@@ -49,6 +49,7 @@ export const relatedContent = styles.one((t) => ({
 
   "> h2": {
     padding: t.pad.md,
+    paddingBottom: t.pad.sm,
     fontWeight: 900,
     fontSize: t.font.size.xl,
     lineHeight: t.font.leading.tight,
