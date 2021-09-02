@@ -14,7 +14,7 @@ export const Dashboard = {
             sm: [88, "auto"],
             md: [88, "auto"],
             lg: [88, "auto"],
-            xl: [264, "auto"],
+            xl: [256, "auto"],
           },
         })}
         style={{ margin: "0 auto" }}
@@ -51,7 +51,7 @@ export const Dashboard = {
           <section style={{ height: 4000 }}>{main}</section>
         </div>
 
-        <aside
+        <section
           className={column({
             width: "100%",
             display: { min: "none", lg: "flex" },
@@ -59,7 +59,7 @@ export const Dashboard = {
           style={{ minHeight: "var(--vh)" }}
         >
           {sidebar}
-        </aside>
+        </section>
       </main>
     );
   },

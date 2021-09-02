@@ -6,8 +6,12 @@ import { Avatar } from "@/components/avatar";
 import { Button } from "@/components/button";
 import { Dashboard } from "@/components/dashboard";
 import { IconButton } from "@/components/icon-button";
+import {
+  RelatedContent,
+  relatedContentItem,
+} from "@/components/related-content";
 import { SearchInput } from "@/components/search-input";
-import { box, grid, row } from "@/styles/layout";
+import { box, column, grid, row } from "@/styles/layout";
 import { text } from "@/styles/text";
 
 const Home: NextPage = () => {
@@ -36,12 +40,15 @@ const Home: NextPage = () => {
             <div
               className={grid({
                 cols: ["max-content", "auto"],
-                pad: ["sm", "md", "md"],
+                pad: ["sm", "md", "sm"],
                 border: [["none", "none", "hairline"], "accent"],
               })}
             >
               <a>
-                <Avatar size="md" />
+                <Avatar
+                  src="https://pbs.twimg.com/profile_images/1318335215627083781/aJz0jr-d_400x400.jpg"
+                  size="md"
+                />
               </a>
               <div>
                 <div
@@ -109,6 +116,38 @@ const Home: NextPage = () => {
               })}
             >
               <SearchInput />
+            </div>
+
+            <div
+              className={column({
+                width: "100%",
+                pad: {
+                  min: "md",
+                  xl: ["md", "md", "md", "lg"],
+                },
+              })}
+            >
+              <RelatedContent
+                heading="What's happening?"
+                showMoreHref="/explore"
+              >
+                <b className={relatedContentItem()}>
+                  Annoying thing that will trigger you
+                </b>
+                <b className={relatedContentItem()}>
+                  Local thing that will trigger you
+                </b>
+                <b className={relatedContentItem()}>
+                  Political thing that will trigger you
+                </b>
+                <b className={relatedContentItem()}>
+                  Mysterious thing that will eventually trigger you
+                </b>
+                <b className={relatedContentItem()}>
+                  Promoted thing that you&lsquo;re afraid means something
+                  negative about you
+                </b>
+              </RelatedContent>
             </div>
           </React.Fragment>
         }
