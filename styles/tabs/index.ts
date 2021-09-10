@@ -16,7 +16,7 @@ export const tabs = {
       },
       transform: "translate3d(0px, 0px, 0px)",
       alignItems: "stretch",
-      flexGrow: 1,
+      flexGrow: 0,
       flexShrink: 1,
 
       "& > *": {
@@ -72,7 +72,7 @@ export const tabs = {
     alignSelf: "stretch",
     justifySelf: "center",
     height: "100%",
-    padding: `0 ${t.pad.md}`,
+    padding: 0,
 
     "[aria-selected=true] &": {
       "::after": {

@@ -1,6 +1,8 @@
+import React from "react";
 import { PrimarySidebar } from "@/components/primary-sidebar";
 import { column, grid, row } from "@/styles/layout";
 import { text } from "@/styles/text";
+import { noop } from "@/utils/noop";
 
 export const Dashboard = {
   Root({ children }: DashboardRootProps) {
@@ -14,7 +16,7 @@ export const Dashboard = {
             sm: [88, "auto"],
             md: [88, "auto"],
             lg: [88, "auto"],
-            xl: [264, "auto"],
+            xl: [256, "auto"],
           },
         })}
         style={{ margin: "0 auto" }}
@@ -51,15 +53,7 @@ export const Dashboard = {
           <section style={{ height: 4000 }}>{main}</section>
         </div>
 
-        <aside
-          className={column({
-            width: "100%",
-            display: { min: "none", lg: "flex" },
-          })}
-          style={{ minHeight: "var(--vh)" }}
-        >
-          {sidebar}
-        </aside>
+        {sidebar}
       </main>
     );
   },
@@ -84,6 +78,23 @@ export const Dashboard = {
     );
   },
 
+  FeedSidebar({ children }: DashboardFeedSidebarProps) {
+    const sidebarRef = React.useRef<HTMLDivElement>(null);
+    const style = useSidebarScroller(sidebarRef);
+
+    return (
+      <section
+        ref={sidebarRef}
+        className={column({
+          width: "100%",
+          display: { min: "none", lg: "flex" },
+        })}
+        style={style}
+      >
+        {children}
+      </section>
+    );
+  },
   Heading({ children }: DashboardHeadingProps) {
     return (
       <div className={row({ pad: ["none", "md"] })}>
@@ -92,6 +103,61 @@ export const Dashboard = {
     );
   },
 };
+
+function useSidebarScroller(
+  target: React.MutableRefObject<HTMLElement | null>
+): React.CSSProperties {
+  React.useEffect(() => {
+    if (!target.current) return;
+    let prevScrollY = window.scrollY;
+    let animationFrame: ReturnType<typeof requestAnimationFrame>;
+
+    function scrollSidebarInFrame() {
+      if (!target.current) return;
+      const { scrollY } = window;
+
+      if (
+        // basically Safari elastic scrolling is a fucking joke
+        scrollY < 0 ||
+        scrollY > document.body.offsetHeight - window.innerHeight
+      ) {
+        prevScrollY = scrollY;
+        animationFrame = 0;
+      }
+
+      const scrollDistance = scrollY - prevScrollY;
+      target.current.scrollTop = target.current.scrollTop + scrollDistance;
+      prevScrollY = scrollY;
+      animationFrame = 0;
+    }
+
+    function scrollSidebar() {
+      if (animationFrame) return;
+      animationFrame = requestAnimationFrame(scrollSidebarInFrame);
+    }
+
+    // Run once in case window has already scrolled
+    scrollSidebar();
+
+    // Whenever the window is resized or scrolled, we need to re-adjust the
+    // footer top to update its position
+    window.addEventListener("resize", scrollSidebar);
+    window.addEventListener("scroll", scrollSidebar);
+
+    return () => {
+      window.removeEventListener("resize", scrollSidebar);
+      window.removeEventListener("scroll", scrollSidebar);
+      if (animationFrame) cancelAnimationFrame(animationFrame);
+    };
+  }, [target]);
+
+  return {
+    position: "sticky",
+    top: 0,
+    overflow: "hidden",
+    height: "var(--vh)",
+  };
+}
 
 export interface DashboardRootProps {
   children: React.ReactNode;
@@ -105,6 +171,10 @@ export interface DashboardFeedProps {
 
 export interface DashboardFeedHeaderProps {
   height?: React.ReactText;
+  children: React.ReactNode;
+}
+
+export interface DashboardFeedSidebarProps {
   children: React.ReactNode;
 }
 

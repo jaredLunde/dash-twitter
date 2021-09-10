@@ -338,7 +338,7 @@ export const lightTokens = {
     },
 
     size: {
-      xs: `0.75rem`,
+      xs: `0.8rem`,
       sm: `0.875rem`,
       base: `1rem`,
       lg: `1.125rem`,
@@ -491,8 +491,8 @@ export const lightTokens = {
       "hsl(224.7457627118644, 54.128440366972484%, 21.372549019607842%)",
 
     accent: colorSystem.blueGray100,
-    accentHover: "hsl(212, 24%, 82%)",
-    accentActive: "hsl(212, 24%, 84%)",
+    accentHover: colorSystem.blueGray200,
+    accentActive: colorSystem.blueGray300,
   },
 };
 
@@ -536,8 +536,8 @@ export const darkTokens = {
     secondaryActive: colorSystem.coolGray300,
 
     accent: colorSystem.blueGray800,
-    accentHover: "hsl(212, 24%, 82%)",
-    accentActive: "hsl(212, 24%, 84%)",
+    accentHover: colorSystem.blueGray700,
+    accentActive: colorSystem.blueGray900,
   },
 };
 
