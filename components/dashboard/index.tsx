@@ -28,9 +28,6 @@ export const Dashboard = {
   },
 
   Feed({ header, main, sidebar }: DashboardFeedProps) {
-    const sidebarRef = React.useRef<HTMLDivElement>(null);
-    const style = useSidebarScroller(sidebarRef);
-
     return (
       <main
         role="main"
@@ -56,16 +53,7 @@ export const Dashboard = {
           <section style={{ height: 4000 }}>{main}</section>
         </div>
 
-        <section
-          ref={sidebarRef}
-          className={column({
-            width: "100%",
-            display: { min: "none", lg: "flex" },
-          })}
-          style={style}
-        >
-          {sidebar}
-        </section>
+        {sidebar}
       </main>
     );
   },
@@ -90,6 +78,23 @@ export const Dashboard = {
     );
   },
 
+  FeedSidebar({ children }: DashboardFeedSidebarProps) {
+    const sidebarRef = React.useRef<HTMLDivElement>(null);
+    const style = useSidebarScroller(sidebarRef);
+
+    return (
+      <section
+        ref={sidebarRef}
+        className={column({
+          width: "100%",
+          display: { min: "none", lg: "flex" },
+        })}
+        style={style}
+      >
+        {children}
+      </section>
+    );
+  },
   Heading({ children }: DashboardHeadingProps) {
     return (
       <div className={row({ pad: ["none", "md"] })}>
@@ -156,6 +161,10 @@ export interface DashboardFeedProps {
 
 export interface DashboardFeedHeaderProps {
   height?: React.ReactText;
+  children: React.ReactNode;
+}
+
+export interface DashboardFeedSidebarProps {
   children: React.ReactNode;
 }
 
