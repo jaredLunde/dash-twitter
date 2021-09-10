@@ -2,7 +2,6 @@ import React from "react";
 import { PrimarySidebar } from "@/components/primary-sidebar";
 import { column, grid, row } from "@/styles/layout";
 import { text } from "@/styles/text";
-import { noop } from "@/utils/noop";
 
 export const Dashboard = {
   Root({ children }: DashboardRootProps) {
@@ -72,6 +71,7 @@ export const Dashboard = {
           inset: [0, "auto", "auto"],
           z: "high",
         })}
+        style={{ contain: "strict" }}
       >
         {children}
       </header>
@@ -156,6 +156,8 @@ function useSidebarScroller(
     top: 0,
     overflow: "hidden",
     height: "var(--vh)",
+    willChange: "scroll-position",
+    contain: "strict",
   };
 }
 

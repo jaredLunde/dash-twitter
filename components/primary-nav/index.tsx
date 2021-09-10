@@ -264,6 +264,7 @@ const primaryNavItemBase = styles.one(
       color: t.color.text,
       textAlign: "left",
       backgroundColor: "transparent",
+      contain: "layout",
 
       "> span": {
         borderRadius: t.radius.primary,

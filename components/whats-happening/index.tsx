@@ -91,6 +91,7 @@ const whatsHappeningItemBase = styles.one((t) => ({
   gridTemplateColumns: "auto max-content",
   gridGap: t.gap.md,
   gap: t.gap.md,
+  contain: "layout",
 
   ".header": {
     fontSize: t.font.size.xs,

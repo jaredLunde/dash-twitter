@@ -38,6 +38,7 @@ export const relatedContent = styles.one((t) => ({
   backgroundColor: t.color.accent,
   borderRadius: t.radius.secondary,
   textAlign: "left",
+  contain: "layout",
 
   "> :first-child": {
     borderRadius: `${t.radius.secondary} ${t.radius.secondary} 0  0`,
