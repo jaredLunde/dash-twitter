@@ -115,6 +115,16 @@ function useSidebarScroller(
     function scrollSidebarInFrame() {
       if (!target.current) return;
       const { scrollY } = window;
+
+      if (
+        // basically Safari elastic scrolling is a fucking joke
+        scrollY < 0 ||
+        scrollY > document.body.offsetHeight - window.innerHeight
+      ) {
+        prevScrollY = scrollY;
+        animationFrame = 0;
+      }
+
       const scrollDistance = scrollY - prevScrollY;
       target.current.scrollTop = target.current.scrollTop + scrollDistance;
       prevScrollY = scrollY;
