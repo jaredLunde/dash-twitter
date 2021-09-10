@@ -59,38 +59,39 @@ const avatar = compoundStyles({
   })),
   size: responsiveStyles.lazy((value: number | string) => {
     if (["xs", "sm", "md", "lg", "xl", "2xl"].includes(String(value))) {
-      return {
-        xs: {
-          width: 24,
-          height: 24,
-        },
-        sm: {
-          width: 40,
-          height: 40,
-        },
-        md: {
-          width: 48,
-          height: 48,
-        },
-        lg: {
-          width: 56,
-          height: 56,
-        },
-        xl: {
-          width: 124,
-          height: 124,
-        },
-        "2xl": {
-          width: 368,
-          height: 368,
-        },
-      }[value] as { width: number; height: number };
+      return sizes[value as keyof typeof sizes];
     }
 
     return { width: value, height: value };
   }),
 });
 
+const sizes = {
+  xs: {
+    width: 24,
+    height: 24,
+  },
+  sm: {
+    width: 40,
+    height: 40,
+  },
+  md: {
+    width: 48,
+    height: 48,
+  },
+  lg: {
+    width: 56,
+    height: 56,
+  },
+  xl: {
+    width: 124,
+    height: 124,
+  },
+  "2xl": {
+    width: 368,
+    height: 368,
+  },
+} as const;
 export interface AvatarProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src?: string;
   defaultSrc?: string;

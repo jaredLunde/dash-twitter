@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import * as React from "react";
 import { useA11yButton } from "@/components/button";
+import { Link } from "@/components/link";
 import {
   RelatedContent,
   relatedContentItem,
@@ -27,6 +28,16 @@ export function WhatsHappening({
       tweetCount: 1734,
       createdAt: new Date(),
     },
+    {
+      topic: "Trending in United States",
+      label: "Rihanna",
+      description:
+        "Nicki Minaj shares photos on Twitter alongside Rihanna and their families Face screaming in fear",
+      relatedItems: ["Nicki"],
+      promoted: false,
+      live: false,
+      createdAt: new Date(),
+    },
   ],
 }: WhatsHappeningProps) {
   return (
@@ -50,11 +61,22 @@ function WhatsHappeningItem({ item }: WhatsHappeningItemProps) {
         <h3 aria-level={3} className="label">
           {item.label}
         </h3>
-        {item.tweetCount && (
+        {item.description && <p className="description">{item.description}</p>}
+        {item.relatedItems ? (
+          <div className="footer">
+            Trending with{" "}
+            {item.relatedItems.map((item, i, items) => (
+              <Link key={item} href={"/search?vertical=trends&q=" + item}>
+                {item}
+                {i === items.length - 1 ? "" : ", "}
+              </Link>
+            ))}
+          </div>
+        ) : item.tweetCount ? (
           <div className="footer">
             {new Intl.NumberFormat("en-US").format(item.tweetCount)} tweets
           </div>
-        )}
+        ) : null}
       </div>
 
       {item.image && (

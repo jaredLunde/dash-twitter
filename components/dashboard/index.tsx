@@ -1,3 +1,4 @@
+import React from "react";
 import { PrimarySidebar } from "@/components/primary-sidebar";
 import { column, grid, row } from "@/styles/layout";
 import { text } from "@/styles/text";
@@ -26,6 +27,9 @@ export const Dashboard = {
   },
 
   Feed({ header, main, sidebar }: DashboardFeedProps) {
+    const sidebarRef = React.useRef<HTMLDivElement>(null);
+    useStickyFooter(sidebarRef);
+
     return (
       <main
         role="main"
@@ -52,11 +56,15 @@ export const Dashboard = {
         </div>
 
         <section
+          ref={sidebarRef}
           className={column({
             width: "100%",
             display: { min: "none", lg: "flex" },
+            position: "sticky",
+            inset: [0, "auto", "auto"],
+            height: "var(--vh)",
           })}
-          style={{ minHeight: "var(--vh)" }}
+          style={{ overflow: "hidden" }}
         >
           {sidebar}
         </section>
@@ -92,6 +100,33 @@ export const Dashboard = {
     );
   },
 };
+
+function useStickyFooter(target: React.MutableRefObject<HTMLElement | null>) {
+  React.useEffect(() => {
+    if (!target.current) return;
+    let prevScrollY = window.scrollY;
+
+    function makeFooterSticky() {
+      if (!target.current) return;
+      const { scrollY } = window;
+      const scrollDistance = scrollY - prevScrollY;
+      target.current.scrollTop = target.current.scrollTop + scrollDistance;
+      prevScrollY = scrollY;
+    }
+    // need to adjust the footer top when the page just loads
+    // because the footer may not be sticky
+    makeFooterSticky();
+
+    // whenever the window is resized, we need to re-adjust the
+    // footer top to update its position
+    window.addEventListener("resize", makeFooterSticky);
+    window.addEventListener("scroll", makeFooterSticky);
+    return () => {
+      window.removeEventListener("resize", makeFooterSticky);
+      window.removeEventListener("scroll", makeFooterSticky);
+    };
+  }, [target]);
+}
 
 export interface DashboardRootProps {
   children: React.ReactNode;

@@ -1,5 +1,6 @@
 module.exports = {
-  extends: ["lunde"],
+  plugins: ["@next/next"],
+  extends: ["lunde", "plugin:@next/next/recommended"],
   rules: {
     "no-empty-pattern": "off",
     "import/no-unresolved": "off",

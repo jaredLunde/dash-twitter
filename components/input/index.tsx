@@ -263,7 +263,7 @@ export const input = Object.assign(
         },
       },
 
-      readOnly: ({ color }) => ({
+      readOnly: () => ({
         // backgroundColor: color.translucent,
       }),
 

@@ -11,6 +11,7 @@ specifiers:
   '@dash-ui/styles': ^0.8.6
   '@dash-ui/transition': ^0.4.0
   '@hookform/resolvers': ^2.8.0
+  '@next/eslint-plugin-next': ^11.1.2
   '@next/plugin-storybook': 11.1.1-canary.17
   '@radix-ui/react-alert-dialog': ^0.0.20
   '@radix-ui/react-checkbox': ^0.0.17
@@ -73,6 +74,7 @@ dependencies:
   '@dash-ui/styles': 0.8.6
   '@dash-ui/transition': 0.4.0_@dash-ui+styles@0.8.6
   '@hookform/resolvers': 2.8.0_react-hook-form@7.13.0
+  '@next/eslint-plugin-next': 11.1.2
   '@next/plugin-storybook': 11.1.1-canary.17_next@11.1.0
   '@radix-ui/react-alert-dialog': 0.0.20_9c6a8df88c2691f81f37725d5b4de033
   '@radix-ui/react-checkbox': 0.0.17_react@17.0.2
@@ -2993,6 +2995,12 @@ packages:
 
   /@next/env/11.1.0:
     resolution: {integrity: sha512-zPJkMFRenSf7BLlVee8987G0qQXAhxy7k+Lb/5hLAGkPVHAHm+oFFeL+2ipbI2KTEFlazdmGY0M+AlLQn7pWaw==}
+    dev: false
+
+  /@next/eslint-plugin-next/11.1.2:
+    resolution: {integrity: sha512-cN+ojHRsufr9Yz0rtvjv8WI5En0RPZRJnt0y16Ha7DD+0n473evz8i1ETEJHmOLeR7iPJR0zxRrxeTN/bJMOjg==}
+    dependencies:
+      glob: 7.1.7
     dev: false
 
   /@next/plugin-storybook/11.1.1-canary.17_next@11.1.0:

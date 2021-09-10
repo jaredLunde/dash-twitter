@@ -120,12 +120,15 @@ const Home: NextPage = () => {
             <div
               className={column({
                 width: "100%",
+                gap: "lg",
                 pad: {
                   min: "md",
                   xl: ["md", "md", "md", "lg"],
                 },
               })}
             >
+              <WhatsHappening />
+              <WhatsHappening />
               <WhatsHappening />
             </div>
           </React.Fragment>

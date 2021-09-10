@@ -6,7 +6,7 @@ import { Icon } from "@/components/icon";
 import { iconButton } from "@/components/icon-button";
 import { PrimaryNav } from "@/components/primary-nav";
 import { styles } from "@/styles";
-import { box, column } from "@/styles/layout";
+import { column } from "@/styles/layout";
 import { text } from "@/styles/text";
 
 export const PrimarySidebar = React.memo(PrimarySidebarBase, () => true);
