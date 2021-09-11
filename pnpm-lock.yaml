@@ -57,7 +57,6 @@ specifiers:
   react: 17.0.2
   react-dom: 17.0.2
   react-hook-form: ^7.15.2
-  storybook-addon-next-router: ^3.0.8
   storybook-addon-themes: ^6.1.0
   tsconfig-paths-webpack-plugin: ^3.5.1
   typescript: 4.3.5
@@ -121,7 +120,6 @@ dependencies:
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-hook-form: 7.15.2_react@17.0.2
-  storybook-addon-next-router: 3.0.8_7df30a00c1bfce1004e3004b7e801a78
   storybook-addon-themes: 6.1.0_9c6a8df88c2691f81f37725d5b4de033
   tsconfig-paths-webpack-plugin: 3.5.1
   typescript: 4.3.5
@@ -15097,23 +15095,6 @@ packages:
 
   /store2/2.12.0:
     resolution: {integrity: sha512-7t+/wpKLanLzSnQPX8WAcuLCCeuSHoWdQuh9SB3xD0kNOM38DNf+0Oa+wmvxmYueRzkmh6IcdKFtvTa+ecgPDw==}
-    dev: false
-
-  /storybook-addon-next-router/3.0.8_7df30a00c1bfce1004e3004b7e801a78:
-    resolution: {integrity: sha512-6sxy67iQUMKME7hf+5PQ8WYS6G9i+fB0U2NrthLYutux7zJYvuL+ve34a0D/mw+UCM+YVV48tEFzidZUC9OVVg==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      '@storybook/addon-actions': ^6.0.0
-      '@storybook/addons': ^6.0.0
-      '@storybook/client-api': ^6.0.0
-      next: ^9.0.0 || ^10.0.0 || ^11.0.0
-      react: ^16.8.0 || ^17.0.0
-      react-dom: ^16.8.0 || ^17.0.0
-    dependencies:
-      next: 11.1.0_f31b35bdaa3b7c2fce82404f09d2dac4
-      react: 17.0.2
-      react-dom: 17.0.2_react@17.0.2
-      tslib: 2.3.1
     dev: false
 
   /storybook-addon-outline/1.4.1_9c6a8df88c2691f81f37725d5b4de033:
