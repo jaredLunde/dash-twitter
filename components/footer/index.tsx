@@ -39,40 +39,34 @@ export function Footer() {
           More <Icon src="/icons/more-horizontal.svg" />
         </DropdownMenu.Trigger>
         <DropdownMenu.Content side="top" align="end">
-          <DropdownMenu.Item
-            // @ts-expect-error
-            as="a"
+          <DropdownMenu.ItemExternalLink
             href="https://about.twitter.com/en"
             target="_blank"
             rel="noopener noreferrer"
           >
             About
-          </DropdownMenu.Item>
-          <DropdownMenu.Item
-            // @ts-expect-error
-            as="a"
+          </DropdownMenu.ItemExternalLink>
+          <DropdownMenu.ItemExternalLink
             href="https://status.twitterstat.us/"
             target="_blank"
             rel="noopener noreferrer"
           >
             Status
-          </DropdownMenu.Item>
-          <DropdownMenu.Item
-            // @ts-expect-error
-            as="a"
+          </DropdownMenu.ItemExternalLink>
+          <DropdownMenu.ItemExternalLink
             href="https://business.twitter.com/?ref=web-twc-ao-gbl-twitterforbusiness&utm_source=twc&utm_medium=web&utm_campaign=ao&utm_content=twitterforbusiness"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Twitter for Business
-          </DropdownMenu.Item>
-          <DropdownMenu.Item
-            // @ts-expect-error
-            as="a"
+          </DropdownMenu.ItemExternalLink>
+          <DropdownMenu.ItemExternalLink
             href="https://developer.twitter.com/en"
             target="_blank"
             rel="noopener noreferrer"
           >
             Developers
-          </DropdownMenu.Item>
+          </DropdownMenu.ItemExternalLink>
         </DropdownMenu.Content>
       </DropdownMenu.Root>
       <span>© 2021 Twitter, Inc.</span>

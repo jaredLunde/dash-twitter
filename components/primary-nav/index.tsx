@@ -105,26 +105,22 @@ export function PrimaryNav() {
             >
               Newsletters
             </DropdownMenu.IconItemLink>
-            <DropdownMenu.IconItem
-              as={"a" as any}
-              // @ts-expect-error
+            <DropdownMenu.IconItemExternalLink
               href="https://ads.twitter.com"
               src="/icons/external-link.svg"
               textValue="Twitter Ads"
               onSelect={(e) => e.preventDefault()}
             >
               Twitter Ads
-            </DropdownMenu.IconItem>
-            <DropdownMenu.IconItem
-              as={"a" as any}
-              // @ts-expect-error
+            </DropdownMenu.IconItemExternalLink>
+            <DropdownMenu.IconItemExternalLink
               href="https://analytics.twitter.com"
               src="/icons/bar-chart-2.svg"
               textValue="Analytics"
               onSelect={(e) => e.preventDefault()}
             >
               Analytics
-            </DropdownMenu.IconItem>
+            </DropdownMenu.IconItemExternalLink>
             <DropdownMenu.Separator />
             <DropdownMenu.IconItemLink
               href="/settings/account"
@@ -133,16 +129,14 @@ export function PrimaryNav() {
             >
               Settings &amp; privacy
             </DropdownMenu.IconItemLink>
-            <DropdownMenu.IconItem
-              as={"a" as any}
-              // @ts-expect-error
+            <DropdownMenu.IconItemExternalLink
               href="https://help.twitter.com"
               textValue="Help Center"
               src="/icons/help-circle.svg"
               onSelect={(e) => e.preventDefault()}
             >
               Help Center
-            </DropdownMenu.IconItem>
+            </DropdownMenu.IconItemExternalLink>
             <DropdownMenu.IconItemLink
               href="/i/display"
               src="/icons/edit.svg"
