@@ -26,7 +26,7 @@ jobs:
           pnpm install --silent
       - name: Validate
         run: |
-          npm run validate
+          pnpm validate
       - name: Deploy
         uses: amondnet/vercel-action@v20
         with:
