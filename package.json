@@ -42,6 +42,105 @@
     "test",
     "storybook-static"
   ],
+  "eslintConfig": {
+    "plugins": [
+      "@next/next"
+    ],
+    "extends": [
+      "lunde",
+      "plugin:@next/next/recommended"
+    ],
+    "settings": {
+      "import/internal-pattern": "^@/.*"
+    },
+    "rules": {
+      "no-empty-pattern": "off",
+      "import/no-unresolved": "off",
+      "import/extensions": "off",
+      "import/order": [
+        "warn",
+        {
+          "groups": [
+            "builtin",
+            "external",
+            "internal",
+            "parent",
+            [
+              "sibling",
+              "index"
+            ],
+            "object"
+          ],
+          "newlines-between": "never",
+          "alphabetize": {
+            "order": "asc",
+            "caseInsensitive": true
+          }
+        }
+      ],
+      "sort-imports": [
+        "warn",
+        {
+          "ignoreCase": true,
+          "ignoreDeclarationSort": true,
+          "memberSyntaxSortOrder": [
+            "none",
+            "all",
+            "multiple",
+            "single"
+          ],
+          "allowSeparatedGroups": false
+        }
+      ],
+      "jsx-a11y/anchor-is-valid": "off",
+      "react/react-in-jsx-scope": "off",
+      "@typescript-eslint/ban-types": "off",
+      "@typescript-eslint/no-var-requires": "off"
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.test.{ts,tsx}"
+        ],
+        "settings": {
+          "import/resolver": {
+            "node": {
+              "moduleDirectory": [
+                "node_modules",
+                "../node_modules",
+                "pages/"
+              ]
+            },
+            "jest": {
+              "jestConfigFile": "./jest.config.js"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "jestConfig": {
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/$1"
+    },
+    "moduleDirectories": [
+      "node_modules",
+      "../node_modules",
+      "components",
+      "pages",
+      "styles",
+      "test"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/test/setup.ts"
+    ],
+    "testMatch": [
+      "<rootDir>/{test,components,styles}/**/*.{spec,test}.{js,jsx,ts,tsx}"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules"
+    ]
+  },
   "dependencies": {
     "@dash-ui/compound": "^0.1.1",
     "@dash-ui/jest": "^2.1.2",
