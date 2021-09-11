@@ -1,5 +1,6 @@
 import * as React from "react";
 import { RouterContext } from "next/dist/shared/lib/router-context";
+import { useRouter } from "next-router-mock";
 import { DashProvider, useGlobal } from "@dash-ui/react";
 import { addDecorator } from "@storybook/react";
 import { configureActions } from "@storybook/addon-actions";
@@ -29,14 +30,15 @@ export const parameters = {
       { name: "Dark", class: styles.theme("dark"), color: "#000" },
     ],
   },
-  /**
-   * @see https://storybook.js.org/addons/storybook-addon-next-router
-   */
-  nextRouter: {
-    Provider: RouterContext.Provider,
-  },
 };
 
+// Improve action performance by setting max depth
+configureActions({
+  depth: 3,
+  limit: 20,
+});
+
+// Add Dash and global styles to all stories
 addDecorator((storyFn) => (
   <DashProvider styles={styles}>
     <GlobalStyles />
@@ -44,10 +46,22 @@ addDecorator((storyFn) => (
   </DashProvider>
 ));
 
-configureActions({
-  depth: 3,
-  limit: 20,
-});
+/**
+ * Next.js mocks
+ */
+function MemoryRouter({ children }) {
+  return (
+    <RouterContext.Provider value={useRouter()}>
+      {children}
+    </RouterContext.Provider>
+  );
+}
+
+addDecorator((Story) => (
+  <MemoryRouter>
+    <Story />
+  </MemoryRouter>
+));
 
 const OriginalNextImage = NextImage.default;
 Object.defineProperty(NextImage, "default", {

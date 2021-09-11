@@ -1,5 +1,5 @@
 {
-  "name": "poc",
+  "name": "dash-twitter",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -12,7 +12,7 @@
     "start": "next build && next start",
     "storybook": "start-storybook -s ./public -p 6006",
     "up": "pnpx vercel@latest",
-    "validate": "pnpm check-types && pnpm lint && pnpm test -- --coverage"
+    "validate": "pnpm check-types && pnpm lint -- --quiet && pnpm test -- --silent --coverage"
   },
   "husky": {
     "hooks": {
@@ -24,7 +24,7 @@
       "prettier --write"
     ],
     "**/*.{ts,tsx,js,jsx}": [
-      "pnpm lint -- --fix"
+      "eslint --ext .js,.ts,.tsx- --fix"
     ]
   },
   "config": {
@@ -33,15 +33,123 @@
     }
   },
   "eslintIgnore": [
-    "coverage",
-    ".storybook",
+    ".github",
     ".next",
+    ".vercel",
     "build",
+    "coverage",
     "public",
     "test",
-    "storybook-static",
-    "/*.js"
+    "storybook-static"
   ],
+  "eslintConfig": {
+    "plugins": [
+      "@next/next"
+    ],
+    "extends": [
+      "lunde",
+      "plugin:@next/next/recommended"
+    ],
+    "settings": {
+      "import/internal-pattern": "^@/.*"
+    },
+    "rules": {
+      "no-empty-pattern": "off",
+      "import/no-unresolved": "off",
+      "import/extensions": "off",
+      "import/order": [
+        "warn",
+        {
+          "groups": [
+            "builtin",
+            "external",
+            "internal",
+            "parent",
+            [
+              "sibling",
+              "index"
+            ],
+            "object"
+          ],
+          "newlines-between": "never",
+          "alphabetize": {
+            "order": "asc",
+            "caseInsensitive": true
+          }
+        }
+      ],
+      "sort-imports": [
+        "warn",
+        {
+          "ignoreCase": true,
+          "ignoreDeclarationSort": true,
+          "memberSyntaxSortOrder": [
+            "none",
+            "all",
+            "multiple",
+            "single"
+          ],
+          "allowSeparatedGroups": false
+        }
+      ],
+      "jsx-a11y/anchor-is-valid": "off",
+      "react/react-in-jsx-scope": "off",
+      "@typescript-eslint/ban-types": "off",
+      "@typescript-eslint/no-var-requires": "off",
+      "@typescript-eslint/prefer-ts-expect-error": "warn",
+      "@typescript-eslint/consistent-type-imports": [
+        "warn",
+        {
+          "prefer": "type-imports"
+        }
+      ]
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.test.{ts,tsx}"
+        ],
+        "settings": {
+          "import/resolver": {
+            "node": {
+              "moduleDirectory": [
+                "node_modules",
+                "../node_modules",
+                "pages/"
+              ]
+            },
+            "jest": {
+              "jestConfigFile": "./jest.config.js"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "jestConfig": {
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/$1"
+    },
+    "moduleDirectories": [
+      "node_modules",
+      "components",
+      "hooks",
+      "pages",
+      "stores",
+      "styles",
+      "test",
+      "utils"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/test/setup.ts"
+    ],
+    "testMatch": [
+      "<rootDir>/{components,hooks,stores,styles,utils}/**/*.test.{js,jsx,ts,tsx}"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules"
+    ]
+  },
   "dependencies": {
     "@dash-ui/compound": "^0.1.1",
     "@dash-ui/jest": "^2.1.2",
@@ -93,12 +201,12 @@
     "lint-staged": "^10.5.4",
     "next": "11.1.0",
     "next-image-loader": "^2.0.4",
+    "next-router-mock": "^0.2.4",
     "prettier": "^2.4.0",
     "qs-stringify": "^1.2.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-hook-form": "^7.15.2",
-    "storybook-addon-next-router": "^3.0.8",
     "storybook-addon-themes": "^6.1.0",
     "tsconfig-paths-webpack-plugin": "^3.5.1",
     "typescript": "4.3.5",
