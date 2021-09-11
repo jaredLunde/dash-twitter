@@ -95,7 +95,14 @@
       "jsx-a11y/anchor-is-valid": "off",
       "react/react-in-jsx-scope": "off",
       "@typescript-eslint/ban-types": "off",
-      "@typescript-eslint/no-var-requires": "off"
+      "@typescript-eslint/no-var-requires": "off",
+      "@typescript-eslint/prefer-ts-expect-error": "warn",
+      "@typescript-eslint/consistent-type-imports": [
+        "warn",
+        {
+          "prefer": "type-imports"
+        }
+      ]
     },
     "overrides": [
       {
@@ -125,17 +132,19 @@
     },
     "moduleDirectories": [
       "node_modules",
-      "../node_modules",
       "components",
+      "hooks",
       "pages",
+      "stores",
       "styles",
-      "test"
+      "test",
+      "utils"
     ],
     "setupFilesAfterEnv": [
       "<rootDir>/test/setup.ts"
     ],
     "testMatch": [
-      "<rootDir>/{test,components,styles}/**/*.{spec,test}.{js,jsx,ts,tsx}"
+      "<rootDir>/{components,hooks,stores,styles,utils}/**/*.test.{js,jsx,ts,tsx}"
     ],
     "transformIgnorePatterns": [
       "node_modules"
