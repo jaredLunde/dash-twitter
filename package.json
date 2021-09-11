@@ -8,9 +8,9 @@
     "build-storybook": "build-storybook -s ./public",
     "check-types": "tsc --noEmit",
     "lint": "eslint . --ext .js,.ts,.tsx",
-    "test": "jest --passWithNoTests",
     "start": "next build && next start",
     "storybook": "start-storybook -s ./public -p 6006",
+    "test": "jest --passWithNoTests",
     "up": "pnpx vercel@latest",
     "validate": "pnpm check-types && pnpm lint -- --quiet && pnpm test -- --silent --coverage"
   },
