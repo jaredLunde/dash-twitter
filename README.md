@@ -1,8 +1,6 @@
 <hr>
-  <br/>
   <img src='https://github.com/dash-ui/styles/raw/master/assets/logo.png'/>
   <blockquote>A Twitter clone written using <a href="https://github.com/dash-ui/styles">Dash</a> and <a href="https://nextjs.org/">Next.js</a>.</blockquote>
-  <br/>
 <hr>
 
 ## Getting Started
@@ -24,9 +22,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Why do this?
 
-I wanted to use a real world project to illustrate how powerful @dash-ui is. I truly
+I wanted to use a real world project to illustrate how powerful [@dash-ui](https://github.com/dash-ui) is. I truly
 believe it to be a better styling solution than its competition (styled-components, emotion,
-et. al.). Once you understand the patterns behind @dash-ui, you'll agree with me that
+et. al.). Once you understand the patterns behind [@dash-ui](https://github.com/dash-ui), you'll agree with me that
 this is the minimum effective abstraction for CSS-in-React.
 
 ## Scripts
