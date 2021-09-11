@@ -289,12 +289,13 @@ export const primaryNavItem = (styles?: { overflow?: boolean }) =>
 const primaryNavItemTextBase = styles.one(
   mq({
     default: { "span:last-child": { display: "none" } },
-    xl: { "span:last-child": { display: "block" } },
-    vMin: {
+    min: {
       padding: "0.67em",
     },
-    vMd: {
+    md: {},
+    xl: {
       padding: "0.67em 1.5em 0.67em 0.67em",
+      "span:last-child": { display: "block" },
     },
   })
 );
