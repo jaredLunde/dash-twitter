@@ -24,7 +24,7 @@
       "prettier --write"
     ],
     "**/*.{ts,tsx,js,jsx}": [
-      "pnpm lint -- --fix"
+      "eslint --ext .js,.ts,.tsx- --fix"
     ]
   },
   "config": {
