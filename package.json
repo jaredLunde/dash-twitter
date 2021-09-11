@@ -12,7 +12,7 @@
     "start": "next build && next start",
     "storybook": "start-storybook -s ./public -p 6006",
     "up": "pnpx vercel@latest",
-    "validate": "pnpm check-types && pnpm lint && pnpm test -- --coverage"
+    "validate": "pnpm check-types && pnpm lint -- --quiet && pnpm test -- --silent --coverage"
   },
   "husky": {
     "hooks": {
