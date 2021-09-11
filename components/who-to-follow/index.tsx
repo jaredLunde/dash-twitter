@@ -80,7 +80,7 @@ function WhoToFollowItem({ item }: WhoToFollowItemProps) {
           </span>
         </div>
       </div>
-      <Button variant="solid" color="secondary">
+      <Button size="xs" variant="solid" color="secondary">
         Follow
       </Button>
       {item.promoted && (

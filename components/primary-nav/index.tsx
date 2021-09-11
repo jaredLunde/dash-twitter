@@ -290,6 +290,12 @@ const primaryNavItemTextBase = styles.one(
   mq({
     default: { "span:last-child": { display: "none" } },
     xl: { "span:last-child": { display: "block" } },
+    vMin: {
+      padding: "0.67em",
+    },
+    vMd: {
+      padding: "0.67em 1.5em 0.67em 0.67em",
+    },
   })
 );
 
@@ -297,7 +303,6 @@ export const primaryNavItemText = () =>
   clsx(
     text({ variant: "heading" }),
     grid({
-      pad: { vMin: ["sm", "md"], vMd: "md" },
       cols: {
         min: [26],
         xl: [26, "auto"],

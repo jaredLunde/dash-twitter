@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-import ico from "@/public/icons/sparkle.svg";
 import { IconButton } from "./index";
+import ico from "@/public/icons/sparkle.svg";
 
 export default {
   title: "components/IconButton",

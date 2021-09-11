@@ -60,9 +60,9 @@ export const relatedContent = styles.one((t) => ({
 export const relatedContentItem = styles.one(
   mq({
     default: (t) => ({
-      display: "inline-block",
+      display: "block",
       width: "100%",
-      padding: `1em ${t.pad.md}`,
+      padding: `${t.pad.sm} ${t.pad.md}`,
     }),
     hover: (t) => ({
       ":hover": {
