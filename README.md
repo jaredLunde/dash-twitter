@@ -10,6 +10,7 @@
 ```bash
 git clone https://github.com/jaredLunde/dash-twitter
 cd dash-twitter
+pnpm install
 ```
 
 ### Run the development server
