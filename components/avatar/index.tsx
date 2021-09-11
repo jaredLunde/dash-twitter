@@ -58,7 +58,7 @@ const avatar = compoundStyles({
     borderRadius: t.radius.primary,
   })),
   size: responsiveStyles.lazy((value: number | string) => {
-    if (["xs", "sm", "md", "lg", "xl", "2xl"].includes(String(value))) {
+    if (Object.keys(sizes).includes(String(value))) {
       return sizes[value as keyof typeof sizes];
     }
 
@@ -67,6 +67,10 @@ const avatar = compoundStyles({
 });
 
 const sizes = {
+  "2xs": {
+    width: 16,
+    height: 16,
+  },
   xs: {
     width: 24,
     height: 24,
@@ -96,6 +100,6 @@ export interface AvatarProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src?: string;
   defaultSrc?: string;
   size?: ResponsiveProp<
-    number | (("xs" | "sm" | "md" | "lg" | "xl" | "2xl") & string)
+    number | (("2xs" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl") & string)
   >;
 }

@@ -9,6 +9,7 @@ import { Footer } from "@/components/footer";
 import { IconButton } from "@/components/icon-button";
 import { SearchInput } from "@/components/search-input";
 import { WhatsHappening } from "@/components/whats-happening";
+import { WhoToFollow } from "@/components/who-to-follow";
 import { box, column, grid, row } from "@/styles/layout";
 import { text } from "@/styles/text";
 
@@ -126,8 +127,7 @@ function Sidebar() {
         })}
       >
         <WhatsHappening />
-        <WhatsHappening />
-        <WhatsHappening />
+        <WhoToFollow />
         <Footer />
       </div>
     </Dashboard.FeedSidebar>

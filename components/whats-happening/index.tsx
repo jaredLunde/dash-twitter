@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import * as React from "react";
+import { Avatar } from "@/components/avatar";
 import { useA11yButton } from "@/components/button";
 import { Link } from "@/components/link";
 import {
@@ -7,6 +8,8 @@ import {
   relatedContentItem,
 } from "@/components/related-content";
 import { styles } from "@/styles";
+import { row } from "@/styles/layout";
+import { text } from "@/styles/text";
 
 export function WhatsHappening({
   items = [
@@ -38,6 +41,22 @@ export function WhatsHappening({
       live: false,
       createdAt: new Date(),
     },
+    {
+      topic: "Trending in United States",
+      label:
+        "A Super Mario Bros. Mystery Box popped up in Houston. What's inside?",
+      account: {
+        displayName: "Chron",
+        username: "Chron",
+        profileImage:
+          "https://pbs.twimg.com/profile_images/1311802778705113094/6PDONOJ-_400x400.png",
+      },
+      image:
+        "https://pbs.twimg.com/media/E-23Db1XsAUkPgL?format=jpg&name=240x240",
+      promoted: false,
+      live: false,
+      createdAt: new Date(),
+    },
   ],
 }: WhatsHappeningProps) {
   return (
@@ -55,7 +74,16 @@ function WhatsHappeningItem({ item }: WhatsHappeningItemProps) {
     <div className={whatsHappeningItem()} {...buttonProps}>
       <div>
         <div className="header">
-          {item.topic}{" "}
+          {item.account ? (
+            <div className={row({ gap: "sm", align: "center" })}>
+              <Avatar size="2xs" src={item.account.profileImage} />
+              <span className={text({ color: "text", weight: "700" })}>
+                {item.account.displayName}
+              </span>
+            </div>
+          ) : (
+            item.topic
+          )}{" "}
           {item.live ? <React.Fragment>&middot; LIVE</React.Fragment> : ""}
         </div>
         <h3 aria-level={3} className="label">
@@ -133,6 +161,7 @@ export type WhatsHappeningItem = {
   description?: string;
   hashtag?: string;
   account?: {
+    displayName: string;
     username: string;
     profileImage: string;
   };

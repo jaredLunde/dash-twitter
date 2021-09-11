@@ -62,7 +62,7 @@ export const relatedContentItem = styles.one(
     default: (t) => ({
       display: "inline-block",
       width: "100%",
-      padding: `${t.pad.sm} ${t.pad.md}`,
+      padding: `1em ${t.pad.md}`,
     }),
     hover: (t) => ({
       ":hover": {
