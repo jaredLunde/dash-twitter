@@ -109,7 +109,7 @@ function useSidebarScroller(
 ): React.CSSProperties {
   React.useEffect(() => {
     if (!target.current) return;
-    let prevScrollY = window.scrollY;
+    let prevScrollY = 0;
     let animationFrame: ReturnType<typeof requestAnimationFrame>;
 
     function scrollSidebarInFrame() {
@@ -137,7 +137,7 @@ function useSidebarScroller(
     }
 
     // Run once in case window has already scrolled
-    scrollSidebar();
+    scrollSidebarInFrame();
 
     // Whenever the window is resized or scrolled, we need to re-adjust the
     // footer top to update its position
