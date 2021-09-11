@@ -51,6 +51,7 @@ specifiers:
   lint-staged: ^10.5.4
   next: 11.1.0
   next-image-loader: ^2.0.4
+  next-router-mock: ^0.2.4
   prettier: ^2.4.0
   qs-stringify: ^1.2.1
   react: 17.0.2
@@ -114,6 +115,7 @@ dependencies:
   lint-staged: 10.5.4
   next: 11.1.0_f31b35bdaa3b7c2fce82404f09d2dac4
   next-image-loader: 2.0.4_next@11.1.0+react@17.0.2
+  next-router-mock: 0.2.4_next@11.1.0+react@17.0.2
   prettier: 2.4.0
   qs-stringify: 1.2.1
   react: 17.0.2
@@ -12586,6 +12588,10 @@ packages:
       through2: 2.0.5
     dev: false
 
+  /mitt/3.0.0:
+    resolution: {integrity: sha512-7dX2/10ITVyqh4aOSVI9gdape+t9l2/8QxHrFmUXu4EEUpdlxl6RudZUPZoc+zuY2hk1j7XxVroIVIan/pD/SQ==}
+    dev: false
+
   /mixin-deep/1.3.2:
     resolution: {integrity: sha512-WRoDn//mXBiJ1H40rqa3vH0toePwSsGb45iInWlTySa+Uu4k3tYUSxa2v1KqAiLtvlrSzaExqS1gtk96A9zvEA==}
     engines: {node: '>=0.10.0'}
@@ -12705,6 +12711,17 @@ packages:
       next: '>=10.0.0'
       react: '>=17.0.0'
     dependencies:
+      next: 11.1.0_f31b35bdaa3b7c2fce82404f09d2dac4
+      react: 17.0.2
+    dev: false
+
+  /next-router-mock/0.2.4_next@11.1.0+react@17.0.2:
+    resolution: {integrity: sha512-mIErn3rU8aMp/7bDC6Bf+nTp6hyUDB0B+9m0xJ8CC8yoIsS/fDP0a1qp9o1sgB1IGjqpi1Cj/tOZh8gIwea/aA==}
+    peerDependencies:
+      next: '>=10.0.0'
+      react: '>=17.0.0'
+    dependencies:
+      mitt: 3.0.0
       next: 11.1.0_f31b35bdaa3b7c2fce82404f09d2dac4
       react: 17.0.2
     dev: false

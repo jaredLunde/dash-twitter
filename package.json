@@ -94,6 +94,7 @@
     "lint-staged": "^10.5.4",
     "next": "11.1.0",
     "next-image-loader": "^2.0.4",
+    "next-router-mock": "^0.2.4",
     "prettier": "^2.4.0",
     "qs-stringify": "^1.2.1",
     "react": "17.0.2",
