@@ -1,5 +1,5 @@
 {
-  "name": "poc",
+  "name": "dash-twitter",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -33,14 +33,15 @@
     }
   },
   "eslintIgnore": [
-    "coverage",
+    ".github",
     ".storybook",
     ".next",
+    ".vercel",
     "build",
+    "coverage",
     "public",
     "test",
-    "storybook-static",
-    "/*.js"
+    "storybook-static"
   ],
   "dependencies": {
     "@dash-ui/compound": "^0.1.1",
