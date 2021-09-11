@@ -5,7 +5,7 @@
 
 ## Getting Started
 
-### Clone the project
+### Set up the project
 
 ```bash
 git clone https://github.com/jaredLunde/dash-twitter
