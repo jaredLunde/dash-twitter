@@ -1,34 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<hr>
+  <img src='https://github.com/dash-ui/styles/raw/master/assets/logo.png'/>
+  <blockquote>A Twitter clone written using <a href="https://github.com/dash-ui/styles">Dash</a> and <a href="https://nextjs.org/">Next.js</a>.</blockquote>
+<hr>
 
 ## Getting Started
 
-First, run the development server:
+### Clone the project
 
 ```bash
-npm run dev
-# or
-yarn dev
+git clone https://github.com/jaredLunde/dash-twitter
+cd dash-twitter
+```
+
+### Run the development server
+
+```bash
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Why do this?
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+I wanted to use a real world project to illustrate how powerful [@dash-ui](https://github.com/dash-ui) is. I truly
+believe it to be a better styling solution than its competition (styled-components, emotion,
+et. al.). Once you understand the patterns behind [@dash-ui](https://github.com/dash-ui), you'll agree with me that
+this is the minimum effective abstraction for CSS-in-React.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Scripts
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+| Script            | Description                                         |
+| ----------------- | --------------------------------------------------- |
+| `dev`             | Runs the development server                         |
+| `build`           | Builds a production Next.js app                     |
+| `build-storybook` | Builds a production Storybook app                   |
+| `check-types`     | Type checks the project                             |
+| `lint`            | Runs ESLint on the project                          |
+| `start`           | Builds a production Next.js app and runs it locally |
+| `storybook`       | Runs a Storybook development server                 |
+| `test`            | Runs Jest on the project                            |
+| `up`              | Deploys the project in Vercel                       |
+| `validate`        | Checks types, lints, and tests the project          |
