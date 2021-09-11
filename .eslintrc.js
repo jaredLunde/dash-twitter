@@ -1,6 +1,9 @@
 module.exports = {
   plugins: ["@next/next"],
   extends: ["lunde", "plugin:@next/next/recommended"],
+  settings: {
+    "import/internal-pattern": "^@/.*",
+  },
   rules: {
     "no-empty-pattern": "off",
     "import/no-unresolved": "off",
@@ -8,17 +11,13 @@ module.exports = {
     "import/order": [
       "warn",
       {
-        pathGroups: [
-          {
-            pattern: "@/**",
-            group: "parent",
-          },
-        ],
         groups: [
           "builtin",
-          ["external", "internal"],
+          "external",
+          "internal",
           "parent",
           ["sibling", "index"],
+          "object",
         ],
         "newlines-between": "never",
         alphabetize: {

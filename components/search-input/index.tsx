@@ -77,9 +77,11 @@ export const input = Object.assign(
       borderColor: "transparent",
       fontSize: t.font.size.base,
       width: "100%",
+      contain: "layout",
 
       input: {
         ...resetVendorInputStyles,
+        contain: "layout",
         color: t.color.text,
         lineHeight: t.font.leading.relaxed,
         padding: `${t.pad.sm} ${t.pad.md}`,

@@ -2,7 +2,6 @@ import React from "react";
 import { PrimarySidebar } from "@/components/primary-sidebar";
 import { column, grid, row } from "@/styles/layout";
 import { text } from "@/styles/text";
-import { noop } from "@/utils/noop";
 
 export const Dashboard = {
   Root({ children }: DashboardRootProps) {
@@ -72,6 +71,7 @@ export const Dashboard = {
           inset: [0, "auto", "auto"],
           z: "high",
         })}
+        style={{ contain: "strict" }}
       >
         {children}
       </header>
@@ -109,7 +109,7 @@ function useSidebarScroller(
 ): React.CSSProperties {
   React.useEffect(() => {
     if (!target.current) return;
-    let prevScrollY = window.scrollY;
+    let prevScrollY = 0;
     let animationFrame: ReturnType<typeof requestAnimationFrame>;
 
     function scrollSidebarInFrame() {
@@ -137,7 +137,7 @@ function useSidebarScroller(
     }
 
     // Run once in case window has already scrolled
-    scrollSidebar();
+    scrollSidebarInFrame();
 
     // Whenever the window is resized or scrolled, we need to re-adjust the
     // footer top to update its position
@@ -156,6 +156,8 @@ function useSidebarScroller(
     top: 0,
     overflow: "hidden",
     height: "var(--vh)",
+    willChange: "scroll-position",
+    contain: "strict",
   };
 }
 

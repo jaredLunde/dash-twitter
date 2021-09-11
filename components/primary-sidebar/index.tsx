@@ -22,7 +22,7 @@ function PrimarySidebarBase() {
         inset: [0, "auto", "auto"],
         distribute: "between",
       })}
-      style={{ overflow: "auto" }}
+      style={{ overflow: "auto", contain: "strict" }}
     >
       <div
         className={column({

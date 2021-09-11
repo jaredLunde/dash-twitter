@@ -50,7 +50,7 @@ export interface ButtonProps
    * Select a button size
    * @default "sm"
    */
-  size?: ResponsiveProp<"sm" | "md" | "lg">;
+  size?: ResponsiveProp<"xs" | "sm" | "md" | "lg">;
   /**
    * Renders a loading icon as the child of this button when true
    * @default false
@@ -114,9 +114,14 @@ export const resetVendorButtonStyles = {
  * in your application.
  */
 const size = responsiveStyles({
+  xs: (t) => ({
+    fontSize: t.font.size.sm,
+    padding: `${8 / 16}rem ${15 / 16}rem`,
+  }),
+
   sm: (t) => ({
-    fontSize: t.font.size.base,
-    padding: `${8 / 16}rem ${14 / 16}rem`,
+    fontSize: 15 / 16 + "rem",
+    padding: `${10 / 16}rem ${14 / 16}rem`,
   }),
 
   md: (t) => ({
@@ -135,10 +140,10 @@ const defaultStyles = (t: DashTokens) => ({
   display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
-  letterSpacing: t.font.tracking.tight,
+  letterSpacing: t.font.tracking.normal,
   lineHeight: t.font.leading.none,
   userSelect: "none",
-  fontWeight: 600,
+  fontWeight: 700,
   borderRadius: t.radius.primary,
   borderStyle: "solid",
   borderColor: "transparent",

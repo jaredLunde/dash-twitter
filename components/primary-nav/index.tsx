@@ -82,7 +82,7 @@ export function PrimaryNav() {
           Profile
         </PrimaryNavLink>
 
-        <DropdownMenu.Root>
+        <DropdownMenu.Root modal={false}>
           <DropdownMenu.Content side="top" align="start">
             <DropdownMenu.IconItemLink
               href="/jaredLunde/topics"
@@ -105,26 +105,22 @@ export function PrimaryNav() {
             >
               Newsletters
             </DropdownMenu.IconItemLink>
-            <DropdownMenu.IconItem
-              as={"a" as any}
-              // @ts-expect-error
+            <DropdownMenu.IconItemExternalLink
               href="https://ads.twitter.com"
               src="/icons/external-link.svg"
               textValue="Twitter Ads"
               onSelect={(e) => e.preventDefault()}
             >
               Twitter Ads
-            </DropdownMenu.IconItem>
-            <DropdownMenu.IconItem
-              as={"a" as any}
-              // @ts-expect-error
+            </DropdownMenu.IconItemExternalLink>
+            <DropdownMenu.IconItemExternalLink
               href="https://analytics.twitter.com"
               src="/icons/bar-chart-2.svg"
               textValue="Analytics"
               onSelect={(e) => e.preventDefault()}
             >
               Analytics
-            </DropdownMenu.IconItem>
+            </DropdownMenu.IconItemExternalLink>
             <DropdownMenu.Separator />
             <DropdownMenu.IconItemLink
               href="/settings/account"
@@ -133,16 +129,14 @@ export function PrimaryNav() {
             >
               Settings &amp; privacy
             </DropdownMenu.IconItemLink>
-            <DropdownMenu.IconItem
-              as={"a" as any}
-              // @ts-expect-error
+            <DropdownMenu.IconItemExternalLink
               href="https://help.twitter.com"
               textValue="Help Center"
               src="/icons/help-circle.svg"
               onSelect={(e) => e.preventDefault()}
             >
               Help Center
-            </DropdownMenu.IconItem>
+            </DropdownMenu.IconItemExternalLink>
             <DropdownMenu.IconItemLink
               href="/i/display"
               src="/icons/edit.svg"
@@ -264,6 +258,7 @@ const primaryNavItemBase = styles.one(
       color: t.color.text,
       textAlign: "left",
       backgroundColor: "transparent",
+      contain: "layout",
 
       "> span": {
         borderRadius: t.radius.primary,
@@ -295,6 +290,12 @@ const primaryNavItemTextBase = styles.one(
   mq({
     default: { "span:last-child": { display: "none" } },
     xl: { "span:last-child": { display: "block" } },
+    vMin: {
+      padding: "0.67em",
+    },
+    vMd: {
+      padding: "0.67em 1.5em 0.67em 0.67em",
+    },
   })
 );
 
@@ -302,7 +303,6 @@ export const primaryNavItemText = () =>
   clsx(
     text({ variant: "heading" }),
     grid({
-      pad: { vMin: ["sm", "md"], vMd: "md" },
       cols: {
         min: [26],
         xl: [26, "auto"],

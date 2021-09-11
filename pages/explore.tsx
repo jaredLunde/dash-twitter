@@ -3,9 +3,10 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import * as React from "react";
 import { Dashboard } from "@/components/dashboard";
+import { Footer } from "@/components/footer";
 import { IconButton } from "@/components/icon-button";
 import { SearchInput } from "@/components/search-input";
-import { WhatsHappening } from "@/components/whats-happening";
+import { WhoToFollow } from "@/components/who-to-follow";
 import { column, grid } from "@/styles/layout";
 import { tabs } from "@/styles/tabs";
 import { text } from "@/styles/text";
@@ -84,9 +85,8 @@ function Sidebar() {
           },
         })}
       >
-        <WhatsHappening />
-        <WhatsHappening />
-        <WhatsHappening />
+        <WhoToFollow />
+        <Footer />
       </div>
     </Dashboard.FeedSidebar>
   );

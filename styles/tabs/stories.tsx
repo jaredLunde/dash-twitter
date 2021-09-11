@@ -1,7 +1,7 @@
 import * as Tabs from "@radix-ui/react-tabs";
 import React from "react";
-import { text } from "@/styles/text";
 import { tabs } from "./index";
+import { text } from "@/styles/text";
 
 export default {
   title: "styles/Tabs",

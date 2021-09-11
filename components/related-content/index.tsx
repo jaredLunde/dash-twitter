@@ -38,6 +38,7 @@ export const relatedContent = styles.one((t) => ({
   backgroundColor: t.color.accent,
   borderRadius: t.radius.secondary,
   textAlign: "left",
+  contain: "layout",
 
   "> :first-child": {
     borderRadius: `${t.radius.secondary} ${t.radius.secondary} 0  0`,
@@ -59,7 +60,7 @@ export const relatedContent = styles.one((t) => ({
 export const relatedContentItem = styles.one(
   mq({
     default: (t) => ({
-      display: "inline-block",
+      display: "block",
       width: "100%",
       padding: `${t.pad.sm} ${t.pad.md}`,
     }),

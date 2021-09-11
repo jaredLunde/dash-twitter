@@ -20,7 +20,9 @@ export const Legend = React.forwardRef<HTMLDivElement, LegendProps>(
   function Legend({ className, children, ...props }, ref) {
     return (
       <React.Fragment>
-        <VisuallyHidden.Root as="legend">{children}</VisuallyHidden.Root>
+        <VisuallyHidden.Root asChild>
+          <legend>{children}</legend>
+        </VisuallyHidden.Root>
         <div
           aria-hidden
           className={clsx(className, legend())}

@@ -19,6 +19,7 @@ export const DropdownMenu = {
     return (
       <RadixDropdownMenu.Content
         {...props}
+        avoidCollisions={false}
         className={clsx(props.className, box({ width }), dropdownMenuContent())}
         ref={ref}
       />
@@ -39,10 +40,21 @@ export const DropdownMenu = {
   }),
 
   ItemLink: React.forwardRef<
-    HTMLDivElement,
-    PropsOf<typeof RadixDropdownMenu.Item> & Omit<LinkProps, "passHref">
+    HTMLAnchorElement,
+    Omit<PropsOf<typeof RadixDropdownMenu.Item>, "asChild"> &
+      Omit<LinkProps, "passHref">
   >(function DropdownMenuItem(
-    { as, href, locale, prefetch, replace, scroll, shallow, ...props },
+    {
+      as,
+      href,
+      locale,
+      prefetch,
+      replace,
+      scroll,
+      shallow,
+      children,
+      ...props
+    },
     ref
   ) {
     return (
@@ -58,12 +70,36 @@ export const DropdownMenu = {
       >
         <RadixDropdownMenu.Item
           {...props}
-          as={"a" as any}
-          className={clsx(props.className, dropdownMenuItem())}
+          asChild
           onSelect={props.onSelect ?? ((e) => e.preventDefault())}
-          ref={ref}
-        />
+        >
+          <a className={clsx(props.className, dropdownMenuItem())} ref={ref}>
+            {children}
+          </a>
+        </RadixDropdownMenu.Item>
       </NextLink>
+    );
+  }),
+
+  ItemExternalLink: React.forwardRef<
+    HTMLAnchorElement,
+    Omit<PropsOf<typeof RadixDropdownMenu.Item>, "asChild"> &
+      React.AnchorHTMLAttributes<HTMLAnchorElement>
+  >(function DropdownMenuItem({ href, children, ...props }, ref) {
+    return (
+      <RadixDropdownMenu.Item
+        {...props}
+        asChild
+        onSelect={props.onSelect ?? ((e) => e.preventDefault())}
+      >
+        <a
+          href={href}
+          className={clsx(props.className, dropdownMenuItem())}
+          ref={ref}
+        >
+          {children}
+        </a>
+      </RadixDropdownMenu.Item>
     );
   }),
 
@@ -84,8 +120,8 @@ export const DropdownMenu = {
   }),
 
   IconItemLink: React.forwardRef<
-    HTMLDivElement,
-    PropsOf<typeof RadixDropdownMenu.Item> &
+    HTMLAnchorElement,
+    Omit<PropsOf<typeof RadixDropdownMenu.Item>, "asChild"> &
       Omit<LinkProps, "passHref"> & { src: string }
   >(function DropdownMenuItem(
     {
@@ -115,15 +151,44 @@ export const DropdownMenu = {
       >
         <RadixDropdownMenu.Item
           {...props}
-          as={"a" as any}
-          className={clsx(props.className, dropdownMenuIconItem())}
+          asChild
           onSelect={props.onSelect ?? ((e) => e.preventDefault())}
+        >
+          <a
+            className={clsx(props.className, dropdownMenuIconItem())}
+            ref={ref}
+          >
+            <Icon src={src} size="1.25em" />
+            <span>{children}</span>
+          </a>
+        </RadixDropdownMenu.Item>
+      </NextLink>
+    );
+  }),
+
+  IconItemExternalLink: React.forwardRef<
+    HTMLAnchorElement,
+    Omit<PropsOf<typeof RadixDropdownMenu.Item>, "asChild"> &
+      React.AnchorHTMLAttributes<HTMLAnchorElement> & { src: string }
+  >(function DropdownMenuItemExternalLink(
+    { href, src, children, ...props },
+    ref
+  ) {
+    return (
+      <RadixDropdownMenu.Item
+        {...props}
+        asChild
+        onSelect={props.onSelect ?? ((e) => e.preventDefault())}
+      >
+        <a
+          href={href}
+          className={clsx(props.className, dropdownMenuIconItem())}
           ref={ref}
         >
           <Icon src={src} size="1.25em" />
           <span>{children}</span>
-        </RadixDropdownMenu.Item>
-      </NextLink>
+        </a>
+      </RadixDropdownMenu.Item>
     );
   }),
 
@@ -177,9 +242,11 @@ export const dropdownMenuArrow = styles.one((t) => ({
 export const dropdownMenuItem = styles.one(
   mq({
     default: (t) => ({
+      display: "grid",
       textAlign: "left",
       padding: "1em",
       color: t.color.text,
+      width: "100%",
 
       ":focus-visible": {
         backgroundColor: t.color.translucentDark,
