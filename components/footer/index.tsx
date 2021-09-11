@@ -34,11 +34,11 @@ export function Footer() {
       >
         Ads info
       </a>
-      <DropdownMenu.Root>
+      <DropdownMenu.Root modal={false}>
         <DropdownMenu.Trigger>
           More <Icon src="/icons/more-horizontal.svg" />
         </DropdownMenu.Trigger>
-        <DropdownMenu.Content portalled={false}>
+        <DropdownMenu.Content side="top" align="end">
           <DropdownMenu.Item
             // @ts-expect-error
             as="a"

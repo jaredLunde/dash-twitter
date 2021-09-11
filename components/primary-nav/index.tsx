@@ -82,7 +82,7 @@ export function PrimaryNav() {
           Profile
         </PrimaryNavLink>
 
-        <DropdownMenu.Root>
+        <DropdownMenu.Root modal={false}>
           <DropdownMenu.Content side="top" align="start">
             <DropdownMenu.IconItemLink
               href="/jaredLunde/topics"

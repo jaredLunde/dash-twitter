@@ -19,6 +19,7 @@ export const DropdownMenu = {
     return (
       <RadixDropdownMenu.Content
         {...props}
+        avoidCollisions={false}
         className={clsx(props.className, box({ width }), dropdownMenuContent())}
         ref={ref}
       />

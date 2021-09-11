@@ -15,7 +15,7 @@ export function AccountToggle() {
    * @see https://github.com/radix-ui/primitives/issues/781
    */
   return (
-    <DropdownMenu.Root>
+    <DropdownMenu.Root modal={false}>
       <DropdownMenu.Content
         className={accountToggleContent()}
         side="top"
