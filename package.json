@@ -131,7 +131,22 @@
     ]
   },
   "jest": {
-    "preset": "ts-jest",
+    "transform": {
+      "^.+\\.(t|j)sx?$": [
+        "@swc/jest",
+        {
+          "jsc": {
+            "parser": {
+              "syntax": "typescript",
+              "tsx": true
+            }
+          },
+          "module": {
+            "type": "commonjs"
+          }
+        }
+      ]
+    },
     "testEnvironment": "jsdom",
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/$1"
@@ -198,6 +213,8 @@
     "@storybook/builder-webpack5": "^6.3.8",
     "@storybook/manager-webpack5": "^6.4.0-alpha.34",
     "@storybook/react": "^6.3.8",
+    "@swc/core": "^1.2.85",
+    "@swc/jest": "^0.2.3",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/react-hooks": "latest",
@@ -223,7 +240,6 @@
     "react-dom": "17.0.2",
     "react-hook-form": "^7.15.2",
     "storybook-addon-themes": "^6.1.0",
-    "ts-jest": "^27.0.5",
     "tsconfig-paths-webpack-plugin": "^3.5.1",
     "typescript": "4.3.5",
     "yup": "^0.32.9",
