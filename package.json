@@ -10,9 +10,9 @@
     "lint": "eslint . --ext .js,.ts,.tsx",
     "start": "next build && next start",
     "storybook": "start-storybook -s ./public -p 6006",
-    "test": "jest --passWithNoTests --maxWorkers=50%",
+    "test": "jest --passWithNoTests",
     "up": "pnpx vercel@latest",
-    "validate": "pnpm check-types && pnpm lint -- --quiet && pnpm test -- --silent --coverage"
+    "validate": "pnpm check-types && pnpm lint -- --quiet && pnpm test -- --silent --coverage --maxWorkers=1"
   },
   "husky": {
     "hooks": {
