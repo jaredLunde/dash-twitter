@@ -172,12 +172,7 @@
     ],
     "collectCoverageFrom": [
       "**/*.{ts,tsx}"
-    ],
-    "globals": {
-      "ts-jest": {
-        "tsconfig": "tsconfig.test.json"
-      }
-    }
+    ]
   },
   "dependencies": {
     "@dash-ui/compound": "^0.1.1",
