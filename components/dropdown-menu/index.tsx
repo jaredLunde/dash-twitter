@@ -4,7 +4,8 @@ import NextLink from "next/link";
 import type { LinkProps } from "next/link";
 import * as React from "react";
 import { Icon } from "@/components/icon";
-import { mq, ResponsiveProp, styles } from "@/styles";
+import type { ResponsiveProp } from "@/styles";
+import { mq, styles } from "@/styles";
 import { box, grid } from "@/styles/layout";
 import { separator } from "@/styles/separator";
 

@@ -10,7 +10,7 @@
     "lint": "eslint . --ext .js,.ts,.tsx",
     "start": "next build && next start",
     "storybook": "start-storybook -s ./public -p 6006",
-    "test": "jest --passWithNoTests",
+    "test": "jest --passWithNoTests --maxWorkers=50%",
     "up": "pnpx vercel@latest",
     "validate": "pnpm check-types && pnpm lint -- --quiet && pnpm test -- --silent --coverage"
   },
@@ -51,7 +51,7 @@
       "plugin:@next/next/recommended"
     ],
     "settings": {
-      "import/internal-pattern": "^@/.*"
+      "import/internal-regex": "^(@/.*)$"
     },
     "rules": {
       "no-empty-pattern": "off",
@@ -60,18 +60,23 @@
       "import/order": [
         "warn",
         {
+          "pathGroups": [
+            {
+              "pattern": "@/**",
+              "group": "internal"
+            }
+          ],
           "groups": [
             "builtin",
             "external",
             "internal",
-            "parent",
             [
+              "parent",
               "sibling",
               "index"
             ],
             "object"
           ],
-          "newlines-between": "never",
           "alphabetize": {
             "order": "asc",
             "caseInsensitive": true
@@ -114,19 +119,20 @@
             "node": {
               "moduleDirectory": [
                 "node_modules",
-                "../node_modules",
                 "pages/"
               ]
             },
             "jest": {
-              "jestConfigFile": "./jest.config.js"
+              "jestConfigFile": "./package.json"
             }
           }
         }
       }
     ]
   },
-  "jestConfig": {
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "jsdom",
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/$1"
     },
@@ -148,7 +154,15 @@
     ],
     "transformIgnorePatterns": [
       "node_modules"
-    ]
+    ],
+    "collectCoverageFrom": [
+      "**/*.{ts,tsx}"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsconfig": "tsconfig.test.json"
+      }
+    }
   },
   "dependencies": {
     "@dash-ui/compound": "^0.1.1",
@@ -188,6 +202,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/react-hooks": "latest",
     "@testing-library/user-event": "^12.8.3",
+    "@types/jest": "^27.0.1",
     "@types/react": "17.0.19",
     "clsx": "^1.1.1",
     "cz-conventional-changelog": "^3.3.0",
@@ -208,6 +223,7 @@
     "react-dom": "17.0.2",
     "react-hook-form": "^7.15.2",
     "storybook-addon-themes": "^6.1.0",
+    "ts-jest": "^27.0.5",
     "tsconfig-paths-webpack-plugin": "^3.5.1",
     "typescript": "4.3.5",
     "yup": "^0.32.9",
