@@ -99,7 +99,7 @@ export const resetVendorIconButtonStyles = {
   userSelect: "none",
   cursor: "pointer",
   verticalAlign: "middle",
-  MozFocusInner: {
+  "-moz-focus-inner": {
     border: 0,
     padding: 0,
     margin: 0,
@@ -114,16 +114,19 @@ const size = responsiveStyles({
   sm: {
     fontSize: `${12 / 16}rem`,
     padding: `${6 / 16}rem ${6 / 16}rem`,
+    contain: "strict",
   },
 
   md: {
     fontSize: `${16 / 16}rem`,
     padding: `${6 / 16}rem ${6 / 16}rem`,
+    contain: "strict",
   },
 
   lg: {
     fontSize: `${20 / 16}rem`,
     padding: `${6 / 16}rem ${6 / 16}rem`,
+    contain: "strict",
   },
 });
 

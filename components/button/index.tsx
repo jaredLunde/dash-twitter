@@ -102,7 +102,7 @@ export const resetVendorButtonStyles = {
   userSelect: "none",
   cursor: "pointer",
   verticalAlign: "middle",
-  MozFocusInner: {
+  "-moz-focus-inner": {
     border: 0,
     padding: 0,
     margin: 0,

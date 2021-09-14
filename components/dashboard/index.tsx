@@ -8,8 +8,8 @@ export const Dashboard = {
     return (
       <div
         className={grid({
-          inline: true,
           alignY: "start",
+          distributeX: "center",
           cols: {
             min: [72, "auto"],
             sm: [88, "auto"],
@@ -18,7 +18,6 @@ export const Dashboard = {
             xl: [256, "auto"],
           },
         })}
-        style={{ margin: "0 auto" }}
       >
         <PrimarySidebar />
         {children}

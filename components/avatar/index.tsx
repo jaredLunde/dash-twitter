@@ -63,7 +63,7 @@ const avatar = compoundStyles(
         return sizes[value as keyof typeof sizes];
       }
 
-      return { width: value, height: value };
+      return { width: value, height: value, contain: "strict" };
     }),
   },
   { atomic: true }
