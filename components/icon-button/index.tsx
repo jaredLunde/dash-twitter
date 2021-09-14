@@ -1,4 +1,4 @@
-import { DashTokens } from "@dash-ui/styles";
+import type { DashTokens } from "@dash-ui/styles";
 import clsx from "clsx";
 import * as React from "react";
 import { Icon } from "@/components/icon";

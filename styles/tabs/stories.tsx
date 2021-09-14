@@ -1,7 +1,7 @@
 import * as Tabs from "@radix-ui/react-tabs";
 import React from "react";
-import { tabs } from "./index";
 import { text } from "@/styles/text";
+import { tabs } from "./index";
 
 export default {
   title: "styles/Tabs",
@@ -9,7 +9,7 @@ export default {
   argTypes: {},
 };
 
-const Template = (args: any) => (
+const Template = () => (
   <Tabs.Root defaultValue="1" className={text({ size: "sm" })}>
     <Tabs.List className={tabs.tabList({ withBorder: true })}>
       <Tabs.Trigger className={tabs.tab()} value="1">

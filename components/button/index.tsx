@@ -1,4 +1,4 @@
-import { DashTokens } from "@dash-ui/styles";
+import type { DashTokens } from "@dash-ui/styles";
 import clsx from "clsx";
 import * as React from "react";
 import { compoundStyles, mq, responsiveStyles, styles } from "@/styles";
@@ -119,10 +119,10 @@ const size = responsiveStyles({
     padding: `${8 / 16}rem ${15 / 16}rem`,
   }),
 
-  sm: (t) => ({
+  sm: {
     fontSize: 15 / 16 + "rem",
     padding: `${10 / 16}rem ${14 / 16}rem`,
-  }),
+  },
 
   md: (t) => ({
     fontSize: t.font.size.lg,

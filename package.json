@@ -12,7 +12,7 @@
     "storybook": "start-storybook -s ./public -p 6006",
     "test": "jest --passWithNoTests",
     "up": "pnpx vercel@latest",
-    "validate": "pnpm check-types && pnpm lint -- --quiet && pnpm test -- --silent --coverage"
+    "validate": "pnpm check-types && pnpm lint -- --quiet && pnpm test -- --silent --coverage --maxWorkers=1"
   },
   "husky": {
     "hooks": {
@@ -51,7 +51,7 @@
       "plugin:@next/next/recommended"
     ],
     "settings": {
-      "import/internal-pattern": "^@/.*"
+      "import/internal-regex": "^(@/.*)$"
     },
     "rules": {
       "no-empty-pattern": "off",
@@ -60,18 +60,23 @@
       "import/order": [
         "warn",
         {
+          "pathGroups": [
+            {
+              "pattern": "@/**",
+              "group": "internal"
+            }
+          ],
           "groups": [
             "builtin",
             "external",
             "internal",
-            "parent",
             [
+              "parent",
               "sibling",
               "index"
             ],
             "object"
           ],
-          "newlines-between": "never",
           "alphabetize": {
             "order": "asc",
             "caseInsensitive": true
@@ -114,19 +119,35 @@
             "node": {
               "moduleDirectory": [
                 "node_modules",
-                "../node_modules",
                 "pages/"
               ]
             },
             "jest": {
-              "jestConfigFile": "./jest.config.js"
+              "jestConfigFile": "./package.json"
             }
           }
         }
       }
     ]
   },
-  "jestConfig": {
+  "jest": {
+    "transform": {
+      "^.+\\.(t|j)sx?$": [
+        "@swc/jest",
+        {
+          "jsc": {
+            "parser": {
+              "syntax": "typescript",
+              "tsx": true
+            }
+          },
+          "module": {
+            "type": "commonjs"
+          }
+        }
+      ]
+    },
+    "testEnvironment": "jsdom",
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/$1"
     },
@@ -148,6 +169,9 @@
     ],
     "transformIgnorePatterns": [
       "node_modules"
+    ],
+    "collectCoverageFrom": [
+      "**/*.{ts,tsx}"
     ]
   },
   "dependencies": {
@@ -184,10 +208,13 @@
     "@storybook/builder-webpack5": "^6.3.8",
     "@storybook/manager-webpack5": "^6.4.0-alpha.34",
     "@storybook/react": "^6.3.8",
+    "@swc/core": "^1.2.85",
+    "@swc/jest": "^0.2.3",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/react-hooks": "latest",
     "@testing-library/user-event": "^12.8.3",
+    "@types/jest": "^27.0.1",
     "@types/react": "17.0.19",
     "clsx": "^1.1.1",
     "cz-conventional-changelog": "^3.3.0",

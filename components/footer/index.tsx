@@ -1,4 +1,5 @@
-import { resetVendorButtonStyles } from "../button";
+import * as React from "react";
+import { resetVendorButtonStyles } from "@/components/button";
 import { DropdownMenu } from "@/components/dropdown-menu";
 import { Icon } from "@/components/icon";
 import { mq, styles } from "@/styles";

@@ -1,3 +1,4 @@
+import * as React from "react";
 import { render as rtlRender } from "@testing-library/react";
 import { DashProvider } from "@dash-ui/react";
 import { styles } from "@/styles";
