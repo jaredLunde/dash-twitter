@@ -175,9 +175,9 @@
     ]
   },
   "dependencies": {
-    "@dash-ui/compound": "^0.1.1",
+    "@dash-ui/compound": "0.1.2",
     "@dash-ui/jest": "^2.1.2",
-    "@dash-ui/layout": "^0.1.1",
+    "@dash-ui/layout": "0.1.2",
     "@dash-ui/mq": "^0.4.1",
     "@dash-ui/react": "^0.9.1",
     "@dash-ui/reset": "^0.3.1",

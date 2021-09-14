@@ -48,23 +48,26 @@ export const Avatar = React.forwardRef<HTMLImageElement, AvatarProps>(
   }
 );
 
-const avatar = compoundStyles({
-  default: styles.one((t) => ({
-    display: "flex",
-    objectFit: "cover",
-    alignItems: "center",
-    justifyContent: "center",
-    flexWrap: "nowrap",
-    borderRadius: t.radius.primary,
-  })),
-  size: responsiveStyles.lazy((value: number | string) => {
-    if (Object.keys(sizes).includes(String(value))) {
-      return sizes[value as keyof typeof sizes];
-    }
+const avatar = compoundStyles(
+  {
+    default: styles.one((t) => ({
+      display: "flex",
+      objectFit: "cover",
+      alignItems: "center",
+      justifyContent: "center",
+      flexWrap: "nowrap",
+      borderRadius: t.radius.primary,
+    })),
+    size: responsiveStyles.lazy((value: number | string) => {
+      if (Object.keys(sizes).includes(String(value))) {
+        return sizes[value as keyof typeof sizes];
+      }
 
-    return { width: value, height: value };
-  }),
-});
+      return { width: value, height: value };
+    }),
+  },
+  { atomic: true }
+);
 
 const sizes = {
   "2xs": {

@@ -1,9 +1,9 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@dash-ui/compound': ^0.1.1
+  '@dash-ui/compound': 0.1.2
   '@dash-ui/jest': ^2.1.2
-  '@dash-ui/layout': ^0.1.1
+  '@dash-ui/layout': 0.1.2
   '@dash-ui/mq': ^0.4.1
   '@dash-ui/react': ^0.9.1
   '@dash-ui/reset': ^0.3.1
@@ -67,9 +67,9 @@ specifiers:
   zustand: ^3.5.10
 
 dependencies:
-  '@dash-ui/compound': 0.1.1_9a8b3d170593315753d3bb06ce0777cc
+  '@dash-ui/compound': 0.1.2_9a8b3d170593315753d3bb06ce0777cc
   '@dash-ui/jest': 2.1.2
-  '@dash-ui/layout': 0.1.1_9a8b3d170593315753d3bb06ce0777cc
+  '@dash-ui/layout': 0.1.2_9a8b3d170593315753d3bb06ce0777cc
   '@dash-ui/mq': 0.4.1_@dash-ui+styles@0.8.6
   '@dash-ui/react': 0.9.1_1ec40d6a9e26109e611cf1ab2c424415
   '@dash-ui/reset': 0.3.1
@@ -2461,8 +2461,8 @@ packages:
     dev: false
     optional: true
 
-  /@dash-ui/compound/0.1.1_9a8b3d170593315753d3bb06ce0777cc:
-    resolution: {integrity: sha512-bL2kIrDxuBOCnT+wa4Q7lr01cml3U70dNbYt915P1LdlgzeLmnM/bb0t2Luid7xJQM8R7l7FAj6+AkEseNzpmg==}
+  /@dash-ui/compound/0.1.2_9a8b3d170593315753d3bb06ce0777cc:
+    resolution: {integrity: sha512-jQCS8ea4hQqksiVBnVY+AEk/Mxk5N/iyshACWQ1o3LTynRB50fIxXh8M/Vn5IU4DGC8VBDTpB8wbO/3ncNRRXw==}
     peerDependencies:
       '@dash-ui/responsive': '>=0.2.3'
       '@dash-ui/styles': '>=0.8.6'
@@ -2478,13 +2478,13 @@ packages:
       css: 2.2.4
     dev: false
 
-  /@dash-ui/layout/0.1.1_9a8b3d170593315753d3bb06ce0777cc:
-    resolution: {integrity: sha512-SFFal2jHLnHEWsDdUWCLafMd2ztN9umKaCCYnvTHjBnkwrCfHAKnlBN+pSJXKVEZSedB/gSvsKPq3rSJxHZsbA==}
+  /@dash-ui/layout/0.1.2_9a8b3d170593315753d3bb06ce0777cc:
+    resolution: {integrity: sha512-qlztb79DcGprHXh9UhfNWh8RIeMcJ7jQcmLe+CzNc+YlASebvBx3ZCSJbo9k+KxArBkzES0p8DYS5wmEykRpMA==}
     peerDependencies:
       '@dash-ui/responsive': '>=0.2.3'
       '@dash-ui/styles': '>=0.8.6'
     dependencies:
-      '@dash-ui/compound': 0.1.1_9a8b3d170593315753d3bb06ce0777cc
+      '@dash-ui/compound': 0.1.2_9a8b3d170593315753d3bb06ce0777cc
       '@dash-ui/responsive': 0.2.3_@dash-ui+styles@0.8.6
       '@dash-ui/styles': 0.8.6
     dev: false
