@@ -23,7 +23,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install
         run: |
-          pnpm install --reporter=silent --prod
+          pnpm install --reporter=silent
       - name: Validate
         run: |
           pnpm validate
