@@ -10,6 +10,7 @@ import {
 import { styles } from "@/styles";
 import { row } from "@/styles/layout";
 import { text } from "@/styles/text";
+import type { User } from "@/types/user";
 
 export function WhatsHappening({
   items = [
@@ -45,10 +46,11 @@ export function WhatsHappening({
       topic: "Trending in United States",
       label:
         "A Super Mario Bros. Mystery Box popped up in Houston. What's inside?",
-      account: {
-        displayName: "Chron",
-        username: "Chron",
-        profileImage:
+      // @ts-expect-error
+      user: {
+        name: "Chron",
+        screenName: "Chron",
+        profileImageUrl:
           "https://pbs.twimg.com/profile_images/1311802778705113094/6PDONOJ-_400x400.png",
       },
       image:
@@ -74,11 +76,11 @@ function WhatsHappeningItem({ item }: WhatsHappeningItemProps) {
     <div className={whatsHappeningItem()} {...buttonProps}>
       <div>
         <div className="header">
-          {item.account ? (
+          {item.user ? (
             <div className={row({ gap: "sm", align: "center" })}>
-              <Avatar size="2xs" src={item.account.profileImage} />
+              <Avatar size="2xs" src={item.user.profileImageUrl} />
               <span className={text({ color: "text", weight: "700" })}>
-                {item.account.displayName}
+                {item.user.name}
               </span>
             </div>
           ) : (
@@ -160,11 +162,7 @@ export type WhatsHappeningItem = {
   label: string;
   description?: string;
   hashtag?: string;
-  account?: {
-    displayName: string;
-    username: string;
-    profileImage: string;
-  };
+  user?: User;
   image?: string;
   topic?: string;
   tweetCount?: number;

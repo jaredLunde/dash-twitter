@@ -90,11 +90,11 @@ const footerStyles = styles.one(
 
       "a,button": {
         color: t.color.textAccentLight,
-        whiteSpace: "pre",
       },
 
       "& > *": {
         marginRight: t.gap.md,
+        whiteSpace: "pre",
       },
     }),
     hover: {
