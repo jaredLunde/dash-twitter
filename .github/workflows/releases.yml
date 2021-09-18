@@ -101,6 +101,8 @@ jobs:
         with:
           name: test-results
           path: .jest
+      - name: Merge test results
+        run: npx junit-report-merger .jest/junit.xml ".jest/junit.*.xml"
       - name: Publish test results
         uses: dorny/test-reporter@v1
         with:
