@@ -74,7 +74,7 @@ jobs:
           JEST_JUNIT_OUTPUT_NAME: junit.${{ matrix.jobs_index }}.xml
           JEST_JUNIT_OUTPUT_DIR: .test-results
           JEST_JUNIT_ADD_FILE_ATTRIBUTE: "true"
-        run: pnpm test -- --coverage --silent --maxWorkers=1 --jobsIndex=${{ matrix.jobs_index }} --jobsTotal=${{ matrix.jobs_total }}
+        run: pnpm test -- --coverage --silent --maxWorkers=1 --jobsIndex=${{ matrix.jobs_index }} --jobsTotal=${{ matrix.jobs_total }} --reporters=jest-junit
       - name: Upload test results
         uses: actions/upload-artifact@v2
         with:
