@@ -99,7 +99,7 @@ export const resetVendorIconButtonStyles = {
   userSelect: "none",
   cursor: "pointer",
   verticalAlign: "middle",
-  MozFocusInner: {
+  "-moz-focus-inner": {
     border: 0,
     padding: 0,
     margin: 0,
@@ -114,16 +114,19 @@ const size = responsiveStyles({
   sm: {
     fontSize: `${12 / 16}rem`,
     padding: `${6 / 16}rem ${6 / 16}rem`,
+    contain: "strict",
   },
 
   md: {
     fontSize: `${16 / 16}rem`,
     padding: `${6 / 16}rem ${6 / 16}rem`,
+    contain: "strict",
   },
 
   lg: {
     fontSize: `${20 / 16}rem`,
     padding: `${6 / 16}rem ${6 / 16}rem`,
+    contain: "strict",
   },
 });
 
@@ -154,49 +157,52 @@ const defaultStyles = (t: DashTokens) => ({
 });
 
 export const iconButton = {
-  solid: compoundStyles({
-    default: styles.one((t) => ({
-      ...defaultStyles(t),
-      "&[disabled]": {
-        cursor: "not-allowed",
-        opacity: 0.5,
-      },
-    })),
-    size,
-    color: responsiveStyles({
-      primary: mq({
-        default: {
-          backgroundColor: "transparent",
+  solid: compoundStyles(
+    {
+      default: styles.one((t) => ({
+        ...defaultStyles(t),
+        "&[disabled]": {
+          cursor: "not-allowed",
+          opacity: 0.5,
         },
-        hover: ({ color }) => ({
-          "&:hover:not([disabled]):not(.fetching)": {
-            textDecoration: "none",
-            backgroundColor: color.translucentPrimary,
+      })),
+      size,
+      color: responsiveStyles({
+        primary: mq({
+          default: {
+            backgroundColor: "transparent",
           },
-          "&:active:not([disabled]):not(.fetching)": {
-            textDecoration: "none",
-            backgroundColor: color.translucentPrimaryActive,
-          },
+          hover: ({ color }) => ({
+            "&:hover:not([disabled]):not(.fetching)": {
+              textDecoration: "none",
+              backgroundColor: color.translucentPrimary,
+            },
+            "&:active:not([disabled]):not(.fetching)": {
+              textDecoration: "none",
+              backgroundColor: color.translucentPrimaryActive,
+            },
+          }),
         }),
-      }),
 
-      secondary: mq({
-        default: {
-          backgroundColor: "transparent",
-        },
-        hover: ({ color }) => ({
-          "&:hover:not([disabled]):not(.fetching)": {
-            textDecoration: "none",
-            backgroundColor: color.translucentLight,
+        secondary: mq({
+          default: {
+            backgroundColor: "transparent",
           },
-          "&:active:not([disabled]):not(.fetching)": {
-            textDecoration: "none",
-            backgroundColor: color.translucentLightActive,
-          },
+          hover: ({ color }) => ({
+            "&:hover:not([disabled]):not(.fetching)": {
+              textDecoration: "none",
+              backgroundColor: color.translucentLight,
+            },
+            "&:active:not([disabled]):not(.fetching)": {
+              textDecoration: "none",
+              backgroundColor: color.translucentLightActive,
+            },
+          }),
         }),
       }),
-    }),
-  }),
+    },
+    { atomic: true }
+  ),
 } as const;
 
 const loaderKeyframes = styles.keyframes({

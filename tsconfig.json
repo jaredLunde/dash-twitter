@@ -23,6 +23,7 @@
       "@/styles": ["styles/index.tsx"],
       "@/stores": ["stores/index.ts"],
       "@/test/*": ["test/*"],
+      "@/types/*": ["types/*"],
       "@/utils/*": ["utils/*"]
     }
   },

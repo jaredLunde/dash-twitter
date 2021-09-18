@@ -102,7 +102,7 @@ export const resetVendorButtonStyles = {
   userSelect: "none",
   cursor: "pointer",
   verticalAlign: "middle",
-  MozFocusInner: {
+  "-moz-focus-inner": {
     border: 0,
     padding: 0,
     margin: 0,
@@ -163,141 +163,147 @@ const defaultStyles = (t: DashTokens) => ({
 
 export const button = {
   reset: styles.one(resetVendorButtonStyles),
-  solid: compoundStyles({
-    default: styles.one((t) => ({
-      ...defaultStyles(t),
-      "&[disabled]": {
-        cursor: "not-allowed",
-        opacity: 0.5,
-      },
-    })),
-    size,
-    color: responsiveStyles({
-      primary: mq({
-        default: ({ color }) => ({
-          backgroundColor: color.primary,
-          color: color.white,
-        }),
-        hover: ({ color }) => ({
-          "&:hover:not([disabled]):not(.fetching)": {
+  solid: compoundStyles(
+    {
+      default: styles.one((t) => ({
+        ...defaultStyles(t),
+        "&[disabled]": {
+          cursor: "not-allowed",
+          opacity: 0.5,
+        },
+      })),
+      size,
+      color: responsiveStyles({
+        primary: mq({
+          default: ({ color }) => ({
+            backgroundColor: color.primary,
             color: color.white,
-            textDecoration: "none",
-            backgroundColor: color.primaryHover,
-          },
-          "&:active:not([disabled]):not(.fetching)": {
-            color: color.white,
-            textDecoration: "none",
-            backgroundColor: color.primaryActive,
-          },
+          }),
+          hover: ({ color }) => ({
+            "&:hover:not([disabled]):not(.fetching)": {
+              color: color.white,
+              textDecoration: "none",
+              backgroundColor: color.primaryHover,
+            },
+            "&:active:not([disabled]):not(.fetching)": {
+              color: color.white,
+              textDecoration: "none",
+              backgroundColor: color.primaryActive,
+            },
+          }),
         }),
-      }),
 
-      secondary: mq({
-        default: (t) => ({
-          backgroundColor: t.color.secondary,
-          color: t.color.white,
-
-          [`.${styles.theme("dark")} &`]: {
+        secondary: mq({
+          default: (t) => ({
             backgroundColor: t.color.secondary,
-            color: t.color.black,
-          },
-        }),
-        hover: (t) => ({
-          "&:hover:not([disabled]):not(.fetching)": {
             color: t.color.white,
-            textDecoration: "none",
-            backgroundColor: t.color.secondaryHover,
 
             [`.${styles.theme("dark")} &`]: {
+              backgroundColor: t.color.secondary,
               color: t.color.black,
             },
-          },
-          "&:active:not([disabled]):not(.fetching)": {
-            color: t.color.white,
-            textDecoration: "none",
-            backgroundColor: t.color.secondaryActive,
+          }),
+          hover: (t) => ({
+            "&:hover:not([disabled]):not(.fetching)": {
+              color: t.color.white,
+              textDecoration: "none",
+              backgroundColor: t.color.secondaryHover,
 
-            [`.${styles.theme("dark")} &`]: {
-              color: t.color.black,
+              [`.${styles.theme("dark")} &`]: {
+                color: t.color.black,
+              },
             },
-          },
+            "&:active:not([disabled]):not(.fetching)": {
+              color: t.color.white,
+              textDecoration: "none",
+              backgroundColor: t.color.secondaryActive,
+
+              [`.${styles.theme("dark")} &`]: {
+                color: t.color.black,
+              },
+            },
+          }),
         }),
       }),
-    }),
-  }),
-  outline: compoundStyles({
-    /**
-     * The default variant adds shared styles to the button
-     */
-    default: styles.one((t) => ({
-      ...resetVendorButtonStyles,
-      ...defaultStyles(t),
+    },
+    { atomic: true }
+  ),
+  outline: compoundStyles(
+    {
+      /**
+       * The default variant adds shared styles to the button
+       */
+      default: styles.one((t) => ({
+        ...resetVendorButtonStyles,
+        ...defaultStyles(t),
 
-      "&[disabled]": {
-        cursor: "not-allowed",
-        backgroundColor: "transparent",
-        opacity: 0.5,
-      },
-    })),
+        "&[disabled]": {
+          cursor: "not-allowed",
+          backgroundColor: "transparent",
+          opacity: 0.5,
+        },
+      })),
 
-    color: responsiveStyles({
-      primary: mq({
-        default: (t) => ({
-          borderColor: t.color.primary,
-          color: t.color.black,
-
-          [`.${styles.theme("dark")} &`]: {
-            color: t.color.white,
-          },
-        }),
-        hover: (t) => ({
-          "&:hover:not([disabled]):not(.fetching)": {
+      color: responsiveStyles({
+        primary: mq({
+          default: (t) => ({
+            borderColor: t.color.primary,
             color: t.color.black,
-            textDecoration: "none",
-            borderColor: t.color.primaryHover,
-            backgroundColor: t.color.translucentDark,
 
             [`.${styles.theme("dark")} &`]: {
               color: t.color.white,
             },
-          },
-          "&:active:not([disabled]):not(.fetching)": {
-            color: t.color.black,
-            textDecoration: "none",
+          }),
+          hover: (t) => ({
+            "&:hover:not([disabled]):not(.fetching)": {
+              color: t.color.black,
+              textDecoration: "none",
+              borderColor: t.color.primaryHover,
+              backgroundColor: t.color.translucentDark,
 
-            [`.${styles.theme("dark")} &`]: {
-              color: t.color.white,
+              [`.${styles.theme("dark")} &`]: {
+                color: t.color.white,
+              },
             },
-          },
-        }),
-      }),
+            "&:active:not([disabled]):not(.fetching)": {
+              color: t.color.black,
+              textDecoration: "none",
 
-      secondary: mq({
-        default: (t) => ({
-          borderColor: t.color.textAccent,
-          color: t.color.secondary,
+              [`.${styles.theme("dark")} &`]: {
+                color: t.color.white,
+              },
+            },
+          }),
         }),
-        hover: (t) => ({
-          "&:hover:not([disabled]):not(.fetching)": {
-            color: t.color.secondaryHover,
-            textDecoration: "none",
-            backgroundColor: t.color.translucentDark,
-          },
-          "&:active:not([disabled]):not(.fetching)": {
-            color: t.color.secondaryActive,
-            textDecoration: "none",
 
-            [`.${styles.theme("dark")} &`]: {
-              color: t.color.secondaryActive,
+        secondary: mq({
+          default: (t) => ({
+            borderColor: t.color.textAccent,
+            color: t.color.secondary,
+          }),
+          hover: (t) => ({
+            "&:hover:not([disabled]):not(.fetching)": {
+              color: t.color.secondaryHover,
+              textDecoration: "none",
               backgroundColor: t.color.translucentDark,
             },
-          },
+            "&:active:not([disabled]):not(.fetching)": {
+              color: t.color.secondaryActive,
+              textDecoration: "none",
+
+              [`.${styles.theme("dark")} &`]: {
+                color: t.color.secondaryActive,
+                backgroundColor: t.color.translucentDark,
+              },
+            },
+          }),
         }),
       }),
-    }),
 
-    size,
-  }),
+      size,
+    },
+    { atomic: true }
+  ),
 } as const;
 
 const loaderKeyframes = styles.keyframes({

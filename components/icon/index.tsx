@@ -54,54 +54,59 @@ export interface IconProps
   src: ResponsiveProp<string>;
 }
 
-export const icon = compoundStyles({
-  default: styles.one({
-    display: "inline-block",
-    verticalAlign: "text-bottom",
-    maskPosition: "center",
-    maskRepeat: "no-repeat",
-    maskSize: "cover",
-    backgroundColor: "currentColor",
-  }),
-  src: responsiveStyles.lazy((src: string) => ({
-    maskImage: `url("${src}")`,
-  })),
-  /**
-   * A responsive style for adding color to icons
-   */
-  color: text.styles.color,
-  /**
-   * A responsive style for icon sizing
-   */
-  size: responsiveStyles.lazy(
-    (
-      value:
-        | undefined
-        | React.ReactText
-        | [React.ReactText | undefined, React.ReactText | undefined]
-    ) => {
-      const initialWidth = Array.isArray(value) ? value[0] : value;
-      let height = Array.isArray(value) ? value[1] : value;
-      const width =
-        initialWidth !== void 0 && initialWidth !== null && initialWidth !== ""
-          ? initialWidth
-          : height !== void 0 && height !== null && height !== ""
-          ? "auto"
-          : "1em";
-      height =
-        height !== void 0 && height !== null && height !== ""
-          ? height
-          : initialWidth !== void 0 &&
-            initialWidth !== null &&
-            initialWidth !== ""
-          ? "auto"
-          : "1em";
+export const icon = compoundStyles(
+  {
+    default: styles.one({
+      display: "inline-block",
+      verticalAlign: "text-bottom",
+      maskPosition: "center",
+      maskRepeat: "no-repeat",
+      maskSize: "cover",
+      backgroundColor: "currentColor",
+    }),
+    src: responsiveStyles.lazy((src: string) => ({
+      maskImage: `url("${src}")`,
+    })),
+    /**
+     * A responsive style for adding color to icons
+     */
+    color: text.styles.color,
+    /**
+     * A responsive style for icon sizing
+     */
+    size: responsiveStyles.lazy(
+      (
+        value:
+          | undefined
+          | React.ReactText
+          | [React.ReactText | undefined, React.ReactText | undefined]
+      ) => {
+        const initialWidth = Array.isArray(value) ? value[0] : value;
+        let height = Array.isArray(value) ? value[1] : value;
+        const width =
+          initialWidth !== void 0 &&
+          initialWidth !== null &&
+          initialWidth !== ""
+            ? initialWidth
+            : height !== void 0 && height !== null && height !== ""
+            ? "auto"
+            : "1em";
+        height =
+          height !== void 0 && height !== null && height !== ""
+            ? height
+            : initialWidth !== void 0 &&
+              initialWidth !== null &&
+              initialWidth !== ""
+            ? "auto"
+            : "1em";
 
-      return {
-        width,
-        height,
-        contain: width !== "auto" && height !== "auto" ? "strict" : "none",
-      };
-    }
-  ),
-});
+        return {
+          width,
+          height,
+          contain: width !== "auto" && height !== "auto" ? "strict" : "none",
+        };
+      }
+    ),
+  },
+  { atomic: true }
+);

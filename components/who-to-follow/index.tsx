@@ -14,30 +14,30 @@ import { text } from "@/styles/text";
 export function WhoToFollow({
   items = [
     {
-      account: {
-        displayName: "Chron",
-        username: "Chron",
-        profileImage:
+      user: {
+        name: "Chron",
+        screenName: "Chron",
+        profileImageUrl:
           "https://pbs.twimg.com/profile_images/1311802778705113094/6PDONOJ-_400x400.png",
       },
       promoted: true,
       createdAt: new Date(),
     },
     {
-      account: {
-        displayName: "To The Stars Academy",
-        username: "TTSAcademy",
-        profileImage:
+      user: {
+        name: "To The Stars Academy",
+        screenName: "TTSAcademy",
+        profileImageUrl:
           "https://pbs.twimg.com/profile_images/938468407434911744/sErAwTT6_400x400.jpg",
       },
       promoted: false,
       createdAt: new Date(),
     },
     {
-      account: {
-        displayName: "Robin Hanson",
-        username: "robinhanson",
-        profileImage:
+      user: {
+        name: "Robin Hanson",
+        screenName: "robinhanson",
+        profileImageUrl:
           "https://pbs.twimg.com/profile_images/1433888841342062609/aWQKgDF4_400x400.jpg",
       },
       promoted: false,
@@ -48,7 +48,7 @@ export function WhoToFollow({
   return (
     <RelatedContent heading="Who to follow" showMoreHref="/i/connect_people">
       {items.map((item) => (
-        <WhoToFollowItem key={item.account.username} item={item} />
+        <WhoToFollowItem key={item.user.screenName} item={item} />
       ))}
     </RelatedContent>
   );
@@ -64,7 +64,7 @@ function WhoToFollowItem({ item }: WhoToFollowItemProps) {
           alignY: "center",
         })}
       >
-        <Avatar size="md" src={item.account.profileImage} />
+        <Avatar size="md" src={item.user.profileImageUrl} />
         <div className={column()}>
           <span
             className={text({
@@ -73,10 +73,10 @@ function WhoToFollowItem({ item }: WhoToFollowItemProps) {
               leading: "snug",
             })}
           >
-            {item.account.displayName}
+            {item.user.name}
           </span>
           <span className={text({ color: "textAccentLight", leading: "snug" })}>
-            @{item.account.username}
+            @{item.user.screenName}
           </span>
         </div>
       </div>
@@ -126,10 +126,10 @@ export interface WhoToFollowItemProps {
 }
 
 export type WhoToFollowItem = {
-  account: {
-    displayName: string;
-    username: string;
-    profileImage: string;
+  user: {
+    name: string;
+    screenName: string;
+    profileImageUrl: string;
   };
   promoted: boolean;
   createdAt: Date;

@@ -1,9 +1,9 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@dash-ui/compound': ^0.1.1
+  '@dash-ui/compound': 0.1.2
   '@dash-ui/jest': ^2.1.2
-  '@dash-ui/layout': ^0.1.1
+  '@dash-ui/layout': 0.1.2
   '@dash-ui/mq': ^0.4.1
   '@dash-ui/react': ^0.9.1
   '@dash-ui/reset': ^0.3.1
@@ -28,6 +28,7 @@ specifiers:
   '@radix-ui/react-visually-hidden': 0.1.0
   '@react-hook/merged-ref': ^1.3.0
   '@react-hook/window-size': ^3.0.7
+  '@split-tests/jest': ^0.0.7
   '@storybook/addon-a11y': ^6.3.8
   '@storybook/addon-essentials': ^6.3.8
   '@storybook/addon-links': ^6.3.8
@@ -43,6 +44,7 @@ specifiers:
   '@types/jest': ^27.0.1
   '@types/react': 17.0.19
   clsx: ^1.1.1
+  cross-env: ^7.0.3
   cz-conventional-changelog: ^3.3.0
   eslint: 7.32.0
   eslint-config-lunde: ^0.4.0
@@ -50,6 +52,7 @@ specifiers:
   husky: ^4.3.8
   immer: ^9.0.6
   jest: ^27.1.1
+  jest-junit: ^12.2.0
   jotai: ^1.3.3
   lint-staged: ^10.5.4
   next: 11.1.0
@@ -67,9 +70,9 @@ specifiers:
   zustand: ^3.5.10
 
 dependencies:
-  '@dash-ui/compound': 0.1.1_9a8b3d170593315753d3bb06ce0777cc
+  '@dash-ui/compound': 0.1.2_9a8b3d170593315753d3bb06ce0777cc
   '@dash-ui/jest': 2.1.2
-  '@dash-ui/layout': 0.1.1_9a8b3d170593315753d3bb06ce0777cc
+  '@dash-ui/layout': 0.1.2_9a8b3d170593315753d3bb06ce0777cc
   '@dash-ui/mq': 0.4.1_@dash-ui+styles@0.8.6
   '@dash-ui/react': 0.9.1_1ec40d6a9e26109e611cf1ab2c424415
   '@dash-ui/reset': 0.3.1
@@ -94,6 +97,7 @@ dependencies:
   '@radix-ui/react-visually-hidden': 0.1.0_react@17.0.2
   '@react-hook/merged-ref': 1.3.0_react@17.0.2
   '@react-hook/window-size': 3.0.7_react@17.0.2
+  '@split-tests/jest': 0.0.7
   '@storybook/addon-a11y': 6.3.8_9c6a8df88c2691f81f37725d5b4de033
   '@storybook/addon-essentials': 6.3.8_cb11160088731a408e5fb6d894d9434e
   '@storybook/addon-links': 6.3.8_react-dom@17.0.2+react@17.0.2
@@ -109,6 +113,7 @@ dependencies:
   '@types/jest': 27.0.1
   '@types/react': 17.0.19
   clsx: 1.1.1
+  cross-env: 7.0.3
   cz-conventional-changelog: 3.3.0
   eslint: 7.32.0
   eslint-config-lunde: 0.4.0_eslint@7.32.0+typescript@4.3.5
@@ -116,6 +121,7 @@ dependencies:
   husky: 4.3.8
   immer: 9.0.6
   jest: 27.1.1
+  jest-junit: 12.2.0
   jotai: 1.3.3_immer@9.0.6+react@17.0.2
   lint-staged: 10.5.4
   next: 11.1.0_f31b35bdaa3b7c2fce82404f09d2dac4
@@ -2461,8 +2467,8 @@ packages:
     dev: false
     optional: true
 
-  /@dash-ui/compound/0.1.1_9a8b3d170593315753d3bb06ce0777cc:
-    resolution: {integrity: sha512-bL2kIrDxuBOCnT+wa4Q7lr01cml3U70dNbYt915P1LdlgzeLmnM/bb0t2Luid7xJQM8R7l7FAj6+AkEseNzpmg==}
+  /@dash-ui/compound/0.1.2_9a8b3d170593315753d3bb06ce0777cc:
+    resolution: {integrity: sha512-jQCS8ea4hQqksiVBnVY+AEk/Mxk5N/iyshACWQ1o3LTynRB50fIxXh8M/Vn5IU4DGC8VBDTpB8wbO/3ncNRRXw==}
     peerDependencies:
       '@dash-ui/responsive': '>=0.2.3'
       '@dash-ui/styles': '>=0.8.6'
@@ -2478,13 +2484,13 @@ packages:
       css: 2.2.4
     dev: false
 
-  /@dash-ui/layout/0.1.1_9a8b3d170593315753d3bb06ce0777cc:
-    resolution: {integrity: sha512-SFFal2jHLnHEWsDdUWCLafMd2ztN9umKaCCYnvTHjBnkwrCfHAKnlBN+pSJXKVEZSedB/gSvsKPq3rSJxHZsbA==}
+  /@dash-ui/layout/0.1.2_9a8b3d170593315753d3bb06ce0777cc:
+    resolution: {integrity: sha512-qlztb79DcGprHXh9UhfNWh8RIeMcJ7jQcmLe+CzNc+YlASebvBx3ZCSJbo9k+KxArBkzES0p8DYS5wmEykRpMA==}
     peerDependencies:
       '@dash-ui/responsive': '>=0.2.3'
       '@dash-ui/styles': '>=0.8.6'
     dependencies:
-      '@dash-ui/compound': 0.1.1_9a8b3d170593315753d3bb06ce0777cc
+      '@dash-ui/compound': 0.1.2_9a8b3d170593315753d3bb06ce0777cc
       '@dash-ui/responsive': 0.2.3_@dash-ui+styles@0.8.6
       '@dash-ui/styles': 0.8.6
     dev: false
@@ -3999,6 +4005,18 @@ packages:
     resolution: {integrity: sha512-iQADsW4LBMISqZ6Ci1dupJL9pprqwcVFTcOsEmQOEhW+KLCVn/Y4Jrvg2k19fIHCp+iFprriYPTdRcQR8NbUPg==}
     dependencies:
       '@sinonjs/commons': 1.8.3
+    dev: false
+
+  /@split-tests/core/0.0.7:
+    resolution: {integrity: sha512-rU8K7137K9IPlmA89FHLfQ9v1A9CJsdBOOCeuo7gK2G3XgfFB7tEXQ4PxilKVO8qWJIa5D1cSIQ1cuTOZbaJ/w==}
+    dependencies:
+      fast-xml-parser: 3.17.6
+    dev: false
+
+  /@split-tests/jest/0.0.7:
+    resolution: {integrity: sha512-mwxgXIVO6WfXj6ag2CwAPfqnbAKxW4M/dUz7SGIVjgMPQkqtb4ATIroA9axixfKk4oGnWdOdEpKmL5Htqcv/yw==}
+    dependencies:
+      '@split-tests/core': 0.0.7
     dev: false
 
   /@storybook/addon-a11y/6.3.8_9c6a8df88c2691f81f37725d5b4de033:
@@ -8354,6 +8372,14 @@ packages:
       warning: 4.0.3
     dev: false
 
+  /cross-env/7.0.3:
+    resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
+    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
+    hasBin: true
+    dependencies:
+      cross-spawn: 7.0.3
+    dev: false
+
   /cross-spawn/6.0.5:
     resolution: {integrity: sha512-eTVLrBSt7fjbDygz805pMnstIs2VTBNkRm0qxZd+M7A5XDdxVRWO5MxGBXZhjY4cqLYLdtrGqRf8mBPmzwSpWQ==}
     engines: {node: '>=4.8'}
@@ -9709,6 +9735,11 @@ packages:
 
   /fast-levenshtein/2.0.6:
     resolution: {integrity: sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=}
+    dev: false
+
+  /fast-xml-parser/3.17.6:
+    resolution: {integrity: sha512-40WHI/5d2MOzf1sD2bSaTXlPn1lueJLAX6j1xH5dSAr6tNeut8B9ktEL6sjAK9yVON4uNj9//axOdBJUuruCzw==}
+    hasBin: true
     dev: false
 
   /fastq/1.13.0:
@@ -11623,6 +11654,16 @@ packages:
       throat: 6.0.1
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /jest-junit/12.2.0:
+    resolution: {integrity: sha512-ecGzF3KEQwLbMP5xMO7wqmgmyZlY/5yWDvgE/vFa+/uIT0KsU5nluf0D2fjIlOKB+tb6DiuSSpZuGpsmwbf7Fw==}
+    engines: {node: '>=10.12.0'}
+    dependencies:
+      mkdirp: 1.0.4
+      strip-ansi: 5.2.0
+      uuid: 8.3.2
+      xml: 1.0.1
     dev: false
 
   /jest-leak-detector/27.1.1:
@@ -16376,6 +16417,11 @@ packages:
     hasBin: true
     dev: false
 
+  /uuid/8.3.2:
+    resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    hasBin: true
+    dev: false
+
   /v8-compile-cache/2.3.0:
     resolution: {integrity: sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==}
     dev: false
@@ -16801,6 +16847,10 @@ packages:
 
   /xml-name-validator/3.0.0:
     resolution: {integrity: sha512-A5CUptxDsvxKJEU3yO6DuWBSJz/qizqzJKOMIfUJHETbBw/sFaDxgd6fxm1ewUaM0jZ444Fc5vC5ROYurg/4Pw==}
+    dev: false
+
+  /xml/1.0.1:
+    resolution: {integrity: sha1-eLpyAgApxbyHuKgaPPzXS0ovweU=}
     dev: false
 
   /xmlchars/2.2.0:

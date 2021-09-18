@@ -135,43 +135,46 @@ export function useModalLink({ href }: Partial<ModalLinkProps>) {
   );
 }
 
-const link = compoundStyles({
-  default: styles.one({
-    ":hover": {
-      cursor: "pointer",
-    },
-  }),
-  color: styles({
-    primary: mq({
-      default: ({ color }) => ({
-        color: color.primary,
-
-        ":focus-visible": {
-          textDecoration: "underline",
-        },
-      }),
-      hover: {
-        ":hover": {
-          textDecoration: "underline",
-        },
+const link = compoundStyles(
+  {
+    default: styles.one({
+      ":hover": {
+        cursor: "pointer",
       },
     }),
-    secondary: mq({
-      default: ({ color }) => ({
-        color: color.secondary,
+    color: styles({
+      primary: mq({
+        default: ({ color }) => ({
+          color: color.primary,
 
-        ":focus-visible": {
-          textDecoration: "underline",
+          ":focus-visible": {
+            textDecoration: "underline",
+          },
+        }),
+        hover: {
+          ":hover": {
+            textDecoration: "underline",
+          },
         },
       }),
-      hover: {
-        ":hover": {
-          textDecoration: "underline",
+      secondary: mq({
+        default: ({ color }) => ({
+          color: color.secondary,
+
+          ":focus-visible": {
+            textDecoration: "underline",
+          },
+        }),
+        hover: {
+          ":hover": {
+            textDecoration: "underline",
+          },
         },
-      },
+      }),
     }),
-  }),
-});
+  },
+  { atomic: true }
+);
 
 export interface LinkProps
   extends Omit<NextLinkProps, "passHref">,
