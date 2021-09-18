@@ -74,6 +74,8 @@ jobs:
       - name: Test
         env:
           JEST_SUITE_NAME: "Tests / ${{ matrix.jobs_index }}"
+          JEST_JUNIT_CLASSNAME: "{classname}"
+          JEST_JUNIT_SUITE_NAME: "{classname}"
           JEST_JUNIT_OUTPUT_NAME: junit.${{ matrix.jobs_index }}.xml
           JEST_JUNIT_OUTPUT_DIR: .test-results
           JEST_JUNIT_ADD_FILE_ATTRIBUTE: "true"
