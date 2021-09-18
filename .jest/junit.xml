@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="1" failures="0" errors="0" time="1.949">
+  <testsuite name="&lt;Avatar&gt;" errors="0" failures="0" skipped="0" timestamp="2021-09-18T02:32:05" time="1.088" tests="1">
+    <testcase classname="&lt;Avatar&gt; should be the worst test ever" name="&lt;Avatar&gt; should be the worst test ever" time="0.055">
+    </testcase>
+  </testsuite>
+</testsuites>
