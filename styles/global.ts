@@ -1,7 +1,8 @@
 import { useGlobal, useThemes } from "@dash-ui/react";
 import resetGlobalStyles from "@dash-ui/reset";
-import { useWindowHeight } from "@react-hook/window-size";
+import { useDebounce } from "@react-hook/debounce";
 import { useAtom } from "jotai";
+import * as React from "react";
 import { fontAtom, fontSizeAtom, fontSizes, typography } from "@/styles/text";
 
 /**
@@ -36,7 +37,7 @@ export function GlobalStyles() {
       },
       body: {
         minWidth: "100%",
-        minHeight: "100%",
+        minHeight: "var(--vh)",
         backgroundColor: t.color.bodyBg,
         fontFamily: t.font.family[font],
         textAlign: "center",
@@ -64,17 +65,24 @@ export function GlobalStyles() {
 }
 
 function useFillAvailable() {
-  let windowHeight: number | string = useWindowHeight();
-  windowHeight =
-    typeof window === "undefined" || typeof CSS === "undefined"
-      ? windowHeight + "px"
-      : CSS.supports("height", "fill-available")
-      ? "fill-available"
-      : CSS.supports("height", "-webkit-fill-available")
-      ? "-webkit-fill-available"
-      : CSS.supports("height", "-moz-available")
-      ? "-moz-available"
-      : windowHeight + "px";
+  const [windowHeight, setWindowHeight] = useDebounce(
+    typeof window === "undefined" ? "100vh" : window.innerHeight + "px",
+    100
+  );
+
+  React.useEffect(() => {
+    let didUnsubscribe = false;
+    function handleResize() {
+      if (didUnsubscribe) return;
+      setWindowHeight(window.innerHeight + "px");
+    }
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      didUnsubscribe = true;
+    };
+  }, [setWindowHeight]);
 
   useThemes({ light: { vh: windowHeight }, dark: { vh: windowHeight } }, [
     windowHeight,

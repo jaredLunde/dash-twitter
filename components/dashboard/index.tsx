@@ -155,6 +155,7 @@ function useSidebarScroller(
     top: 0,
     overflow: "hidden",
     height: "var(--vh)",
+    minHeight: "var(--vh)",
     willChange: "scroll-position",
     contain: "strict",
   };

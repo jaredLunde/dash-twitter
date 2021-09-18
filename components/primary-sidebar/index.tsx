@@ -20,7 +20,7 @@ function PrimarySidebarBase() {
         minHeight: "var(--vh)",
         border: [["none", "hairline", "none", "none"], "accent"],
         position: "sticky",
-        inset: [0, "auto", "auto"],
+        inset: [0, "auto", 0],
         distribute: "between",
       })}
       style={{ overflow: "auto", contain: "strict" }}

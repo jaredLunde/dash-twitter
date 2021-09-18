@@ -26,6 +26,7 @@ specifiers:
   '@radix-ui/react-tabs': ^0.1.0
   '@radix-ui/react-tooltip': ^0.0.21
   '@radix-ui/react-visually-hidden': 0.1.0
+  '@react-hook/debounce': ^4.0.0
   '@react-hook/merged-ref': ^1.3.0
   '@react-hook/window-size': ^3.0.7
   '@split-tests/jest': ^0.0.7
@@ -96,6 +97,7 @@ dependencies:
   '@radix-ui/react-tabs': 0.1.0_react@17.0.2
   '@radix-ui/react-tooltip': 0.0.21_react-dom@17.0.2+react@17.0.2
   '@radix-ui/react-visually-hidden': 0.1.0_react@17.0.2
+  '@react-hook/debounce': 4.0.0_react@17.0.2
   '@react-hook/merged-ref': 1.3.0_react@17.0.2
   '@react-hook/window-size': 3.0.7_react@17.0.2
   '@split-tests/jest': 0.0.7
@@ -3946,6 +3948,15 @@ packages:
 
   /@react-hook/debounce/3.0.0_react@17.0.2:
     resolution: {integrity: sha512-ir/kPrSfAzY12Gre0sOHkZ2rkEmM4fS5M5zFxCi4BnCeXh2nvx9Ujd+U4IGpKCuPA+EQD0pg1eK2NGLvfWejag==}
+    peerDependencies:
+      react: '>=16.8'
+    dependencies:
+      '@react-hook/latest': 1.0.3_react@17.0.2
+      react: 17.0.2
+    dev: false
+
+  /@react-hook/debounce/4.0.0_react@17.0.2:
+    resolution: {integrity: sha512-706Xcg+KKWHk9BuZQUQ0ZQKp9zhv3/MbqFenWVfHcynYpSGRVwQTzJRGvPxvsdtXxJv+HfgKTY/O/hEejakwmA==}
     peerDependencies:
       react: '>=16.8'
     dependencies:
