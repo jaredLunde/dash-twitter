@@ -97,7 +97,7 @@ jobs:
           vercel-project-id: ${{ secrets.PROJECT_ID}}
 
   publish-tests:
-    name: 📚 Publish tests
+    name: 📤 Publish test results
     runs-on: ubuntu-latest
     needs: run-tests
     steps:
@@ -111,7 +111,7 @@ jobs:
       - name: Publish test results
         uses: dorny/test-reporter@v1
         with:
-          name: Test results
+          name: 📥 Test results
           token: ${{ secrets.GITHUB_TOKEN }}
           reporter: jest-junit
           path: .jest/junit.*.xml
