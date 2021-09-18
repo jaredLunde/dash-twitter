@@ -250,7 +250,8 @@ export const typography = responsiveStyles({
 
 /**
  * Rounds units to a fixed number (7)
- * @param num The number to round
+ *
+ * @param num - The number to round
  */
 export function round(num: number) {
   return num
@@ -261,7 +262,7 @@ export function round(num: number) {
 /**
  * Converts `px` to `rem` units
  *
- * @param px A number in `px` to convert to `rem`
+ * @param px - A number in `px` to convert to `rem`
  */
 export function rem(px: number) {
   return `${round(px / 16)}rem`;
@@ -270,8 +271,8 @@ export function rem(px: number) {
 /**
  * Converts `px` to `em` units based on a base number.
  *
- * @param px A number in `px` to convert to `em`
- * @param base The base number that the resulting `em` is calculated relative to
+ * @param px - A number in `px` to convert to `em`
+ * @param base - The base number that the resulting `em` is calculated relative to
  */
 export function em(px: number, base: number) {
   return `${round(px / base)}em`;

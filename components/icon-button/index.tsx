@@ -40,16 +40,19 @@ export interface IconButtonProps
   src: string;
   /**
    * Select a button variant
+   *
    * @default "solid"
    */
   variant?: keyof typeof iconButton;
   /**
    * Select a button color
+   *
    * @default "primary"
    */
   color?: ResponsiveProp<"primary" | "secondary">;
   /**
    * Select a button size
+   *
    * @default "sm"
    */
   size?: ResponsiveProp<"sm" | "md" | "lg">;

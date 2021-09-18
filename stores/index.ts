@@ -221,7 +221,7 @@ type PersistOptions<S extends State> = {
   /**
    * Use a custom deserializer.
    *
-   * @param str The storage's current value.
+   * @param str - The storage's current value.
    * @default JSON.parse
    */
   deserialize?: (str: string) => StorageValue<S>;
