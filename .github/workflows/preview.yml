@@ -74,13 +74,14 @@ jobs:
           JEST_JOBS_TOTAL: ${{ matrix.ci_node_total }}
           JEST_JUNIT_SUITE_NAME: "Jest suite #${{ matrix.ci_node_index }}"
           JEST_JUNIT_OUTPUT_NAME: junit.${{ matrix.ci_node_index }}.xml
+          JEST_JUNIT_OUTPUT_DIR: .test-results
         run: pnpm test -- --coverage --silent --maxWorkers=1
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v2
         with:
           name: test-results
-          path: junit.${{ matrix.ci_node_index }}.xml
+          path: .test-results/junit.${{ matrix.ci_node_index }}.xml
 
   deploy:
     name: 🚀 Deploy
