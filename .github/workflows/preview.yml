@@ -31,7 +31,7 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Install
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: pnpm install --reporter=silent
       - name: ✅ Check types
         run: pnpm check-types
@@ -39,7 +39,7 @@ jobs:
         run: pnpm lint -- --quiet
 
   run-tests:
-    name: 🧪 Test
+    name: 🧪 Test ${{ matrix.jobs_index }}
     runs-on: ubuntu-latest
     needs: install
     strategy:
@@ -48,8 +48,8 @@ jobs:
       matrix:
         node-version: [16.x]
         # Runs in X jobs
-        ci_node_total: [1]
-        ci_node_index: [0]
+        jobs_total: [1]
+        jobs_index: [0]
 
     steps:
       - name: Checkout
@@ -62,26 +62,33 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Cache node_modules
+      - name: Load node_modules
         id: cache-node-modules
         uses: actions/cache@v2
         with:
           path: node_modules
           key: ${{ runner.os }}-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+      - name: Load previous test results
+        id: cache-test-results
+        uses: actions/cache@v2
+        with:
+          path: .jest
+          key: test-results-${{ hashFiles('{components,hooks,stores,styles,utils}/**/*.test.{js,jsx,ts,tsx}') }}
       - name: Test
+        if: steps.cache-test-results.outputs.cache-hit != 'true'
         env:
-          JEST_JOBS_INDEX: ${{ matrix.ci_node_index }}
-          JEST_JOBS_TOTAL: ${{ matrix.ci_node_total }}
-          JEST_JUNIT_SUITE_NAME: "Jest suite #${{ matrix.ci_node_index }}"
-          JEST_JUNIT_OUTPUT_NAME: junit.${{ matrix.ci_node_index }}.xml
+          JEST_JOBS_INDEX: ${{ matrix.jobs_index }}
+          JEST_JOBS_TOTAL: ${{ matrix.jobs_total }}
+          JEST_JUNIT_SUITE_NAME: "Jest suite #${{ matrix.jobs_index }}"
+          JEST_JUNIT_OUTPUT_NAME: junit.${{ matrix.jobs_index }}.xml
           JEST_JUNIT_OUTPUT_DIR: .test-results
         run: pnpm test -- --coverage --silent --maxWorkers=1
       - name: Upload test results
-        if: always()
+        if: steps.cache-test-results.outputs.cache-hit != 'true'
         uses: actions/upload-artifact@v2
         with:
           name: test-results
-          path: .test-results/junit.${{ matrix.ci_node_index }}.xml
+          path: .test-results/junit.${{ matrix.jobs_index }}.xml
 
   deploy:
     name: 🚀 Deploy
@@ -106,14 +113,28 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Cache test results
+        id: cache-test-results
+        uses: actions/cache@v2
+        with:
+          path: .jest
+          key: test-results-${{ hashFiles('{components,hooks,stores,styles,utils}/**/*.test.{js,jsx,ts,tsx}') }}
+      - name: Download test results
+        uses: actions/download-artifact@v2
+        if: steps.cache-test-results.outputs.cache-hit != 'true'
+        with:
+          name: test-results
+          path: .jest
+      - name: Merge test results
+        if: steps.cache-test-results.outputs.cache-hit != 'true'
+        run: npx junit-report-merger .jest/junit.xml ".jest/junit.*.xml"
       - name: Publish test results
         uses: dorny/test-reporter@v1
         with:
           name: 📥 Test results
           token: ${{ secrets.GITHUB_TOKEN }}
           reporter: jest-junit
-          artifact: test-results
-          path: junit.*.xml
+          path: .jest/junit.xml
           list-suites: "all"
           list-tests: "all"
           max-annotations: "50"
