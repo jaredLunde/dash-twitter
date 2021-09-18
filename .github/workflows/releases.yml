@@ -1,6 +1,9 @@
-name: preview
+name: releases
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
@@ -86,8 +89,52 @@ jobs:
           name: test-coverage
           path: coverage
 
-  deploy:
-    name: 🚀 Deploy
+  publish-tests:
+    name: 📤 Publish test results
+    runs-on: ubuntu-latest
+    needs: run-tests
+    steps:
+      - name: Download test results
+        uses: actions/download-artifact@v2
+        with:
+          name: test-results
+          path: .jest
+      - name: Publish test results
+        uses: dorny/test-reporter@v1
+        with:
+          name: 📥 Test results
+          token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: jest-junit
+          path: .jest/junit.xml
+          list-suites: "all"
+          list-tests: "all"
+          max-annotations: "50"
+          fail-on-error: "true"
+
+  auto-commit-test-results:
+    name: 🤖 Auto-commit test results
+    if: ${{ github.event_name == 'push' }}
+    runs-on: ubuntu-latest
+    needs: run-tests
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Download test results
+        uses: actions/download-artifact@v2
+        with:
+          name: test-results
+          path: .jest
+      - name: Merge test results
+        run: npx junit-report-merger .jest/junit.xml ".jest/junit.*.xml"
+      - name: Commit test results
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          file_pattern: .jest/junit.xml
+          commit_message: Update test results
+
+  deployPreview:
+    name: 🎥 Deploy Preview
+    if: ${{ github.event_name == 'pull_request' }}
     runs-on: ubuntu-latest
     needs: run-tests
     steps:
@@ -102,38 +149,19 @@ jobs:
           vercel-org-id: ${{ secrets.ORG_ID}}
           vercel-project-id: ${{ secrets.PROJECT_ID}}
 
-  publish-tests:
-    name: 📤 Publish test results
+  deploy:
+    name: 🚀 Deploy to Production
+    if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
     needs: run-tests
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2.0.1
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v20
         with:
-          version: 6.14.3
-      - name: Download test results
-        uses: actions/download-artifact@v2
-        with:
-          name: test-results
-          path: .jest
-      - name: Merge test results
-        run: npx junit-report-merger .jest/junit.xml ".jest/junit.*.xml"
-      - name: Commit test results
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          file_pattern: .jest/junit.xml
-          commit_user_name: Git Auto Commit
-          commit_message: Update junit.xml
-      - name: Publish test results
-        uses: dorny/test-reporter@v1
-        with:
-          name: 📥 Test results
-          token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: jest-junit
-          path: .jest/junit.xml
-          list-suites: "all"
-          list-tests: "all"
-          max-annotations: "50"
-          fail-on-error: "true"
+          # see: https://github.com/marketplace/actions/vercel-action#inputs
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.ORG_ID}}
+          vercel-project-id: ${{ secrets.PROJECT_ID}}
