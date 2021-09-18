@@ -51,8 +51,8 @@ jobs:
       matrix:
         node-version: [16.x]
         # Runs in X jobs
-        jobs_total: [2]
-        jobs_index: [0, 1]
+        jobs_total: [1] # [2]
+        jobs_index: [0] # [0, 1]
 
     steps:
       - name: Checkout
