@@ -124,7 +124,7 @@ jobs:
   deploy-preview:
     name: 🖼️ Deploy Preview
     # Don't run deployments for test-only commits/PRs
-    if: "!startsWith(github.event.head_commit.message, 'test:') && !startsWith(github.event.pull_request.title, 'test:') && !startsWith(github.event.head_commit.message, 'test(') && !startsWith(github.event.pull_request.title, 'test(')"
+    if: "github.event_name == 'pull_request' && !startsWith(github.event.head_commit.message, 'test:') && !startsWith(github.event.pull_request.title, 'test:') && !startsWith(github.event.head_commit.message, 'test(') && !startsWith(github.event.pull_request.title, 'test(')"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -141,7 +141,7 @@ jobs:
   deploy-production:
     name: 🚀 Deploy to Production
     # Don't run deployments for test-only commits/PRs
-    if: "!startsWith(github.event.head_commit.message, 'test:') && !startsWith(github.event.pull_request.title, 'test:') && !startsWith(github.event.head_commit.message, 'test(') && !startsWith(github.event.pull_request.title, 'test(')"
+    if: "github.event_name == 'push' && !startsWith(github.event.head_commit.message, 'test:') && !startsWith(github.event.pull_request.title, 'test:') && !startsWith(github.event.head_commit.message, 'test(') && !startsWith(github.event.pull_request.title, 'test(')"
     runs-on: ubuntu-latest
     needs: run-tests
     steps:
