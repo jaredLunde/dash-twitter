@@ -44,16 +44,23 @@
   ],
   "eslintConfig": {
     "plugins": [
-      "@next/next"
+      "@next/next",
+      "jsdoc"
     ],
     "extends": [
       "lunde",
-      "plugin:@next/next/recommended"
+      "plugin:@next/next/recommended",
+      "plugin:jsdoc/recommended"
     ],
     "settings": {
       "import/internal-regex": "^(@/.*)$"
     },
     "rules": {
+      "jsdoc/no-types": "off",
+      "jsdoc/require-param-type": "off",
+      "jsdoc/require-returns": "off",
+      "jsdoc/require-jsdoc": "off",
+      "jsdoc/require-hyphen-before-param-description": "warn",
       "no-empty-pattern": "off",
       "import/no-unresolved": "off",
       "import/extensions": "off",
@@ -230,6 +237,7 @@
     "eslint": "7.32.0",
     "eslint-config-lunde": "^0.4.0",
     "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-jsdoc": "^36.1.0",
     "husky": "^4.3.8",
     "immer": "^9.0.6",
     "jest": "^27.1.1",

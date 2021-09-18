@@ -27,7 +27,8 @@ export const skeleton = compoundStyles(
      * - `text`: automatically uses a height of `1em`
      * - `rect`: for rectangles, has a `primary` border radius
      * - `circle`: adds a `max` border radius
-     * @default rect
+     *
+     * @default "rect"
      */
     variant: styles.lazy((variant: "text" | "rect" | "circle") => (t) => ({
       backgroundColor: t.color.blue100,

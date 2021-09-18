@@ -38,21 +38,25 @@ export interface ButtonProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "color"> {
   /**
    * Select a button variant
+   *
    * @default "solid"
    */
   variant?: "solid" | "outline";
   /**
    * Select a button color
+   *
    * @default "primary"
    */
   color?: ResponsiveProp<"primary" | "secondary">;
   /**
    * Select a button size
+   *
    * @default "sm"
    */
   size?: ResponsiveProp<"xs" | "sm" | "md" | "lg">;
   /**
    * Renders a loading icon as the child of this button when true
+   *
    * @default false
    */
   fetching?: boolean;
