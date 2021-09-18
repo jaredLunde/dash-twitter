@@ -124,7 +124,7 @@ jobs:
   deploy-preview:
     name: 🖼️ Deploy Preview
     # Don't run deployments for test-only commits/PRs
-    if: "github.event_name == 'pull_request' && !startsWith(github.event.head_commit.message, 'test:') && !startsWith(github.event.pull_request.title, 'test:') && !startsWith(github.event.head_commit.message, 'test(') && !startsWith(github.event.pull_request.title, 'test(')"
+    if: "github.event_name == 'pull_request' && !startsWith(github.event.head_commit.message, 'test:') && !startsWith(github.event.pull_request.title, 'test:') && !startsWith(github.event.head_commit.message, 'test(') && !startsWith(github.event.pull_request.title, 'test(') && !contains(github.event.head_commit.message, '[skip ci]') && !startsWith(github.event.head_commit.message, 'docs:') && !startsWith(github.event.head_commit.message, 'chore:') && !startsWith(github.event.head_commit.message, 'style:') && !contains(github.event.pull_request.title, '[skip ci]') && !startsWith(github.event.pull_request.title, 'docs:') && !startsWith(github.event.pull_request.title, 'chore:') && !startsWith(github.event.pull_request.title, 'style:') && !startsWith(github.event.head_commit.message, 'docs(') && !startsWith(github.event.head_commit.message, 'chore(') && !startsWith(github.event.head_commit.message, 'style(') && !startsWith(github.event.pull_request.title, 'docs(') && !startsWith(github.event.pull_request.title, 'chore(') && !startsWith(github.event.pull_request.title, 'style(')"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
