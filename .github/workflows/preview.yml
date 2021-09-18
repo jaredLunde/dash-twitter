@@ -119,7 +119,7 @@ jobs:
           name: test-results
           path: .jest
       - name: Merge test results
-        run: pnpx junit-report-merger .jest/junit.xml ".jest/junit.*.xml"
+        run: npx junit-report-merger .jest/junit.xml ".jest/junit.*.xml"
       - name: Commit test results
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
