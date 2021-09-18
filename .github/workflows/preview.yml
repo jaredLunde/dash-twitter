@@ -6,32 +6,97 @@ on:
       - main
 
 jobs:
-  preview:
-    name: Preview
+  install:
+    name: 🏗️ Install and verify
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [16.x]
     steps:
-      - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2.0.1
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.0.1
         with:
           version: 6.14.3
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Cache node_modules
+        id: cache-node-modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Install
-        run: |
-          pnpm install --reporter=silent
-      - name: Validate
-        run: |
-          pnpm validate
-      - name: Deploy
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: pnpm install --reporter=silent
+      - name: ✅ Check types
+        run: pnpm check-types
+      - name: 🧹 Lint
+        run: pnpm lint -- --quiet
+
+  run-tests:
+    name: 🧪 Test
+    runs-on: ubuntu-latest
+    strategy:
+      # When one test job fails, DO NOT cancel the other containers
+      fail-fast: false
+      matrix:
+        # Runs in X jobs
+        ci_node_total: [1]
+        ci_node_index: [0]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cache node_modules
+        id: cache-node-modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+      - name: Test
+        env:
+          JEST_JUNIT_OUTPUT_NAME: junit.${{ matrix.ci_node_index }}.xml
+        run: pnpm test -- --coverage --reporters=default --reporters=jest-junit --silent --maxWorkers=1
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-results
+          path: junit.${{ matrix.ci_node_index }}.xml
+
+  deploy:
+    name: 🚀 Deploy
+    runs-on: ubuntu-latest
+    needs: run-tests
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Deploy to Vercel
         uses: amondnet/vercel-action@v20
         with:
           # see: https://github.com/marketplace/actions/vercel-action#inputs
           github-token: ${{ secrets.GITHUB_TOKEN }}
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          zeit-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.ORG_ID}}
           vercel-project-id: ${{ secrets.PROJECT_ID}}
+
+  publish-tests:
+    name: 📚 Publish tests
+    runs-on: ubuntu-latest
+    needs: install
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: test-results
+          path: .jest
+      - name: Publish test results
+        uses: EnricoMi/publish-unit-test-result-action@v1.19
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          files: .jest/junit.*.xml
