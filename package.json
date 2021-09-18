@@ -190,7 +190,7 @@
   "jest-junit": {
     "output": "./junit.xml",
     "ancestorSeparator": " › ",
-    "suiteNameTemplate": "{title} — {filepath}"
+    "suiteNameTemplate": "`{title}` — _{filepath}_"
   },
   "dependencies": {
     "@dash-ui/compound": "0.1.2",

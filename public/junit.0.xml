@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Tests / 0" tests="2" failures="0" errors="0" time="5.712">
+  <testsuite name="&lt;Avatar&gt; — components/avatar/avatar.test.tsx" errors="0" failures="0" skipped="0" timestamp="2021-09-18T04:55:40" time="1.649" tests="1">
+    <testcase classname="&lt;Avatar&gt; should be the worst test ever" name="&lt;Avatar&gt; should be the worst test ever" time="0.083" file="components/avatar/avatar.test.tsx">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;Button&gt; — components/button/button.test.tsx" errors="0" failures="0" skipped="0" timestamp="2021-09-18T04:55:42" time="0.422" tests="1">
+    <testcase classname="&lt;Button&gt; should be the worst test ever" name="&lt;Button&gt; should be the worst test ever" time="0.038" file="components/button/button.test.tsx">
+    </testcase>
+  </testsuite>
+</testsuites>
