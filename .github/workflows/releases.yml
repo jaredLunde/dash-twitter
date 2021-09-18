@@ -10,7 +10,7 @@ on:
 
 jobs:
   install:
-    name: 🏗️ Install and verify
+    name: 🏗️ Install
     if: "!contains(github.event.head_commit.message, '[skip ci]') && !startsWith(github.event.head_commit.message, 'docs:') && !startsWith(github.event.head_commit.message, 'chore:') && !startsWith(github.event.head_commit.message, 'style:') && !contains(github.event.pull_request.title, '[skip ci]') && !startsWith(github.event.pull_request.title, 'docs:') && !startsWith(github.event.pull_request.title, 'chore:') && !startsWith(github.event.pull_request.title, 'style:') && !startsWith(github.event.head_commit.message, 'docs(') && !startsWith(github.event.head_commit.message, 'chore(') && !startsWith(github.event.head_commit.message, 'style(') && !startsWith(github.event.pull_request.title, 'docs(') && !startsWith(github.event.pull_request.title, 'chore(') && !startsWith(github.event.pull_request.title, 'style(')"
     runs-on: ubuntu-latest
     strategy:
@@ -36,9 +36,34 @@ jobs:
       - name: Install
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: pnpm install --reporter=silent
-      - name: ✅ Check types
+
+  verify:
+    name: "✅ Verify"
+    runs-on: ubuntu-latest
+    needs: install
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.14.3
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Load node_modules
+        id: cache-node-modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+      - name: Check types
         run: pnpm check-types
-      - name: 🧹 Lint
+      - name: Lint
         run: pnpm lint -- --quiet
 
   run-tests:
@@ -126,7 +151,7 @@ jobs:
     # Don't run deployments for test-only commits/PRs
     if: "!startsWith(github.event.head_commit.message, 'test:') && !startsWith(github.event.pull_request.title, 'test:') && !startsWith(github.event.head_commit.message, 'test(') && !startsWith(github.event.pull_request.title, 'test(')"
     runs-on: ubuntu-latest
-    needs: run-tests
+    needs: "${{ github.event_name == 'pull_request' && 'install' || 'run-tests' }}"
     steps:
       - name: Checkout
         uses: actions/checkout@v2
