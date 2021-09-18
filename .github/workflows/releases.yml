@@ -1,4 +1,4 @@
-name: ${{ github.event_name == 'pull_request' && 'preview' || 'release'  }}
+name: releases
 
 on:
   push:
