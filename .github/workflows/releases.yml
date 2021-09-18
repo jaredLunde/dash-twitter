@@ -11,7 +11,7 @@ on:
 jobs:
   install:
     name: 🏗️ Install and verify
-    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    if: "!contains(github.event.head_commit.message, '[skip ci]') && !startsWith(github.event.head_commit.message, 'docs:') && !startsWith(github.event.head_commit.message, 'chore:') && !startsWith(github.event.head_commit.message, 'style:') && !contains(github.event.pull_request.title, '[skip ci]') && !startsWith(github.event.pull_request.title, 'docs:') && !startsWith(github.event.pull_request.title, 'chore:') && !startsWith(github.event.pull_request.title, 'style:')"
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -42,7 +42,7 @@ jobs:
         run: pnpm lint -- --quiet
 
   run-tests:
-    name: "🧪 Test #${{ matrix.jobs_index }}"
+    name: "🧪 Tests / ${{ matrix.jobs_index }}"
     runs-on: ubuntu-latest
     needs: install
     strategy:
@@ -73,7 +73,7 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Test
         env:
-          JEST_JUNIT_SUITE_NAME: "Jest suite #${{ matrix.jobs_index }}"
+          JEST_SUITE_NAME: "Tests / ${{ matrix.jobs_index }}"
           JEST_JUNIT_OUTPUT_NAME: junit.${{ matrix.jobs_index }}.xml
           JEST_JUNIT_OUTPUT_DIR: .test-results
           JEST_JUNIT_ADD_FILE_ATTRIBUTE: "true"
@@ -119,7 +119,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           file_pattern: .jest/junit.xml
-          commit_message: Update test results
+          commit_message: "chore: update test results"
 
   deploy:
     name: "🚀 Deploy to ${{ github.event_name == 'pull_request' && 'Preview' || 'Production'  }}"
