@@ -17,6 +17,7 @@ jobs:
       matrix:
         node-version: [16.x]
     steps:
+      - run: echo "$GITHUB_CONTEXT"
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup pnpm
