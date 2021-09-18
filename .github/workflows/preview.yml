@@ -98,7 +98,7 @@ jobs:
   publish-tests:
     name: 📚 Publish tests
     runs-on: ubuntu-latest
-    needs: install
+    needs: run-tests
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v2
