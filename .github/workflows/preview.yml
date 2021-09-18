@@ -115,7 +115,13 @@ jobs:
           name: test-results
           path: .jest
       - name: Merge test results
-        run: npx junit-report-merger .jest/junit.xml ".jest/junit.*.xml"
+        run: pnpx junit-report-merger .jest/junit.xml ".jest/junit.*.xml"
+      - name: Commit test results
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          file_pattern: .jest/junit.xml
+          commit_user_name: Git Auto Commit
+          commit_message: Update junit.xml
       - name: Publish test results
         uses: dorny/test-reporter@v1
         with:
