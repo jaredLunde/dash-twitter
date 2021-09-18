@@ -117,19 +117,19 @@ const size = responsiveStyles({
   sm: {
     fontSize: `${12 / 16}rem`,
     padding: `${6 / 16}rem ${6 / 16}rem`,
-    contain: "strict",
+    contain: "content",
   },
 
   md: {
     fontSize: `${16 / 16}rem`,
     padding: `${6 / 16}rem ${6 / 16}rem`,
-    contain: "strict",
+    contain: "content",
   },
 
   lg: {
     fontSize: `${20 / 16}rem`,
     padding: `${6 / 16}rem ${6 / 16}rem`,
-    contain: "strict",
+    contain: "content",
   },
 });
 
