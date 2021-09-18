@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <testsuites failures="0" errors="0" tests="2">
-  <testsuite name="Jest suite #0" errors="0" failures="0" skipped="0" timestamp="2021-09-18T03:31:27" time="1.778" tests="1">
-    <testcase classname="&lt;Avatar&gt; should be the worst test ever" name="&lt;Avatar&gt; should be the worst test ever" time="0.093" file="components/avatar/avatar.test.tsx"/>
+  <testsuite name="Jest suite #0" errors="0" failures="0" skipped="0" timestamp="2021-09-18T04:22:07" time="1.752" tests="1">
+    <testcase classname="&lt;Avatar&gt; should be the worst test ever" name="&lt;Avatar&gt; should be the worst test ever" time="0.084" file="components/avatar/avatar.test.tsx"/>
   </testsuite>
-  <testsuite name="Jest suite #1" errors="0" failures="0" skipped="0" timestamp="2021-09-18T03:31:28" time="1.357" tests="1">
-    <testcase classname="&lt;Button&gt; should be the worst test ever" name="&lt;Button&gt; should be the worst test ever" time="0.063" file="components/button/button.test.tsx"/>
+  <testsuite name="Jest suite #0" errors="0" failures="0" skipped="0" timestamp="2021-09-18T04:22:08" time="0.503" tests="1">
+    <testcase classname="&lt;Button&gt; should be the worst test ever" name="&lt;Button&gt; should be the worst test ever" time="0.055" file="components/button/button.test.tsx"/>
   </testsuite>
 </testsuites>
