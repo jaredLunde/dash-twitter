@@ -30,15 +30,15 @@ this is the minimum effective abstraction for CSS-in-React.
 
 ## Scripts
 
-| Script            | Description                                         |
-| ----------------- | --------------------------------------------------- |
-| `dev`             | Runs the development server                         |
-| `build`           | Builds a production Next.js app                     |
-| `build-storybook` | Builds a production Storybook app                   |
-| `check-types`     | Type checks the project                             |
-| `lint`            | Runs ESLint on the project                          |
-| `start`           | Builds a production Next.js app and runs it locally |
-| `storybook`       | Runs a Storybook development server                 |
-| `test`            | Runs Jest on the project                            |
-| `up`              | Deploys the project in Vercel                       |
-| `validate`        | Checks types, lints, and tests the project          |
+| Script            | Description                                                                   |
+| ----------------- | ----------------------------------------------------------------------------- |
+| `dev`             | Runs the development server                                                   |
+| `build`           | Builds a production Next.js app                                               |
+| `build-storybook` | Builds a production Storybook app                                             |
+| `check-types`     | Type checks the project                                                       |
+| `lint`            | Runs ESLint on the project                                                    |
+| `start`           | Builds a production Next.js app and runs it locally                           |
+| `storybook`       | Runs a Storybook development server                                           |
+| `test`            | Runs Jest on the project                                                      |
+| `test:report`     | Runs Jest on the project and writes `junit.xml` file to the `.jest` directory |
+| `up`              | Deploys the project in Vercel                                                 |
