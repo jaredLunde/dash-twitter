@@ -11,6 +11,7 @@
     "start": "next build && next start",
     "storybook": "start-storybook -s ./public -p 6006",
     "test": "jest",
+    "test:report": "cross-env JEST_JUNIT_OUTPUT_DIR=.jest JEST_JUNIT_ADD_FILE_ATTRIBUTE='true' jest --reporters=default --reporters=jest-junit",
     "up": "pnpx vercel@latest"
   },
   "husky": {
@@ -131,16 +132,6 @@
   },
   "jest": {
     "testSequencer": "@split-tests/jest",
-    "reporters": [
-      "default",
-      [
-        "jest-junit",
-        {
-          "outputDirectory": ".jest",
-          "addFileAttribute": true
-        }
-      ]
-    ],
     "transform": {
       "^.+\\.(t|j)sx?$": [
         "@swc/jest",
@@ -192,7 +183,7 @@
     ],
     "globals": {
       "split-tests": {
-        "junit": "<rootDir>/.jest/junit.xml"
+        "junit": "./.jest/junit.xml"
       }
     }
   },
@@ -240,6 +231,7 @@
     "@types/jest": "^27.0.1",
     "@types/react": "17.0.19",
     "clsx": "^1.1.1",
+    "cross-env": "^7.0.3",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "7.32.0",
     "eslint-config-lunde": "^0.4.0",
