@@ -10,13 +10,7 @@ import { fontAtom, fontSizeAtom, fontSizes, typography } from "@/styles/text";
 export function GlobalStyles() {
   const [fontSize] = useAtom(fontSizeAtom);
   const [font] = useAtom(fontAtom);
-  const windowHeight = useWindowHeight();
-
-  useThemes(
-    { light: { vh: `${windowHeight}px` }, dark: { vh: `${windowHeight}px` } },
-    [windowHeight]
-  );
-
+  useFillAvailable();
   useGlobal(resetGlobalStyles, []);
 
   useGlobal(
@@ -67,4 +61,22 @@ export function GlobalStyles() {
   useGlobal(`body {${typography.css("sm")}}`, []);
 
   return null;
+}
+
+function useFillAvailable() {
+  let windowHeight: number | string = useWindowHeight();
+  windowHeight =
+    typeof window === "undefined" || typeof CSS === "undefined"
+      ? windowHeight + "px"
+      : CSS.supports("height", "fill-available")
+      ? "fill-available"
+      : CSS.supports("height", "-webkit-fill-available")
+      ? "-webkit-fill-available"
+      : CSS.supports("height", "-moz-available")
+      ? "-moz-available"
+      : windowHeight + "px";
+
+  useThemes({ light: { vh: windowHeight }, dark: { vh: windowHeight } }, [
+    windowHeight,
+  ]);
 }
