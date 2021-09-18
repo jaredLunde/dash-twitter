@@ -106,7 +106,13 @@ jobs:
           name: test-results
           path: .jest
       - name: Publish test results
-        uses: EnricoMi/publish-unit-test-result-action@v1.19
+        uses: dorny/test-reporter@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          files: .jest/junit.*.xml
+          name: Test results
+          token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: jest-junit
+          path: .jest/junit.*.xml
+          list-suites: "all"
+          list-tests: "all"
+          max-annotations: "50"
+          fail-on-error: "true"
