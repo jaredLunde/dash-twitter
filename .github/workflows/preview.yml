@@ -8,6 +8,7 @@ on:
 jobs:
   install:
     name: 🏗️ Install and verify
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -69,10 +70,11 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Test
         env:
+          JEST_JOBS_INDEX: ${{ matrix.ci_node_index }}
+          JEST_JOBS_TOTAL: ${{ matrix.ci_node_total }}
           JEST_JUNIT_SUITE_NAME: "Jest suite #${{ matrix.ci_node_index }}"
-          JEST_JUNIT_ADD_FILE_ATTRIBUTE: "true"
           JEST_JUNIT_OUTPUT_NAME: junit.${{ matrix.ci_node_index }}.xml
-        run: pnpm test -- --coverage --reporters=default --reporters=jest-junit --silent --maxWorkers=1
+        run: pnpm test -- --coverage --silent --maxWorkers=1
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v2
@@ -103,18 +105,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Download artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: test-results
-          path: .jest
       - name: Publish test results
         uses: dorny/test-reporter@v1
         with:
           name: 📥 Test results
           token: ${{ secrets.GITHUB_TOKEN }}
           reporter: jest-junit
-          path: .jest/junit.*.xml
+          artifact: test-results
+          path: junit.*.xml
           list-suites: "all"
           list-tests: "all"
           max-annotations: "50"

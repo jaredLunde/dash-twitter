@@ -10,7 +10,7 @@
     "lint": "eslint . --ext .js,.ts,.tsx",
     "start": "next build && next start",
     "storybook": "start-storybook -s ./public -p 6006",
-    "test": "jest --passWithNoTests",
+    "test": "jest",
     "up": "pnpx vercel@latest"
   },
   "husky": {
@@ -130,6 +130,17 @@
     ]
   },
   "jest": {
+    "testSequencer": "@split-tests/jest",
+    "reporters": [
+      "default",
+      [
+        "jest-junit",
+        {
+          "outputDirectory": ".jest",
+          "addFileAttribute": true
+        }
+      ]
+    ],
     "transform": {
       "^.+\\.(t|j)sx?$": [
         "@swc/jest",
@@ -178,7 +189,12 @@
     ],
     "collectCoverageFrom": [
       "**/*.{ts,tsx}"
-    ]
+    ],
+    "globals": {
+      "split-tests": {
+        "junit": "<rootDir>/.jest/junit.xml"
+      }
+    }
   },
   "dependencies": {
     "@dash-ui/compound": "0.1.2",
@@ -208,6 +224,7 @@
     "@radix-ui/react-visually-hidden": "0.1.0",
     "@react-hook/merged-ref": "^1.3.0",
     "@react-hook/window-size": "^3.0.7",
+    "@split-tests/jest": "^0.0.7",
     "@storybook/addon-a11y": "^6.3.8",
     "@storybook/addon-essentials": "^6.3.8",
     "@storybook/addon-links": "^6.3.8",

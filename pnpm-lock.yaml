@@ -28,6 +28,7 @@ specifiers:
   '@radix-ui/react-visually-hidden': 0.1.0
   '@react-hook/merged-ref': ^1.3.0
   '@react-hook/window-size': ^3.0.7
+  '@split-tests/jest': ^0.0.7
   '@storybook/addon-a11y': ^6.3.8
   '@storybook/addon-essentials': ^6.3.8
   '@storybook/addon-links': ^6.3.8
@@ -95,6 +96,7 @@ dependencies:
   '@radix-ui/react-visually-hidden': 0.1.0_react@17.0.2
   '@react-hook/merged-ref': 1.3.0_react@17.0.2
   '@react-hook/window-size': 3.0.7_react@17.0.2
+  '@split-tests/jest': 0.0.7
   '@storybook/addon-a11y': 6.3.8_9c6a8df88c2691f81f37725d5b4de033
   '@storybook/addon-essentials': 6.3.8_cb11160088731a408e5fb6d894d9434e
   '@storybook/addon-links': 6.3.8_react-dom@17.0.2+react@17.0.2
@@ -4001,6 +4003,18 @@ packages:
     resolution: {integrity: sha512-iQADsW4LBMISqZ6Ci1dupJL9pprqwcVFTcOsEmQOEhW+KLCVn/Y4Jrvg2k19fIHCp+iFprriYPTdRcQR8NbUPg==}
     dependencies:
       '@sinonjs/commons': 1.8.3
+    dev: false
+
+  /@split-tests/core/0.0.7:
+    resolution: {integrity: sha512-rU8K7137K9IPlmA89FHLfQ9v1A9CJsdBOOCeuo7gK2G3XgfFB7tEXQ4PxilKVO8qWJIa5D1cSIQ1cuTOZbaJ/w==}
+    dependencies:
+      fast-xml-parser: 3.17.6
+    dev: false
+
+  /@split-tests/jest/0.0.7:
+    resolution: {integrity: sha512-mwxgXIVO6WfXj6ag2CwAPfqnbAKxW4M/dUz7SGIVjgMPQkqtb4ATIroA9axixfKk4oGnWdOdEpKmL5Htqcv/yw==}
+    dependencies:
+      '@split-tests/core': 0.0.7
     dev: false
 
   /@storybook/addon-a11y/6.3.8_9c6a8df88c2691f81f37725d5b4de033:
@@ -9711,6 +9725,11 @@ packages:
 
   /fast-levenshtein/2.0.6:
     resolution: {integrity: sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=}
+    dev: false
+
+  /fast-xml-parser/3.17.6:
+    resolution: {integrity: sha512-40WHI/5d2MOzf1sD2bSaTXlPn1lueJLAX6j1xH5dSAr6tNeut8B9ktEL6sjAK9yVON4uNj9//axOdBJUuruCzw==}
+    hasBin: true
     dev: false
 
   /fastq/1.13.0:
