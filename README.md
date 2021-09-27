@@ -1,5 +1,5 @@
 <hr>
-  <img src='https://github.com/dash-ui/styles/raw/master/assets/logo.png'/>
+  <img src='https://github.com/dash-ui/styles/raw/main/assets/logo.png'/>
   <blockquote>A Twitter clone written using <a href="https://github.com/dash-ui/styles">Dash</a> and <a href="https://nextjs.org/">Next.js</a>.</blockquote>
 <hr>
 
