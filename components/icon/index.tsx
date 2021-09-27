@@ -40,9 +40,7 @@ export interface IconProps
    * Set a size on the icon. Sizing this way requires that your SVG has no `width`
    * or `height` properties or styles set on it.
    */
-  size?:
-    | React.ReactText
-    | [React.ReactText | undefined, React.ReactText | undefined];
+  size?: React.ReactText | [React.ReactText | null, React.ReactText | null];
   /**
    * Set a color for the icon. Coloring requires that your SVG having `currentColor`
    * as its `fill` or `strokeColor`.
@@ -77,9 +75,9 @@ export const icon = compoundStyles(
     size: responsiveStyles.lazy(
       (
         value:
-          | undefined
+          | null
           | React.ReactText
-          | [React.ReactText | undefined, React.ReactText | undefined]
+          | [React.ReactText | null, React.ReactText | null]
       ) => {
         const initialWidth = Array.isArray(value) ? value[0] : value;
         let height = Array.isArray(value) ? value[1] : value;
