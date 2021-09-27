@@ -3,21 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
     "build-storybook": "build-storybook -s ./public",
     "check-types": "tsc --noEmit",
+    "dev": "next dev",
     "lint": "eslint . --ext .js,.ts,.tsx",
+    "prepare": "husky install",
     "start": "next build && next start",
     "storybook": "start-storybook -s ./public -p 6006",
     "test": "jest",
     "test:report": "cross-env JEST_JUNIT_OUTPUT_DIR=.jest JEST_JUNIT_ADD_FILE_ATTRIBUTE='true' jest --reporters=default --reporters=jest-junit",
     "up": "pnpx vercel@latest"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "lint-staged": {
     "**/*.{ts,tsx,js,jsx,html,md,mdx,yml,json}": [
@@ -32,89 +33,32 @@
       "path": "node_modules/cz-conventional-changelog"
     }
   },
-  "eslintIgnore": [
-    ".github",
-    ".next",
-    ".vercel",
-    "build",
-    "coverage",
-    "public",
-    "test",
-    "storybook-static"
-  ],
   "eslintConfig": {
-    "plugins": [
-      "@next/next",
-      "jsdoc"
-    ],
-    "extends": [
-      "lunde",
-      "plugin:@next/next/recommended",
-      "plugin:jsdoc/recommended"
-    ],
     "settings": {
       "import/internal-regex": "^(@/.*)$"
     },
+    "plugins": [
+      "@next/next"
+    ],
+    "extends": [
+      "lunde",
+      "plugin:@next/next/recommended"
+    ],
     "rules": {
-      "jsdoc/no-types": "off",
-      "jsdoc/require-param-type": "off",
-      "jsdoc/require-returns": "off",
-      "jsdoc/require-jsdoc": "off",
-      "jsdoc/require-hyphen-before-param-description": "warn",
       "no-empty-pattern": "off",
-      "import/no-unresolved": "off",
-      "import/extensions": "off",
-      "import/order": [
-        "warn",
-        {
-          "pathGroups": [
-            {
-              "pattern": "@/**",
-              "group": "internal"
-            }
-          ],
-          "groups": [
-            "builtin",
-            "external",
-            "internal",
-            [
-              "parent",
-              "sibling",
-              "index"
-            ],
-            "object"
-          ],
-          "alphabetize": {
-            "order": "asc",
-            "caseInsensitive": true
-          }
-        }
-      ],
-      "sort-imports": [
-        "warn",
-        {
-          "ignoreCase": true,
-          "ignoreDeclarationSort": true,
-          "memberSyntaxSortOrder": [
-            "none",
-            "all",
-            "multiple",
-            "single"
-          ],
-          "allowSeparatedGroups": false
-        }
-      ],
-      "jsx-a11y/anchor-is-valid": "off",
-      "react/react-in-jsx-scope": "off",
       "@typescript-eslint/ban-types": "off",
-      "@typescript-eslint/no-var-requires": "off",
-      "@typescript-eslint/prefer-ts-expect-error": "warn",
       "@typescript-eslint/consistent-type-imports": [
         "warn",
         {
           "prefer": "type-imports"
         }
-      ]
+      ],
+      "@typescript-eslint/no-var-requires": "off",
+      "@typescript-eslint/prefer-ts-expect-error": "warn",
+      "import/extensions": "off",
+      "import/no-unresolved": "off",
+      "jsx-a11y/anchor-is-valid": "off",
+      "react/react-in-jsx-scope": "off"
     },
     "overrides": [
       {
@@ -137,7 +81,45 @@
       }
     ]
   },
+  "eslintIgnore": [
+    ".github",
+    ".next",
+    ".vercel",
+    "build",
+    "coverage",
+    "public",
+    "test",
+    "storybook-static"
+  ],
   "jest": {
+    "collectCoverageFrom": [
+      "**/*.{ts,tsx}"
+    ],
+    "globals": {
+      "split-tests": {
+        "junit": "./.jest/junit.xml"
+      }
+    },
+    "moduleDirectories": [
+      "node_modules",
+      "components",
+      "hooks",
+      "pages",
+      "stores",
+      "styles",
+      "test",
+      "utils"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/$1"
+    },
+    "setupFilesAfterEnv": [
+      "<rootDir>/test/setup.ts"
+    ],
+    "testEnvironment": "jsdom",
+    "testMatch": [
+      "<rootDir>/**/*.test.{js,jsx,ts,tsx}"
+    ],
     "testSequencer": "@split-tests/jest",
     "transform": {
       "^.+\\.(t|j)sx?$": [
@@ -151,44 +133,13 @@
         }
       ]
     },
-    "testEnvironment": "jsdom",
-    "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/$1"
-    },
-    "moduleDirectories": [
-      "node_modules",
-      "components",
-      "hooks",
-      "pages",
-      "stores",
-      "styles",
-      "test",
-      "utils"
-    ],
-    "setupFilesAfterEnv": [
-      "<rootDir>/test/setup.ts"
-    ],
-    "testMatch": [
-      "<rootDir>/**/*.test.{js,jsx,ts,tsx}"
-    ],
     "transformIgnorePatterns": [
       "node_modules"
-    ],
-    "collectCoverageFrom": [
-      "**/*.{ts,tsx}"
-    ],
-    "globals": {
-      "split-tests": {
-        "junit": "./.jest/junit.xml"
-      }
-    }
-  },
-  "jest-junit": {
-    "output": "./junit.xml",
-    "ancestorSeparator": " › ",
-    "suiteNameTemplate": "`{title}` — _{filepath}_"
+    ]
   },
   "dependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "@dash-ui/compound": "0.1.2",
     "@dash-ui/jest": "^2.1.2",
     "@dash-ui/layout": "0.1.2",
@@ -236,10 +187,9 @@
     "cross-env": "^7.0.3",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "7.32.0",
-    "eslint-config-lunde": "^0.4.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-jsdoc": "^36.1.0",
-    "husky": "^4.3.8",
+    "husky": "^7.0.2",
     "immer": "^9.0.6",
     "jest": "^27.1.1",
     "jest-junit": "^12.2.0",
@@ -258,5 +208,13 @@
     "typescript": "4.3.5",
     "yup": "^0.32.9",
     "zustand": "^3.5.10"
+  },
+  "devDependencies": {
+    "eslint-config-lunde": "^0.5.0"
+  },
+  "jest-junit": {
+    "output": "./junit.xml",
+    "ancestorSeparator": " › ",
+    "suiteNameTemplate": "`{title}` — _{filepath}_"
   }
 }
