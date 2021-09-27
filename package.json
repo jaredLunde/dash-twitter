@@ -147,7 +147,7 @@
     "@dash-ui/react": "^0.9.1",
     "@dash-ui/reset": "^0.3.1",
     "@dash-ui/responsive": "^0.2.3",
-    "@dash-ui/styles": "^0.8.7",
+    "@dash-ui/styles": "^0.8.8",
     "@dash-ui/transition": "^0.4.0",
     "@hookform/resolvers": "^2.8.1",
     "@next/eslint-plugin-next": "^11.1.2",

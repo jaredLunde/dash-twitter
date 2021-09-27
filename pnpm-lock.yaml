@@ -10,7 +10,7 @@ specifiers:
   '@dash-ui/react': ^0.9.1
   '@dash-ui/reset': ^0.3.1
   '@dash-ui/responsive': ^0.2.3
-  '@dash-ui/styles': ^0.8.7
+  '@dash-ui/styles': ^0.8.8
   '@dash-ui/transition': ^0.4.0
   '@hookform/resolvers': ^2.8.1
   '@next/eslint-plugin-next': ^11.1.2
@@ -76,15 +76,15 @@ specifiers:
 dependencies:
   '@commitlint/cli': 8.3.5
   '@commitlint/config-conventional': 8.3.4
-  '@dash-ui/compound': 0.1.4_ce85916415b0f851832e5a1ceef45a07
+  '@dash-ui/compound': 0.1.4_faf1991ae8021669d236a0ffd7ba9f5b
   '@dash-ui/jest': 2.1.2
-  '@dash-ui/layout': 0.1.2_ce85916415b0f851832e5a1ceef45a07
-  '@dash-ui/mq': 0.4.1_@dash-ui+styles@0.8.7
-  '@dash-ui/react': 0.9.1_c263958e65bcf179e82d998a8c64a61d
+  '@dash-ui/layout': 0.1.2_faf1991ae8021669d236a0ffd7ba9f5b
+  '@dash-ui/mq': 0.4.1_@dash-ui+styles@0.8.8
+  '@dash-ui/react': 0.9.1_f40c3527a8ca4991c3084da59eaa7dbb
   '@dash-ui/reset': 0.3.1
-  '@dash-ui/responsive': 0.2.3_@dash-ui+styles@0.8.7
-  '@dash-ui/styles': 0.8.7
-  '@dash-ui/transition': 0.4.0_@dash-ui+styles@0.8.7
+  '@dash-ui/responsive': 0.2.3_@dash-ui+styles@0.8.8
+  '@dash-ui/styles': 0.8.8
+  '@dash-ui/transition': 0.4.0_@dash-ui+styles@0.8.8
   '@hookform/resolvers': 2.8.1_react-hook-form@7.16.1
   '@next/eslint-plugin-next': 11.1.2
   '@next/plugin-storybook': 11.1.1-canary.17_next@11.1.0
@@ -2593,24 +2593,24 @@ packages:
     dev: false
     optional: true
 
-  /@dash-ui/compound/0.1.2_ce85916415b0f851832e5a1ceef45a07:
+  /@dash-ui/compound/0.1.2_faf1991ae8021669d236a0ffd7ba9f5b:
     resolution: {integrity: sha512-jQCS8ea4hQqksiVBnVY+AEk/Mxk5N/iyshACWQ1o3LTynRB50fIxXh8M/Vn5IU4DGC8VBDTpB8wbO/3ncNRRXw==}
     peerDependencies:
       '@dash-ui/responsive': '>=0.2.3'
       '@dash-ui/styles': '>=0.8.6'
     dependencies:
-      '@dash-ui/responsive': 0.2.3_@dash-ui+styles@0.8.7
-      '@dash-ui/styles': 0.8.7
+      '@dash-ui/responsive': 0.2.3_@dash-ui+styles@0.8.8
+      '@dash-ui/styles': 0.8.8
     dev: false
 
-  /@dash-ui/compound/0.1.4_ce85916415b0f851832e5a1ceef45a07:
+  /@dash-ui/compound/0.1.4_faf1991ae8021669d236a0ffd7ba9f5b:
     resolution: {integrity: sha512-eYZEmapdx1jw/LoPjDptL2Jq9EbcRiizy33iXe/zBn+SmF372ivnp1idcnlmaoCuiRcL2F0zhlMC/mQ0/F4tEw==}
     peerDependencies:
       '@dash-ui/responsive': '>=0.2.3'
       '@dash-ui/styles': '>=0.8.6'
     dependencies:
-      '@dash-ui/responsive': 0.2.3_@dash-ui+styles@0.8.7
-      '@dash-ui/styles': 0.8.7
+      '@dash-ui/responsive': 0.2.3_@dash-ui+styles@0.8.8
+      '@dash-ui/styles': 0.8.8
     dev: false
 
   /@dash-ui/jest/2.1.2:
@@ -2620,33 +2620,33 @@ packages:
       css: 2.2.4
     dev: false
 
-  /@dash-ui/layout/0.1.2_ce85916415b0f851832e5a1ceef45a07:
+  /@dash-ui/layout/0.1.2_faf1991ae8021669d236a0ffd7ba9f5b:
     resolution: {integrity: sha512-qlztb79DcGprHXh9UhfNWh8RIeMcJ7jQcmLe+CzNc+YlASebvBx3ZCSJbo9k+KxArBkzES0p8DYS5wmEykRpMA==}
     peerDependencies:
       '@dash-ui/responsive': '>=0.2.3'
       '@dash-ui/styles': '>=0.8.6'
     dependencies:
-      '@dash-ui/compound': 0.1.2_ce85916415b0f851832e5a1ceef45a07
-      '@dash-ui/responsive': 0.2.3_@dash-ui+styles@0.8.7
-      '@dash-ui/styles': 0.8.7
+      '@dash-ui/compound': 0.1.2_faf1991ae8021669d236a0ffd7ba9f5b
+      '@dash-ui/responsive': 0.2.3_@dash-ui+styles@0.8.8
+      '@dash-ui/styles': 0.8.8
     dev: false
 
-  /@dash-ui/mq/0.4.1_@dash-ui+styles@0.8.7:
+  /@dash-ui/mq/0.4.1_@dash-ui+styles@0.8.8:
     resolution: {integrity: sha512-sJSt44idlIJltdSuBSTcTpdIihUXYIUK5LG1SdNc79A9cvjAJK7vOSpHZaoSuufbaniGCrFniut8jX2QnOHV6Q==}
     peerDependencies:
       '@dash-ui/styles': '>=0.8.0'
     dependencies:
-      '@dash-ui/styles': 0.8.7
+      '@dash-ui/styles': 0.8.8
     dev: false
 
-  /@dash-ui/react/0.9.1_c263958e65bcf179e82d998a8c64a61d:
+  /@dash-ui/react/0.9.1_f40c3527a8ca4991c3084da59eaa7dbb:
     resolution: {integrity: sha512-cd9+wPE6JlXqENWV7bjXqZa+IOXG2hJTMn65njBMfNlbJRIp/VivnujHtDziJ6hQpMly8pdPrdtc93Tz8QOdaQ==}
     peerDependencies:
       '@dash-ui/styles': '>=0.6.1'
       react: '>=16.8'
       react-dom: '>=16.8'
     dependencies:
-      '@dash-ui/styles': 0.8.7
+      '@dash-ui/styles': 0.8.8
       '@react-hook/passive-layout-effect': 1.2.1_react@17.0.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
@@ -2656,17 +2656,17 @@ packages:
     resolution: {integrity: sha512-k8wd5FX3yxn+ZtPfdkuWjt6UxqdXld6zsF7jQxdyF6F3anBI16tsjo8Sa/ttb+GCTBCbbCQ6h2G4qAu9GWTpFg==}
     dev: false
 
-  /@dash-ui/responsive/0.2.3_@dash-ui+styles@0.8.7:
+  /@dash-ui/responsive/0.2.3_@dash-ui+styles@0.8.8:
     resolution: {integrity: sha512-YPRjgmkZAB4bp3GO2HHIayDjr5JrRMc8oXDoudX+rDbWmOjiJ+4m09o+A7N+a6oSKo6sCQN4CaroqrVViNM3CQ==}
     peerDependencies:
       '@dash-ui/styles': '>=0.8.4'
     dependencies:
-      '@dash-ui/mq': 0.4.1_@dash-ui+styles@0.8.7
-      '@dash-ui/styles': 0.8.7
+      '@dash-ui/mq': 0.4.1_@dash-ui+styles@0.8.8
+      '@dash-ui/styles': 0.8.8
     dev: false
 
-  /@dash-ui/styles/0.8.7:
-    resolution: {integrity: sha512-1WxTqri9tn+ZCm+KI4S53ncMxAEX4rNL9m0jBVU6njFTae1cFx4j/fSFOZs/2sFJYLAEn+0vHS1yS/11LoxKZA==}
+  /@dash-ui/styles/0.8.8:
+    resolution: {integrity: sha512-NVi/mSqwX7SdlXhtp52QY9gJ1qzOIuJmoOBqxFnnBorHrxUnkfwrLwnOzPN0IZ6aD7+wbgGdAYezU19hBkhr9w==}
     dependencies:
       '@dash-ui/stylis': 1.0.5
       '@dash-ui/unitless': 2.0.0
@@ -2677,12 +2677,12 @@ packages:
     resolution: {integrity: sha512-7G2I1tqfIcBNyegJeORLapdsfAVSQiuoyyp725K+FBSemWNOaVMTrtRE7us1HFbAN+CP1S88vSDcKcKxgNBuxw==}
     dev: false
 
-  /@dash-ui/transition/0.4.0_@dash-ui+styles@0.8.7:
+  /@dash-ui/transition/0.4.0_@dash-ui+styles@0.8.8:
     resolution: {integrity: sha512-4p6eALkUBqyIasYCoGy15p7F5WMLWUprntg0OPeE7psP5sPIfGzu0dCrYcrHlheuqstcjFmJq4PDxsWPU5Mdag==}
     peerDependencies:
       '@dash-ui/styles': '>=0.8.0'
     dependencies:
-      '@dash-ui/styles': 0.8.7
+      '@dash-ui/styles': 0.8.8
     dev: false
 
   /@dash-ui/unitless/2.0.0:
