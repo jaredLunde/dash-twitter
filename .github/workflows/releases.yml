@@ -166,8 +166,23 @@ jobs:
           vercel-org-id: ${{ secrets.ORG_ID}}
           vercel-project-id: ${{ secrets.PROJECT_ID}}
           vercel-args: "--prod"
+
+  deploy-docs:
+    name: Deploy Documentation
+    # Don't run deployments for test-only commits/PRs
+    if: "github.event_name == 'push' && !startsWith(github.event.head_commit.message, 'test:') && !startsWith(github.event.pull_request.title, 'test:') && !startsWith(github.event.head_commit.message, 'test(') && !startsWith(github.event.pull_request.title, 'test(')"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.14.3
       - name: Create the docs directory locally in CI
-        run: pnpm typedoc --out .docs {components,hooks,pages,stores,styles}/**
+        run: pnpx typedoc --out .docs {components,hooks,pages,stores,styles}/**
       - name: Deploy Docs
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
