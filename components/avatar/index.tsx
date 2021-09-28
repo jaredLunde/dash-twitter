@@ -4,6 +4,9 @@ import * as React from "react";
 import { compoundStyles, responsiveStyles, styles } from "@/styles";
 import type { ResponsiveProp } from "@/styles";
 
+/**
+ * It's an avatar component. What else do you need to say?
+ */
 export const Avatar = React.forwardRef<HTMLImageElement, AvatarProps>(
   function Avatar(
     {
