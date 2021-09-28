@@ -182,7 +182,7 @@ jobs:
         with:
           version: 6.14.3
       - name: Create the docs directory locally in CI
-        run: pnpx typedoc --out .docs {components,hooks,pages,stores,styles}/**
+        run: pnpx -y typedoc --out .docs {components,hooks,pages,stores,styles}/**
       - name: Deploy Docs
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
