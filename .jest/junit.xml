@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <testsuites failures="0" errors="0" tests="2">
-  <testsuite name="`&lt;Avatar&gt;` — _components/avatar/avatar.test.tsx_" errors="0" failures="0" skipped="0" timestamp="2021-09-28T04:52:12" time="1.882" tests="1">
-    <testcase classname="&lt;Avatar&gt; should be the worst test ever" name="&lt;Avatar&gt; should be the worst test ever" time="0.084" file="components/avatar/avatar.test.tsx"/>
+  <testsuite name="`&lt;Avatar&gt;` — _components/avatar/avatar.test.tsx_" errors="0" failures="0" skipped="0" timestamp="2021-09-28T04:54:49" time="1.876" tests="1">
+    <testcase classname="&lt;Avatar&gt; should be the worst test ever" name="&lt;Avatar&gt; should be the worst test ever" time="0.085" file="components/avatar/avatar.test.tsx"/>
   </testsuite>
-  <testsuite name="`&lt;Button&gt;` — _components/button/button.test.tsx_" errors="0" failures="0" skipped="0" timestamp="2021-09-28T04:52:14" time="0.508" tests="1">
-    <testcase classname="&lt;Button&gt; should be the worst test ever" name="&lt;Button&gt; should be the worst test ever" time="0.055" file="components/button/button.test.tsx"/>
+  <testsuite name="`&lt;Button&gt;` — _components/button/button.test.tsx_" errors="0" failures="0" skipped="0" timestamp="2021-09-28T04:54:51" time="0.481" tests="1">
+    <testcase classname="&lt;Button&gt; should be the worst test ever" name="&lt;Button&gt; should be the worst test ever" time="0.051" file="components/button/button.test.tsx"/>
   </testsuite>
 </testsuites>
